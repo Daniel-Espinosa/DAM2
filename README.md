@@ -5,5 +5,5 @@ Curso DAM2 2023-2024
 * [Desarrollo de Interfaces](/DI)
 * [Programacion de Servicios y Procesos](/PSP)
 * [Sistemas de Gestion Empresarial](/SGE)
-* [Programación Multimedia y Dispositivos](/PMD)
+* [Programación Multimedia y Dispositivos Multimedia](/PMDM)
 * [Empresa e Iniciativa Emprendedora](/EIE)
