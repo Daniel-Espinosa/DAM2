@@ -1,2 +1,2 @@
 # DAM2
-Curso DAM2 2023-2024
+Sistemas de Gestion Empresarial
