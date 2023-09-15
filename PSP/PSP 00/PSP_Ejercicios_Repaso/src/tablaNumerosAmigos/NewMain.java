@@ -24,22 +24,50 @@ public class NewMain {
         HashMap<Integer, Integer> p = new HashMap();
         TreeMap<Integer, Integer> mapaB = new TreeMap();
 
-        for (int i = 10000; i > 1; i--) {
+        for (int i = 20000000; i > 1; i--) {
 
+            int division = i / 2;
             int sumaA = 1;
-            for (int j = i - 1; j > 1; j--) {
-                if (i % j == 0) {
-                    sumaA += j;
+
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0 || i % 13 == 0) {
+                for (int j = 2; j < division; j++) {
+                    if (i % j == 0) {
+                        sumaA = sumaA + j + (i / j);
+                    }
+                    division = i / j;
                 }
             }
+
+            /*
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0 || i % 13 == 0) {
+                for (int j = 2; j < division; j++) {
+                    if (i % j == 0) {
+                        sumaA = sumaA + j + (i / j);
+                        division = i / j;
+                    }
+
+                }
+            }
+            */
+            
+            /*
+            for (int j = 2; j < division; j++) {
+                    if (i % j == 0) {
+                        sumaA = sumaA + j + (i / j);
+                        division = i / j;
+                    }
+                    
+            }
+             */
             
             //System.out.println("key: " + i + " valor: " + sumaA);
-            if (sumaA !=1 && sumaA != i) {
+            if (sumaA != 1 && sumaA != i) {
                 p.put(i, sumaA);
                 //mapaB.put(sumaA,i);
             }
         }
 
+        //System.out.println("contador : " +cont);
         for (Map.Entry<Integer, Integer> entry : p.entrySet()) {
             Object key = entry.getKey();
             Object val = entry.getValue();
@@ -51,12 +79,12 @@ public class NewMain {
                 val2 = (Integer) p.get(val);
                 if (p.containsKey(val2)) {
                     if (val2 == (Integer) key && !mapaB.containsValue(val2)) {
-                        mapaB.put((Integer)key, (Integer)val);
+                        mapaB.put((Integer) key, (Integer) val);
                     }
                 }
             }
         }
-        
+
         // imprime por pantalla el TreeMap
         /*
         for (Map.Entry<Integer, Integer> entry : mapaB.entrySet()) {
@@ -66,77 +94,68 @@ public class NewMain {
             System.out.println("key " + key + " valor: " + val);
             
         }
-        */
-        
-        
+         */
         // ESCRIBIR EN UN TXT
         FileWriter fw = null;
         try {
             fw = new FileWriter("tablaamigos.txt");
-            fw.write("Numero A  || Numero B"+ "\n");
+            fw.write("Numero A  || Numero B" + "\n");
 
             for (Map.Entry<Integer, Integer> entry : mapaB.entrySet()) {
-            Object key = entry.getKey();
-            Object val = entry.getValue();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
 
-            fw.write( key + " || " + val + "\n");
+                fw.write(key + " || " + val + "\n");
             }
-            
 
         } catch (IOException e) {
             System.err.println("IOException");
         } finally {
             try {
-                if (fw!=null) {
+                if (fw != null) {
                     fw.close();
                 }
             } catch (IOException e) {
                 System.err.println("IOException cierre flujo");
             }
         }
-        
-        
-        
+
         // ESCRIBIR EN UN CSV EN DOS COLUMNAS SEPARADAS POR COMAS
-        
         FileWriter fw2 = null;
         try {
             fw2 = new FileWriter("tablaamigos.csv");
-            fw2.write("Numero A,Numero B"+ "\n");
+            fw2.write("Numero A,Numero B" + "\n");
 
             for (Map.Entry<Integer, Integer> entry : mapaB.entrySet()) {
-            Object key = entry.getKey();
-            Object val = entry.getValue();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
 
-            fw2.write( key + "," + val + "\n");
+                fw2.write(key + "," + val + "\n");
             }
-            
 
         } catch (IOException e) {
             System.err.println("IOException");
         } finally {
             try {
-                if (fw2!=null) {
+                if (fw2 != null) {
                     fw2.close();
                 }
             } catch (IOException e) {
                 System.err.println("IOException cierre flujo");
             }
         }
-        
-        
+
         // ESCRIBIR EN UN JSON EN DOS COLUMNAS SEPARADAS POR COMAS
-        
         FileWriter fw3 = null;
         try {
             fw3 = new FileWriter("tablaamigos.json");
             fw3.write("[\n");
 
             for (Map.Entry<Integer, Integer> entry : mapaB.entrySet()) {
-            Object key = entry.getKey();
-            Object val = entry.getValue();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
 
-            fw3.write( "{\" numero A\":" + key + ",\n\" numero B\":" + val + "},\n");
+                fw3.write("{\" numero A\":" + key + ",\n\" numero B\":" + val + "},\n");
             }
             fw3.write("]");
 
@@ -144,15 +163,14 @@ public class NewMain {
             System.err.println("IOException");
         } finally {
             try {
-                if (fw3!=null) {
+                if (fw3 != null) {
                     fw3.close();
                 }
             } catch (IOException e) {
                 System.err.println("IOException cierre flujo");
             }
         }
-        
-        
+
     }
 
 }
