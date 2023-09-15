@@ -12,6 +12,8 @@ PORT = 3306
 */
 package ad_ua1_tarea1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author damt207
@@ -22,7 +24,27 @@ public class AD_UA1_Tarea1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+            
+            String nombreCreacion;
+            String texto;
+        
+            Scanner sc = new Scanner(System.in);
+            
+            System.out.println("Dame un nombre para el archivo(no es necesario añadir la extencion)");
+            nombreCreacion = sc.nextLine();
+            
+            System.out.println("\nIntroduce el texto que quieres añadir al archivo");
+            texto = sc.nextLine();
+            Metodos.createFile(nombreCreacion, texto);
+            
+            System.out.println("\nLectura del archivo creado");
+            Metodos.readFile(nombreCreacion);
+            
+            System.out.println("\nCreando archivo propiedades.props");
+            Metodos.ficheroConfigEscritura();
+            System.out.println("\nLectura del archivo propiedades.props");
+            Metodos.ficheroConfigLectura();
+        
     }
     
 }
