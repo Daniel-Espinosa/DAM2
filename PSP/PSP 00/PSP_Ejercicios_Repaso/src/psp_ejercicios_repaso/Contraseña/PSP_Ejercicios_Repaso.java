@@ -10,8 +10,8 @@ v. - Contiene al menos un carácter especial (-, _ o $)
 c. Tras introducir la cadena mostrará un mensaje donde indicará si la
 cadena es correcta, si tiene un número inferior a 8 caracteres o si no
 cumple con los 4 últimos requisitos
-*/
-package psp_ejercicios_repaso;
+ */
+package psp_ejercicios_repaso.Contraseña;
 
 import java.util.Scanner;
 
@@ -26,25 +26,24 @@ public class PSP_Ejercicios_Repaso {
      */
     public static void main(String[] args) {
 
-        String contraseña;
-        boolean comprobar = true;        
-        
         Scanner sc = new Scanner(System.in);
-        
-        ComprobarContraseña contra = new ComprobarContraseña();
+        ComprobarContraseñaSinREGEX contra = new ComprobarContraseñaSinREGEX();
 
-        
+        //Comprobando contraseña sin Expresiones Regulares
         do {
-        
-        System.out.println("Introduce una contraseña");
-        contra.setContraseña(sc.nextLine());            
-        
-        
-        } while (!contra.comprobarContraseña());
-        
-        
-        
-        
+
+            System.out.println("Introduce una contraseña");
+            contra.setContraseña(sc.nextLine());
+        } while (!contra.comprobarContraseñaSinRegex());
+
+        //Comprobando contraseña con Expresiones Regulares
+        ComprobarContraseñaConREGEX contra2 = new ComprobarContraseñaConREGEX();
+
+        do {
+            System.out.println("Introduce una contraseña");
+            contra2.setContraseña(sc.nextLine());
+        } while (!contra2.comprobarContraseñaConRegex());
+
     }
-    
+
 }

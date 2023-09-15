@@ -1,0 +1,4 @@
+Hello World
+Prueba de lectura File Reader
+Caracter a Caracter
+Linea a Linea

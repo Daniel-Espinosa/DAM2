@@ -2,20 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package psp_ejercicios_repaso;
+package psp_ejercicios_repaso.Contraseña;
 
 /**
  *
  * @author damt207
  */
-public class ComprobarContraseña {
+public class ComprobarContraseñaSinREGEX {
 
     private static String contraseña;
 
     private static boolean comprobarLongitud() {
 
         if (contraseña.length() < 8) {
-            System.out.println("la contraseña tiene que tener minimo 8 caracteres");
             return false;
         }
         return true;
@@ -62,9 +61,10 @@ public class ComprobarContraseña {
         return false;
     }
 
-    public static boolean comprobarContraseña() {
+    public static boolean comprobarContraseñaSinRegex() {
 
         if (!comprobarLongitud()) {
+            System.out.println("la contraseña tiene que tener minimo 8 caracteres");
             return false;
         }
 
@@ -94,7 +94,7 @@ public class ComprobarContraseña {
     }
 
     public static void setContraseña(String contraseña) {
-        ComprobarContraseña.contraseña = contraseña;
+        ComprobarContraseñaSinREGEX.contraseña = contraseña;
     }
 
     public static String getContraseña() {
