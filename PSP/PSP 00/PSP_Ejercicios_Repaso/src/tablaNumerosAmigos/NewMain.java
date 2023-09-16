@@ -28,43 +28,58 @@ public class NewMain {
 
             int division = i / 2;
             int sumaA = 1;
-
-            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0 || i % 13 == 0) {
+            //String cadena = "1";
+            //System.out.println("numero comprobar " + i);
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0) {
                 for (int j = 2; j < division; j++) {
-                    if (i % j == 0) {
-                        sumaA = sumaA + j + (i / j);
-                    }
                     division = i / j;
+                    if (i % j == 0) {
+                        sumaA += j + (division);
+                        //cadena += " + "+ j ;
+                    }
                 }
             }
-
+            
+            //System.out.println(cadena);
+            
             /*
+            //System.out.println("numero comprobar " + i);
             if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0 || i % 13 == 0) {
                 for (int j = 2; j < division; j++) {
                     if (i % j == 0) {
                         sumaA = sumaA + j + (i / j);
                         division = i / j;
+                    } else {
+                        division = i / j;
+                        j = i / division;
                     }
-
                 }
             }
             */
             
             /*
-            for (int j = 2; j < division; j++) {
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0 || i % 11 == 0 || i % 13 == 0) {
+                for (int j = 2; j < division; j++) {
                     if (i % j == 0) {
                         sumaA = sumaA + j + (i / j);
                         division = i / j;
                     }
-                    
+                }
             }
              */
-            
+ /*
+            for (int j = 2; j < division; j++) {
+                    if (i % j == 0) {
+                        sumaA = sumaA + j + (i / j);
+                        division = i / j;
+                    }     
+            }
+             */
             //System.out.println("key: " + i + " valor: " + sumaA);
             if (sumaA != 1 && sumaA != i) {
                 p.put(i, sumaA);
                 //mapaB.put(sumaA,i);
-            }
+            }.
         }
 
         //System.out.println("contador : " +cont);
