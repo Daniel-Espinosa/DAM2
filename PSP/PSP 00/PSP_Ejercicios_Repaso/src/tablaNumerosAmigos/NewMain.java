@@ -79,9 +79,10 @@ public class NewMain {
             if (sumaA != 1 && sumaA != i) {
                 p.put(i, sumaA);
                 //mapaB.put(sumaA,i);
-            }.
+            }
         }
 
+        System.out.println("");
         //System.out.println("contador : " +cont);
         for (Map.Entry<Integer, Integer> entry : p.entrySet()) {
             Object key = entry.getKey();
