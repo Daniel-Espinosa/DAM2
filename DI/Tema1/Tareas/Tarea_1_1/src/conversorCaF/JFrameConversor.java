@@ -7,9 +7,7 @@ package conversorCaF;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -17,14 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class JFrameConversor extends javax.swing.JFrame {
 
-    private int maxCaracteres = 20;
-    
     /**
      * Creates new form JFrameConversor
      */
     public JFrameConversor() {
         initComponents();
-        
+
     }
 
     /**
@@ -48,11 +44,6 @@ public class JFrameConversor extends javax.swing.JFrame {
         setTitle("Conversor C a F");
         setMaximumSize(new java.awt.Dimension(230, 200));
         setResizable(false);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -86,11 +77,6 @@ public class JFrameConversor extends javax.swing.JFrame {
 
         jTextField_Respuesta.setToolTipText("");
         jTextField_Respuesta.setFocusable(false);
-        jTextField_Respuesta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_RespuestaActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("ºC");
 
@@ -148,324 +134,88 @@ public class JFrameConversor extends javax.swing.JFrame {
 
     private void jButton_convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_convertirActionPerformed
         // TODO add your handling code here:
-        igual();
+        ejecutar();
     }//GEN-LAST:event_jButton_convertirActionPerformed
 
-    private void igual() {
+    private void ejecutar() {
         String valorCelsius = jTextField_ValorCelcius.getText();
         double celsius;
-        
-        if (!valorCelsius.isEmpty()) {
-            try {
-            
+
+        try {
+
             celsius = Double.parseDouble(valorCelsius);
-            
+
             double fahren;
-            
-            fahren = (celsius * 9/5) + 32;
-           
+
+            fahren = (celsius * 9 / 5) + 32;
+
             jTextField_Respuesta.setForeground(Color.black);
-            jTextField_Respuesta.setText(fahren +"");
-            
+            jTextField_Respuesta.setText(fahren + "");
+
         } catch (NumberFormatException e) {
             //System.err.println("Error Number Format Exception");
-            
+
             jTextField_Respuesta.setForeground(Color.red);
             jTextField_Respuesta.setText("Error");
-        
+
+            if (e.getMessage().contains(",")) {
+                panelComa();
+            } else if (e.getMessage().contains("empty")) {
+                panelInsertarValor();
+            } else {
+                panelLetra();
+            }
+
         }
-        
-        
-            
-        } else {
-            jTextField_Respuesta.setForeground(Color.red);
-            jTextField_Respuesta.setText("Introduce un valor");
-            panelInsertarValor();
-        }
-        
+
         jTextField_ValorCelcius.requestFocus();
-        
-        
-    }
-    
-    private void panelInsertarValor(){
-        
-        JOptionPane JP = new JOptionPane();
-        JP.setAlignmentX(LEFT_ALIGNMENT);
-        JP.setLocation(10,10);
-        JP.setVisible(true);
-        JP.showMessageDialog(null,"Inserta un valor", "Fallo", JOptionPane.INFORMATION_MESSAGE);
-        
 
-        /*
-        JOptionPane pane = new JOptionPane();
-        //pane.showMessageDialog(null,"Inserta un valor", "Fallo", JOptionPane.INFORMATION_MESSAGE);
-        JDialog d = pane.createDialog((JFrame)null, "Title");
-        d.setLocation(10,10);
-        d.setVisible(true);
-        */
-        
     }
-    
-    private void panelComa(){
-        JOptionPane JP = new JOptionPane();
-        JP.showMessageDialog(null,"No uses coma usa PUNTO", "Fallo", JOptionPane.ERROR_MESSAGE);
-        
-    }
-    
-    private void panelLetra(){
-        JOptionPane.showMessageDialog(null,"No puedes precionar letras", "Fallo", JOptionPane.ERROR_MESSAGE);
-    }
-    
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        
-        /*
-        int key = evt.getKeyCode();
-        if (key == KeyEvent.VK_ENTER) {
-            igual();
-        }
-        if (key == KeyEvent.VK_COMMA || key == KeyEvent.VK_DECIMAL) {
-            coma();
-        }
-        
-        if (key == KeyEvent.VK_0 || key == KeyEvent.VK_NUMPAD0) {
-            i0();
-        }
-        if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
-            i1();
-        }
-        if (key == KeyEvent.VK_2 || key == KeyEvent.VK_NUMPAD2) {
-            i2();
-        }
-        if (key == KeyEvent.VK_3 || key == KeyEvent.VK_NUMPAD3) {
-            i3();
-        }
-        if (key == KeyEvent.VK_4 || key == KeyEvent.VK_NUMPAD4) {
-            i4();
-        }
-        if (key == KeyEvent.VK_5 || key == KeyEvent.VK_NUMPAD5) {
-            i5();
-        }
-        if (key == KeyEvent.VK_6 || key == KeyEvent.VK_NUMPAD6) {
-            i6();
-        }
-        if (key == KeyEvent.VK_7 || key == KeyEvent.VK_NUMPAD7) {
-            i7();
-        }
-        if (key == KeyEvent.VK_8 || key == KeyEvent.VK_NUMPAD8) {
-            i8();
-        }
-        if (key == KeyEvent.VK_9 || key == KeyEvent.VK_NUMPAD9) {
-            i9();
-        }
-        
-        */
-    }//GEN-LAST:event_formKeyPressed
 
-    private void jTextField_RespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_RespuestaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_RespuestaActionPerformed
+    private void panelInsertarValor() {
+        JOptionPane jop = new JOptionPane("Introduce un dato valido", JOptionPane.INFORMATION_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
+        jd.setLocation((int) this.getLocation().getX() + 300, (int) this.getLocation().getY() + 100);
+        jd.setVisible(rootPaneCheckingEnabled);
+
+    }
+
+    private void panelComa() {
+        JOptionPane jop = new JOptionPane("Dato con coma", JOptionPane.ERROR_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
+        jd.setLocation((int) this.getLocation().getX() + 300, (int) this.getLocation().getY() + 100);
+        jd.setVisible(rootPaneCheckingEnabled);
+
+    }
+
+    private void panelLetra() {
+        JOptionPane jop = new JOptionPane("Dato no numerico", JOptionPane.ERROR_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
+        jd.setLocation((int) this.getLocation().getX() + 300, (int) this.getLocation().getY() + 100);
+        jd.setVisible(rootPaneCheckingEnabled);
+    }
 
     private void jTextField_ValorCelciusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ValorCelciusActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        /*
-        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
-               //jTextField_Respuesta.setEditable(true);
-               //label.setText("");
-               System.out.println("ok");
-            } else {
-               //tf.setEditable(false);
-               //label.setText("* Enter only numeric digits(0-9)");
-               System.out.println("no");
-            }
-        */
-        
-        /*
-        
-        int key = evt.getKeyCode();
-        
-        if (key == KeyEvent.VK_ENTER) {
-            igual();
-        }
-        if (key == KeyEvent.VK_COMMA || key == KeyEvent.VK_DECIMAL) {
-            coma();
-        }
-        
-        if (key == KeyEvent.VK_0 || key == KeyEvent.VK_NUMPAD0) {
-            i0();
-        }
-        if (key == KeyEvent.VK_1 || key == KeyEvent.VK_NUMPAD1) {
-            i1();
-        }
-        if (key == KeyEvent.VK_2 || key == KeyEvent.VK_NUMPAD2) {
-            i2();
-        }
-        if (key == KeyEvent.VK_3 || key == KeyEvent.VK_NUMPAD3) {
-            i3();
-        }
-        if (key == KeyEvent.VK_4 || key == KeyEvent.VK_NUMPAD4) {
-            i4();
-        }
-        if (key == KeyEvent.VK_5 || key == KeyEvent.VK_NUMPAD5) {
-            i5();
-        }
-        if (key == KeyEvent.VK_6 || key == KeyEvent.VK_NUMPAD6) {
-            i6();
-        }
-        if (key == KeyEvent.VK_7 || key == KeyEvent.VK_NUMPAD7) {
-            i7();
-        }
-        if (key == KeyEvent.VK_8 || key == KeyEvent.VK_NUMPAD8) {
-            i8();
-        }
-        if (key == KeyEvent.VK_9 || key == KeyEvent.VK_NUMPAD9) {
-            i9();
-        }
-        
-        */
-        
-        
+
+
     }//GEN-LAST:event_jTextField_ValorCelciusActionPerformed
 
     private void jTextField_ValorCelciusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_ValorCelciusKeyPressed
         // TODO add your handling code here:
-        
+
         int key = evt.getKeyCode();
-        
+
         if (key == KeyEvent.VK_ENTER) {
-            igual();
+            ejecutar();
         }
+
+        if (key == KeyEvent.VK_ESCAPE) {
+            System.exit(0);
+        }
+
     }//GEN-LAST:event_jTextField_ValorCelciusKeyPressed
 
-    private void i0() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "0");
-        }
-    }
-
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i1() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "1");
-        }
-    }
-
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i2() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "2");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i3() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "3");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i4() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "4");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i5() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "5");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i6() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "6");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i7() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "7");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i8() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "8");
-        }
-    }
-    /**
-     * Método que coloca en el panel el digito seleccionado por el usuario
-     */
-    private void i9() {
-        limpiarError();
-        limparCerosIzquierda();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + "9");
-        }
-    }
-    
-     private void coma() {
-        limpiarError();
-        if (jTextField_ValorCelcius.getText().length() < maxCaracteres) {
-            if (jTextField_ValorCelcius.getText().length() == 0) {
-                jTextField_ValorCelcius.setText("0.");
-            } else if (!jTextField_ValorCelcius.getText().contains(".")) {
-                jTextField_ValorCelcius.setText(jTextField_ValorCelcius.getText() + ".");
-            }
-        }
-    }
-     
-    public void limparCerosIzquierda() {
-        if (jTextField_ValorCelcius.getText().equalsIgnoreCase("0")) {
-            jTextField_ValorCelcius.setText("");
-        }
-    }
-    
-    public void limpiarError() {
-        if (jTextField_ValorCelcius.getText().equalsIgnoreCase("ERROR")) {// si tiene un error limpia para volver a colocar numeros ;)
-            jTextField_ValorCelcius.setText("0");
-            jTextField_Respuesta.setText("");
-        }
-    }
-        
     /**
      * @param args the command line arguments
      */
