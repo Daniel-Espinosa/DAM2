@@ -21,15 +21,20 @@ public class PalasMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float movement;
         
         if(paleta)
         {
-            Input.GetAxisRaw("Vertical");
+            movement = Input.GetAxisRaw("Vertical");
         }else
         {
-            Input.GetAxisRaw("Vertical");
+            movement = Input.GetAxisRaw("Vertical2");
         }
 
+
+        transform.position += new Vector3 (0f, movement * velocity*Time.deltaTime, 0f);
+
+           
 
     }
 }
