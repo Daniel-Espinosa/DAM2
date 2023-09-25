@@ -14,20 +14,24 @@ public class PSP_Tema1_Ejercicios {
         //System.out.println("Hello World!");
         
         
-        System.out.println("Ejercicio 1");
+        System.out.println("\nEjercicio 1");
         Ejercicio1.pruebaRuntime(args[0]);
         
         
-        System.out.println("Ejercicio 2");
+        System.out.println("\nEjercicio 2");
         Ejercicio2.propiedadesDelSistema();
     
-        System.out.println("Ejercicio 3");
+        System.out.println("\nEjercicio 3");
         Ejercicio3.pruebaRuntime();
-        for (int i = 0; i < 1000000000; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println((int) (Math.random()*9));
         }
         
+        System.out.println("\nEjercicio 4");
+        //NO ENTENDEMOS EL ENUNCIADO
         
+        System.out.println("\nEjercicio 5");
+        Ejercicio5.MetodoProcessBuilder();
     
     }
 }
