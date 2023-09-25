@@ -1,8 +1,8 @@
 /*
 4. Utilizando la clase ProcessBuilder, se debe crear un programa en Java que:
-1. Pregunte una app con interfaz gráfica en el Sistema Operativo actual.
-2. Abra la app.
-3. Obtener la información del entorno del proceso.
+    1. Pregunte una app con interfaz gráfica en el Sistema Operativo actual.
+    2. Abra la app.
+    3. Obtener la información del entorno del proceso.
 */
 package com.cafeconpalito.psp_tema1_ejercicios;
 
