@@ -6,13 +6,15 @@ public class BallMovement : MonoBehaviour
 {
     [SerializeField]
     private float velocity = 1.0f;
+
     [SerializeField]
     private Rigidbody2D ballBody;
     // Start is called before the first frame update
 
+
+
     [SerializeField]
     private GameManager gameManager;
-
 
     private static float collisionPaleta = 1f;
 
@@ -28,13 +30,7 @@ public class BallMovement : MonoBehaviour
     }
 
 
-    IEnumerator waitOneSec()
-    {
-        this.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, 0), transform.rotation);
-        yield return new WaitForSeconds(1);
-        launch();
     
-    }
 
 
 

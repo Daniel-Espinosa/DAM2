@@ -43,8 +43,6 @@ public class PalasMove : MonoBehaviour
         transform.position = paddlePosition;
         */
 
-
-        
         Vector2 paddlePosition = transform.position;
         paddlePosition.y = Math.Clamp(paddlePosition.y + movement * velocity* Time.deltaTime * BallMovement.CollisionPaleta, -yLimit, yLimit);
         transform.position = paddlePosition;
