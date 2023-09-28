@@ -21,29 +21,29 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
     }
-
+    
     private void errorSeleccionRadioButton() {
         JOptionPane jop = new JOptionPane("¡Selecciona una opcion para el Sistema Operativo!", JOptionPane.ERROR_MESSAGE);
         JDialog jd = jop.createDialog("ERROR");
         jd.setLocationRelativeTo(null);
         jd.setVisible(true);
     }
-
+    
     private void errorSeleccionCheckBox() {
         JOptionPane jop = new JOptionPane("¡Elige tu campo de especialización!", JOptionPane.ERROR_MESSAGE);
         JDialog jd = jop.createDialog("ERROR");
         jd.setLocationRelativeTo(null);
         jd.setVisible(true);
     }
-
+    
     private void generarEncuesta() {
-
+        
         if (groupRadioButton() == null) {
             errorSeleccionRadioButton();
         } else if (groupChekBox() == null) {
             errorSeleccionCheckBox();
         } else {
-
+            
             JOptionPane jop = new JOptionPane("El sistema operativo elegido es: " + groupRadioButton()
                     + "\nEl Campo de especializacion elegido es: " + groupChekBox()
                     + "\nEl numero de horas de visualizacion de pantalla es: " + jSlider1.getValue(), JOptionPane.INFORMATION_MESSAGE);
@@ -54,7 +54,7 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }
     
-    private void reiniciarEncuesta(){
+    private void reiniciarEncuesta() {
         Grupo.clearSelection();
         jSlider1.setValue(12);
         jCheckBoxAdmin.setSelected(false);
@@ -62,11 +62,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jCheckBoxProgramacion.setSelected(false);
         
     }
-
+    
     private String groupRadioButton() {
-
+        
         String seleccion = null;
-
+        
         if (jRadioButtonWin.isSelected()) {
             seleccion = "Windows";
         }
@@ -82,14 +82,14 @@ public class NewJFrame extends javax.swing.JFrame {
         if (jRadioButtonOtros.isSelected()) {
             seleccion = "Otros";
         }
-
+        
         return seleccion;
     }
-
+    
     private String groupChekBox() {
-
+        
         String seleccion = null;
-
+        
         if (jCheckBoxProgramacion.isSelected()) {
             if (seleccion == null) {
                 seleccion = "\nProgramación";
@@ -287,7 +287,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
-            jLabelValor.setText(jSlider1.getValue()+"");
+        jLabelValor.setText(jSlider1.getValue() + "");
     }//GEN-LAST:event_jSlider1StateChanged
 
     /**
