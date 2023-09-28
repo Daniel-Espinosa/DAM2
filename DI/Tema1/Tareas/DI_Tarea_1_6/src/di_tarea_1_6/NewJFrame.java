@@ -22,19 +22,99 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    
-    public void generarEncuesta (){
-                        
-        JOptionPane jop = new JOptionPane("¡Pelicula añadida con éxito!", JOptionPane.INFORMATION_MESSAGE);
-        JDialog jd = jop.createDialog("¡Exito!");
+    private void errorSeleccionRadioButton() {
+        JOptionPane jop = new JOptionPane("¡Selecciona una opcion para el Sistema Operativo!", JOptionPane.ERROR_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
         jd.setLocationRelativeTo(null);
         jd.setVisible(true);
-        
+    }
+
+    private void errorSeleccionCheckBox() {
+        JOptionPane jop = new JOptionPane("¡Elige tu campo de especialización!", JOptionPane.ERROR_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
+        jd.setLocationRelativeTo(null);
+        jd.setVisible(true);
+    }
+
+    private void generarEncuesta() {
+
+        if (groupRadioButton() == null) {
+            errorSeleccionRadioButton();
+        } else if (groupChekBox() == null) {
+            errorSeleccionCheckBox();
+        } else {
+
+            JOptionPane jop = new JOptionPane("El sistema operativo elegido es: " + groupRadioButton()
+                    + "\nEl Campo de especializacion elegido es: " + groupChekBox()
+                    + "\nEl numero de horas de visualizacion de pantalla es: " + jSlider1.getValue(), JOptionPane.INFORMATION_MESSAGE);
+            JDialog jd = jop.createDialog("¡Encuesta Generada!");
+            jd.setLocationRelativeTo(null);
+            jd.setVisible(true);
+            reiniciarEncuesta();
+        }
     }
     
-    
-    
-    
+    private void reiniciarEncuesta(){
+        Grupo.clearSelection();
+        jSlider1.setValue(12);
+        jCheckBoxAdmin.setSelected(false);
+        jCheckBoxDisGraf.setSelected(false);
+        jCheckBoxProgramacion.setSelected(false);
+        
+    }
+
+    private String groupRadioButton() {
+
+        String seleccion = null;
+
+        if (jRadioButtonWin.isSelected()) {
+            seleccion = "Windows";
+        }
+        if (jRadioButtonLinux.isSelected()) {
+            seleccion = "Linux";
+        }
+        if (jRadioButtonMac.isSelected()) {
+            seleccion = "Mac";
+        }
+        if (jRadioButtonUbuntu.isSelected()) {
+            seleccion = "Ubuntu";
+        }
+        if (jRadioButtonOtros.isSelected()) {
+            seleccion = "Otros";
+        }
+
+        return seleccion;
+    }
+
+    private String groupChekBox() {
+
+        String seleccion = null;
+
+        if (jCheckBoxProgramacion.isSelected()) {
+            if (seleccion == null) {
+                seleccion = "\nProgramación";
+            } else {
+                seleccion += "\nProgramación";
+            }
+        }
+        if (jCheckBoxDisGraf.isSelected()) {
+            if (seleccion == null) {
+                seleccion = "\nDiseño Gráfico";
+            } else {
+                seleccion += "\nDiseño Gráfico";
+            }
+        }
+        if (jCheckBoxAdmin.isSelected()) {
+            if (seleccion == null) {
+                seleccion = "\nAdministración y Gestión";
+            } else {
+                seleccion += "\nAdministración y Gestión";
+            }
+        }
+        return seleccion;
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +140,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSlider1 = new javax.swing.JSlider();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelValor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("“Tarea  1_4_MiniEncuesta_Daniel_Espinosa_Garcia");
@@ -112,6 +192,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
         jSlider1.setValue(12);
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Generar");
@@ -121,8 +206,8 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("12");
+        jLabelValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelValor.setText("12");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +217,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,7 +271,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
@@ -199,6 +284,11 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         generarEncuesta();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        // TODO add your handling code here:
+            jLabelValor.setText(jSlider1.getValue()+"");
+    }//GEN-LAST:event_jSlider1StateChanged
 
     /**
      * @param args the command line arguments
@@ -244,7 +334,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelValor;
     private javax.swing.JRadioButton jRadioButtonLinux;
     private javax.swing.JRadioButton jRadioButtonMac;
     private javax.swing.JRadioButton jRadioButtonOtros;
