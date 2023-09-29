@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
     [SerializeField]
     private float velocity = 1.0f;
+
+    private float maxVelocity = 10.0f;
 
     [SerializeField]
     private Rigidbody2D ballBody;
@@ -92,7 +95,12 @@ public class BallMovement : MonoBehaviour
 
             collisionPaleta += 0.02f;
             ballBody.velocity *= collisionPaleta;
-        
+            /*
+            if(ballBody.velocity > maxVelocity)
+            {
+                ballBody.velocity = maxVelocity;
+            }
+            */
         }
     }
 

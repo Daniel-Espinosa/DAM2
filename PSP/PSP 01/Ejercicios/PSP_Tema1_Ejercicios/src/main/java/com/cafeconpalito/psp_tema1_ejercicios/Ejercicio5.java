@@ -26,7 +26,7 @@ public class Ejercicio5 {
         pb.redirectError(new File("error.txt"));
         
         try {
-            pb.start();
+            Process p = pb.start();
         } catch (IOException ex) {
             Logger.getLogger(Ejercicio5.class.getName()).log(Level.SEVERE, null, ex);
         }

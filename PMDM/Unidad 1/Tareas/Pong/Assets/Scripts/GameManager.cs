@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject Ball;
 
-    public static GameManager Instance;
-
     [SerializeField]
     private TMP_Text ScoreA, ScoreB;
+
+    //patron singelton para solo tener un GameManager
+    public static GameManager Instance;
 
     private void Awake()
     {
@@ -53,7 +54,6 @@ public class GameManager : MonoBehaviour
         Ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         yield return new WaitForSeconds(1);
         Ball.GetComponent<BallMovement>().launch();
-
     }
 
     public void scoredGoalA()
@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
         scoreA += 1;
         ScoreA.SetText( scoreA.ToString());
         StartCoroutine(waitOneSec());   
-
     }
 
     public void scoredGoalB()
