@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     //patron singelton para solo tener un GameManager
     public static GameManager Instance;
 
+
     private void Awake()
     {
         // Comprueba si la instancia ya existe
@@ -60,7 +61,8 @@ public class GameManager : MonoBehaviour
     {
         scoreA += 1;
         ScoreA.SetText( scoreA.ToString());
-        StartCoroutine(waitOneSec());   
+        StartCoroutine(waitOneSec());
+        winer();
     }
 
     public void scoredGoalB()
@@ -68,9 +70,21 @@ public class GameManager : MonoBehaviour
         scoreB += 1;
         ScoreB.SetText( scoreB.ToString());
         StartCoroutine (waitOneSec());
+        winer();
     }
 
+    public void winer()
+    {
+        if (scoreA >= 3)
+        {
+            //GanaA
 
+        } else if (scoreB >= 3)
+        {
+            //GanaB
+
+        }
+    }
 
 
 }

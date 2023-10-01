@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,7 +9,7 @@ public class BallMovement : MonoBehaviour
     [SerializeField]
     private float velocity = 1.0f;
 
-    private float maxVelocity = 10.0f;
+    private float maxVelocity = 9f;
 
     [SerializeField]
     private Rigidbody2D ballBody;
@@ -32,8 +33,7 @@ public class BallMovement : MonoBehaviour
         launch();    
     }
 
-
-    
+     
 
 
 
@@ -43,7 +43,7 @@ public class BallMovement : MonoBehaviour
         float xVelocity;
         float yVelocity;
 
-        if (Random.Range(0, 2) == 0)
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
             xVelocity = 1;
         }
@@ -53,7 +53,7 @@ public class BallMovement : MonoBehaviour
         }
 
 
-        if (Random.Range(0, 2) == 0)
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
             yVelocity = 1;
         }
@@ -94,13 +94,10 @@ public class BallMovement : MonoBehaviour
         if (collision.gameObject.tag == "PalaA" || collision.gameObject.tag == "PalaB" ) {
 
             collisionPaleta += 0.02f;
-            ballBody.velocity *= collisionPaleta;
-            /*
-            if(ballBody.velocity > maxVelocity)
-            {
-                ballBody.velocity = maxVelocity;
-            }
-            */
+            //ballBody.velocity *= collisionPaleta;
+
+            ballBody.velocity = new Vector2(Math.Clamp(ballBody.velocity.x*collisionPaleta,-maxVelocity,maxVelocity), Math.Clamp(ballBody.velocity.y * collisionPaleta, -maxVelocity, maxVelocity));
+
         }
     }
 
