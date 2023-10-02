@@ -27,19 +27,24 @@ public class PSP_Tema1_Ejercicios {
                 
         System.out.println("\nEjercicio 4");
         //NO ENTENDEMOS EL ENUNCIADO
+        */
+        
+        //System.out.println("\nEjercicio 5");
+        //Ejercicio5.MetodoProcessBuilder();
         
         System.out.println("\nEjercicio 5");
-        Ejercicio5.MetodoProcessBuilder();
+        Ejercicio5_v2.MetodoProcessBuilder();
         
-        System.out.println("\nEjercicio 6");
-        Ejercicio6.quePasa();
+        //System.out.println("\nEjercicio 6");
+        //Ejercicio6.quePasa();
         
-        System.out.println("\nEjercicio 7");
-        Ejercicio7.pruebaRuntime();
-        */
+        
+        //System.out.println("\nEjercicio 7");
+        //Ejercicio7.pruebaRuntime();
+        
     
-        System.out.println("\nEjercicio 8");
-        Ejercicio8.ej8();
+        //System.out.println("\nEjercicio 8");
+        //Ejercicio8.ej8();
         
     }
 }
