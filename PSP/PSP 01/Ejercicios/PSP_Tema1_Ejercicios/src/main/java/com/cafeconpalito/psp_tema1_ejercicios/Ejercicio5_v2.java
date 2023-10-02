@@ -19,21 +19,36 @@ import java.util.logging.Logger;
  *
  * @author damt207
  */
-public class Ejercicio5 {
+public class Ejercicio5_v2 {
 
     public static void MetodoProcessBuilder() {
         ProcessBuilder pb = new ProcessBuilder("CMD", "/c", "ver");
         //ProcessBuilder pb = new ProcessBuilder("CMD", "/c" , "verr" );
 
-        pb.redirectOutput(new File("salida.txt"));
-        pb.redirectError(new File("error.txt"));
+        //pb.redirectOutput(new File("salida.txt"));
+        //pb.redirectError(new File("error.txt"));
 
         try {
             
             Process p = pb.start();
 
+            InputStream is = p.getInputStream();
+
+            InputStreamReader isr = new InputStreamReader(is);
+
+            BufferedReader br = new BufferedReader(isr);
+
+            String linea = null;
+
+            linea = br.readLine();
+
+            while (linea != null) {
+                System.out.println(linea);
+                linea = br.readLine();
+            }
+
         } catch (IOException ex) {
-            Logger.getLogger(Ejercicio5.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio5_v2.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
