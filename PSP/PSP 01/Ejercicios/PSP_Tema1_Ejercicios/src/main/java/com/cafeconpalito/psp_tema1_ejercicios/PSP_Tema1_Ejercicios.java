@@ -33,13 +33,14 @@ public class PSP_Tema1_Ejercicios {
         
         System.out.println("\nEjercicio 6");
         Ejercicio6.quePasa();
-        
-        System.out.println("\nEjercicio 7");
-        Ejercicio7.pruebaRuntime();
         */
+        
+        //System.out.println("\nEjercicio 7");
+        //Ejercicio7.pruebaRuntime();
+        
     
-        System.out.println("\nEjercicio 8");
-        Ejercicio8.ej8();
+        //System.out.println("\nEjercicio 8");
+        //Ejercicio8.ej8();
         
     }
 }
