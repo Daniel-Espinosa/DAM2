@@ -1,0 +1,97 @@
+
+Configuraci¢n IP de Windows
+
+   Nombre de host. . . . . . . . . : 34-08
+   Sufijo DNS principal  . . . . . : aglinfo.local
+   Tipo de nodo. . . . . . . . . . : difusi¢n
+   Enrutamiento IP habilitado. . . : no
+   Proxy WINS habilitado . . . . . : no
+   Lista de b£squeda de sufijos DNS: aglinfo.local
+
+Adaptador de Ethernet Ethernet 2:
+
+   Sufijo DNS espec¡fico para la conexi¢n. . : 
+   Descripci¢n . . . . . . . . . . . . . . . : VirtualBox Host-Only Ethernet Adapter
+   Direcci¢n f¡sica. . . . . . . . . . . . . : 0A-00-27-00-00-03
+   DHCP habilitado . . . . . . . . . . . . . : no
+   Configuraci¢n autom tica habilitada . . . : s¡
+   V¡nculo: direcci¢n IPv6 local. . . : fe80::fa31:5328:f036:ed5%3(Preferido) 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 192.168.56.1(Preferido) 
+   M scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 
+   IAID DHCPv6 . . . . . . . . . . . . . . . : 168427559
+   DUID de cliente DHCPv6. . . . . . . . . . : 00-01-00-01-2C-2D-D3-B6-B4-2E-99-50-4F-80
+   NetBIOS sobre TCP/IP. . . . . . . . . . . : habilitado
+
+Adaptador de Ethernet Ethernet 3:
+
+   Sufijo DNS espec¡fico para la conexi¢n. . : 
+   Descripci¢n . . . . . . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   Direcci¢n f¡sica. . . . . . . . . . . . . : B4-2E-99-87-C9-81
+   DHCP habilitado . . . . . . . . . . . . . : s¡
+   Configuraci¢n autom tica habilitada . . . : s¡
+   V¡nculo: direcci¢n IPv6 local. . . : fe80::9434:e623:1183:cf0b%7(Preferido) 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 192.168.34.5(Preferido) 
+   M scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Concesi¢n obtenida. . . . . . . . . . . . : viernes, 29 de septiembre de 2023 16:18:37
+   La concesi¢n expira . . . . . . . . . . . : mi‚rcoles, 1 de noviembre de 2023 15:28:15
+   Puerta de enlace predeterminada . . . . . : 192.168.34.254
+   Servidor DHCP . . . . . . . . . . . . . . : 192.168.34.254
+   IAID DHCPv6 . . . . . . . . . . . . . . . : 112471705
+   DUID de cliente DHCPv6. . . . . . . . . . : 00-01-00-01-2C-2D-D3-B6-B4-2E-99-50-4F-80
+   Servidores DNS. . . . . . . . . . . . . . : 192.168.0.100
+                                       1.1.1.1
+                                       8.8.8.8
+   NetBIOS sobre TCP/IP. . . . . . . . . . . : habilitado
+
+Adaptador de Ethernet VMware Network Adapter VMnet1:
+
+   Sufijo DNS espec¡fico para la conexi¢n. . : 
+   Descripci¢n . . . . . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet1
+   Direcci¢n f¡sica. . . . . . . . . . . . . : 00-50-56-C0-00-01
+   DHCP habilitado . . . . . . . . . . . . . : s¡
+   Configuraci¢n autom tica habilitada . . . : s¡
+   V¡nculo: direcci¢n IPv6 local. . . : fe80::973c:3dbe:6479:50e3%9(Preferido) 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 192.168.40.1(Preferido) 
+   M scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Concesi¢n obtenida. . . . . . . . . . . . : lunes, 2 de octubre de 2023 15:28:07
+   La concesi¢n expira . . . . . . . . . . . : lunes, 2 de octubre de 2023 21:13:07
+   Puerta de enlace predeterminada . . . . . : 
+   Servidor DHCP . . . . . . . . . . . . . . : 192.168.40.254
+   IAID DHCPv6 . . . . . . . . . . . . . . . : 251678806
+   DUID de cliente DHCPv6. . . . . . . . . . : 00-01-00-01-2C-2D-D3-B6-B4-2E-99-50-4F-80
+   NetBIOS sobre TCP/IP. . . . . . . . . . . : habilitado
+
+Adaptador de Ethernet VMware Network Adapter VMnet8:
+
+   Sufijo DNS espec¡fico para la conexi¢n. . : 
+   Descripci¢n . . . . . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet8
+   Direcci¢n f¡sica. . . . . . . . . . . . . : 00-50-56-C0-00-08
+   DHCP habilitado . . . . . . . . . . . . . : s¡
+   Configuraci¢n autom tica habilitada . . . : s¡
+   V¡nculo: direcci¢n IPv6 local. . . : fe80::ea3f:df04:2f87:c3fc%5(Preferido) 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 192.168.242.1(Preferido) 
+   M scara de subred . . . . . . . . . . . . : 255.255.255.0
+   Concesi¢n obtenida. . . . . . . . . . . . : lunes, 2 de octubre de 2023 15:28:07
+   La concesi¢n expira . . . . . . . . . . . : lunes, 2 de octubre de 2023 21:13:07
+   Puerta de enlace predeterminada . . . . . : 
+   Servidor DHCP . . . . . . . . . . . . . . : 192.168.242.254
+   IAID DHCPv6 . . . . . . . . . . . . . . . : 268456022
+   DUID de cliente DHCPv6. . . . . . . . . . : 00-01-00-01-2C-2D-D3-B6-B4-2E-99-50-4F-80
+   Servidor WINS principal . . . . . . . . . : 192.168.242.2
+   NetBIOS sobre TCP/IP. . . . . . . . . . . : habilitado
+
+Adaptador de Ethernet vEthernet (Default Switch):
+
+   Sufijo DNS espec¡fico para la conexi¢n. . : 
+   Descripci¢n . . . . . . . . . . . . . . . : Hyper-V Virtual Ethernet Adapter
+   Direcci¢n f¡sica. . . . . . . . . . . . . : 00-15-5D-49-CA-9F
+   DHCP habilitado . . . . . . . . . . . . . : no
+   Configuraci¢n autom tica habilitada . . . : s¡
+   V¡nculo: direcci¢n IPv6 local. . . : fe80::f725:97b2:78f7:c70a%13(Preferido) 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 172.25.144.1(Preferido) 
+   M scara de subred . . . . . . . . . . . . : 255.255.240.0
+   Puerta de enlace predeterminada . . . . . : 
+   IAID DHCPv6 . . . . . . . . . . . . . . . : 218109277
+   DUID de cliente DHCPv6. . . . . . . . . . : 00-01-00-01-2C-2D-D3-B6-B4-2E-99-50-4F-80
+   NetBIOS sobre TCP/IP. . . . . . . . . . . : habilitado
