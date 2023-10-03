@@ -44,5 +44,26 @@ public class PSP_Tema1_Ejercicios {
         //System.out.println("\nEjercicio 8");
         //Ejercicio8.ej8();
         
+        /*
+        System.out.println("\nEjercicio 9");
+        Ejercicio9.ejercicio9();
+        Ejercicio9.ejercicio9_v2();
+        Ejercicio9.ejercicio9_v3();
+        */
+        
+        //Para que esto funcione crea primero un Build del P1 y llevalo a una carpeta y luego crea un Build del P2
+        //System.out.println("\nEjercicio 10 Parte 1");
+        //Ejercicio10.ejercicio10_P1();
+        //System.out.println("\nEjercicio 10 Parte 2");
+        //Ejercicio10.ejercicio10_P2();
+        
+        
+        //Para que esto funcione crea primero un Build del P1 y llevalo a una carpeta y luego crea un Build del P2
+        //System.out.println("\nEjercicio 11");
+        //Ejercicio11.ejercicio11_p1();
+        Ejercicio11.ejercicio11_p2();
+        
+        
+        
     }
 }
