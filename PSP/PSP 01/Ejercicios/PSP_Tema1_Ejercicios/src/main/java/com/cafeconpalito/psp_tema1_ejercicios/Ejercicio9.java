@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cafeconpalito.psp_tema1_tarea1;
+package com.cafeconpalito.psp_tema1_ejercicios;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author damt207
  */
-public class Metodos {
+public class Ejercicio9 {
 
     /*
         9. En este ejercicio el estudiante debe realizar un ejercicio que lance el comando:
@@ -112,9 +112,9 @@ public class Metodos {
             System.out.println("\nLas redes parecen que van bien");
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
         }
@@ -198,9 +198,9 @@ public class Metodos {
             //• Imprimimos “Las redes parecen que van bien"
             System.out.println("\nLas redes parecen que van bien");
         } catch (InterruptedException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -300,9 +300,9 @@ public class Metodos {
             //• Imprimimos “Las redes parecen que van bien"
             System.out.println("\nLas redes parecen que van bien");
         } catch (InterruptedException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ejercicio9.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
