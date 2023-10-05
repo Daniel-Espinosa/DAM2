@@ -17,9 +17,12 @@ funciona deberás obtener la salida estándar del proceso para imprimirla por pa
 package com.cafeconpalito.psp_tema1_ejercicios;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +36,8 @@ public class Ejercicio11 {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));) {
 
+            //Este programa espera por consola que se le envie informacion
+            //La cual se la suministrara el siguiente programa.
             System.out.println("Introduce la primera cadena");
             System.out.println(br.readLine());
             System.out.println("Introduce la segunda cadena");
@@ -54,8 +59,17 @@ public class Ejercicio11 {
 
             //Creando un PB al cual controlaremos el flujo de salida (retorno de la consola para leerlo mostrarlo por pantalla y escribirlo en un fichero)           
             ProcessBuilder pb = new ProcessBuilder(command1, command2, command3);
-
             Process p = pb.start();
+            
+            //Hace que el padre envie al Hijo las dos lineas de texto que espera.
+            try (OutputStream os = p.getOutputStream(); BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));){
+                
+                bw.write("Enviando del padre al hijo la 1º Linea");
+                bw.newLine();
+                bw.write("Enviando del padre al hijo la 2º Linea");
+
+            } catch (Exception e) {
+            }
             
             String linea = null;
             
