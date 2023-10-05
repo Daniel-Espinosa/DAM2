@@ -3,11 +3,11 @@ create database if not exists actividad2;
 use actividad2;
 
 create table if not exists cliente (
-codCliente int(5) primary key,
+codCliente int(5) primary key
 );
 
 create table if not exists articulo (
-codArticulo int(10) primary key,
+codArticulo int(10) primary key
 );
 
 create table if not exists compra(
