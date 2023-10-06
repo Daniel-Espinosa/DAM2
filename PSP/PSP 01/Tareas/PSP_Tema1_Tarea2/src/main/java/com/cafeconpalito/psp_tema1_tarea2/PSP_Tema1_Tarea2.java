@@ -13,15 +13,15 @@ public class PSP_Tema1_Tarea2 {
     public static void main(String[] args) {
     
         //Metodo para Generar los ficheros que se quieren sumar
-        //Metodos.generadorDeFicheros(3,1000000);
+        Metodos.generadorDeFicheros(3,1000000);
     
-        //Metodo de suma para solo sumar un numero.
-        //Metodos.suma(args[0]);
+        //Metodo de suma para solo sumar el total de un fichero y generar el archivo .res
+        Metodos.suma(args[0]);
         
         //Metodo para realizar las sumas secuencialmente de los ficheros
-        //Metodos.sumaTotalesSecuencial(args);
+        Metodos.sumaTotalesSecuencial(args);
         
         //Metodo para realizar las sumas de los ficheros en paralelo.
-        //Metodos.sumaTotalesParalela(args);
+        Metodos.sumaTotalesParalela(args);
     }
 }

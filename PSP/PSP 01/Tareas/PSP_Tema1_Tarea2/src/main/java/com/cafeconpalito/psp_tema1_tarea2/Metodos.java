@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +22,6 @@ public class Metodos {
     /**
      * Metodo que recibe un entero para saber el numero de ficheros a generar y
      * la cantidad de numeros que este generara en el fichero.
-     *
      * @param numFicheros numero de ficheros que se quieren crear
      * @param cantNumeros cantidad de numeros que se quieren añadir
      */
@@ -100,8 +97,6 @@ public class Metodos {
     /**
      * Realiza la suma total de manera secuencial de los ficheros que se deceen
      * sumar pasados como argumento
-     *
-     *
      * @param argumentos recibe en un Array de Strings el nombre de los ficheros
      * que se quieren leer.
      */
@@ -143,6 +138,14 @@ public class Metodos {
 
     }
 
+    /**
+     * Realiza la suma total de manera paralela de los ficheros que se deceen
+     * sumar pasados como argumento.
+     * Se inicializan todos los procesos hijos dentro de un bucle for
+     * Se espera a que todos los procesos hijos terminen dentro de otro bucle for
+     * Se calculan las sumas de los totales dentro de otro bucle for.
+     * @param argumentos recibe en un Array de Strings el nombre de los ficheros que se quieren leer.
+     */
     public static void sumaTotalesParalela(String[] argumentos) {
 
         long startTime = System.nanoTime(); // Captura el tiempo al iniciar el proceso para controlar el tiempo de ejecucion
@@ -150,7 +153,6 @@ public class Metodos {
 
         ProcessBuilder pb = null; 
         Process[] p = new Process[argumentos.length];
-
         //Lanza todos los procesos hijos para que comiencen a ejecutarce.
         for (int i = 0; i < argumentos.length; i++) {
             try {
@@ -159,7 +161,6 @@ public class Metodos {
             } catch (IOException e) {
             }
         }
-
         //Espere a que todos los hijos terminen. (espera a que el sumar.Jar termine para cada argumento y genere el fichero)
         for (Process i_p : p) {
             try {
@@ -168,7 +169,6 @@ public class Metodos {
                 Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         //Realiza la suma de ficheros .res generados para calcular el total
         for (String argumento : argumentos) {
             String linea = null;
@@ -179,12 +179,10 @@ public class Metodos {
             } catch (Exception e) {
             }
         }
-
         System.out.println("El total de la suma es: " + sumaTotal);
         long endTime = System.nanoTime(); //Captura el tiempo al finalizar el proceso para controlar el tiempo de ejecucion
         long timeElapsed = endTime - startTime; //Calcula los nanosegundos transcurridos.
         System.out.println("Suma Paralela, Tiempo de ejecucion en milisegundos: " + timeElapsed / 1000000);// muestra por pantalla los milisegundos transcurridos
-
     }
     
 
