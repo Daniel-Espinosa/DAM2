@@ -96,7 +96,8 @@ public class BallMovement : MonoBehaviour
             collisionPaleta += 0.02f;
             //ballBody.velocity *= collisionPaleta;
 
-            ballBody.velocity = new Vector2(Math.Clamp(ballBody.velocity.x*collisionPaleta,-maxVelocity,maxVelocity), Math.Clamp(ballBody.velocity.y * collisionPaleta, -maxVelocity, maxVelocity));
+            ballBody.velocity = new Vector2(Math.Clamp(ballBody.velocity.x*collisionPaleta,-maxVelocity,maxVelocity), 
+                Math.Clamp(ballBody.velocity.y * collisionPaleta, -maxVelocity, maxVelocity));
 
         }
     }
