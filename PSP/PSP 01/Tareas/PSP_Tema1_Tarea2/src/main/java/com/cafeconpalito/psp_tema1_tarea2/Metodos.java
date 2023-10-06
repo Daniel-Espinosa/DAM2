@@ -57,7 +57,6 @@ public class Metodos {
      * Metodo que suma los numeros contenidos en un fichero. recibe por
      * argumento el nombre del fichero el cual se quiere leer y genera un nuevo
      * archivo con el nombre del fichero recibido mas las extencion .res
-     *
      * @param nombreFichero nombre del fichero que se quiere leer
      */
     public static void suma(String nombreFichero) {
@@ -95,8 +94,8 @@ public class Metodos {
     }
 
     /**
-     * Realiza la suma total de manera secuencial de los ficheros que se deceen
-     * sumar pasados como argumento
+     * Realiza la suma total de manera secuencial de los ficheros que se deseen
+     * sumar pasados como argumento utilizando un bucle for
      * @param argumentos recibe en un Array de Strings el nombre de los ficheros
      * que se quieren leer.
      */
@@ -139,7 +138,7 @@ public class Metodos {
     }
 
     /**
-     * Realiza la suma total de manera paralela de los ficheros que se deceen
+     * Realiza la suma total de manera paralela de los ficheros que se deseen
      * sumar pasados como argumento.
      * Se inicializan todos los procesos hijos dentro de un bucle for
      * Se espera a que todos los procesos hijos terminen dentro de otro bucle for
