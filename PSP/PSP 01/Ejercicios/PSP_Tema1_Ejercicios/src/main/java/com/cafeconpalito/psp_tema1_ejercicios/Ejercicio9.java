@@ -151,7 +151,7 @@ public class Ejercicio9 {
                 command2 = "-c";
                 command3 = "ifconfig -a";
             }
-
+            
             
             System.out.println("\nImprimiendo por pantalla la Configuracion IP");
 
