@@ -39,10 +39,36 @@ public class CodigosSueltos {
         public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Images/logo.png"));
         return retValue;
-    }
-        
+        }
         
          */
+        
+        
+        // MENSAJE DE ERROR
+        /*
+        private void errorMensaje(String campo) {
+        JOptionPane jop = new JOptionPane("Error en el campo " + campo, JOptionPane.ERROR_MESSAGE);
+        JDialog jd = jop.createDialog("ERROR");
+        jd.setLocationRelativeTo(null);
+        jd.setVisible(true);
+        }
+        */
+        
+        
+        //COMPROBAR TEXTO SIN NUMEROS Y NO BLANCOS
+        /*
+        private boolean comprobarApellido2() {
+        if (jTextFieldApellido2.getText().isBlank()) {
+            errorMensaje("segundo apellido esta en blanco");
+            return false;
+        }
+        if (jTextFieldApellido2.getText().matches(".*\\d.*")) {
+            errorMensaje("segundo apellido contiene numeros");
+            return false;
+        }
+        return true;
+        */
+                
     }
 
 }
