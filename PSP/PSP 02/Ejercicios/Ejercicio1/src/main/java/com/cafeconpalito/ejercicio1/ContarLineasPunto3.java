@@ -42,7 +42,7 @@ public class ContarLineasPunto3 extends Thread {
                 }
 
                 //Muestra por pantalla la cantidad de lineas.
-                System.out.println("El fichero tiene: " + suma + " lineas");
+                System.out.println("El fichero " + nombreFichero + " tiene: " + suma + " lineas");
 
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(ContarLineasPunto3.class.getName()).log(Level.SEVERE, null, ex);
