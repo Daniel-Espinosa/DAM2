@@ -30,11 +30,12 @@ public class Ejercicio7 {
         String[] comando = {"notepad.exe"};
         try {
             Process p = rt.exec(comando);
-            int valorSalida = p.waitFor();
+            int valorSalida = p.waitFor(); //BIEN ALMACENADO
             for (int i = 0; i < 10; i++) {
                 System.out.println((int) (Math.random() * 9));
             }
             System.out.println("Valor de Salida: "+ valorSalida);
+            System.out.println("Exit Value " + p.exitValue() );
         } catch (IOException ex) {
             Logger.getLogger(Ejercicio7.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {

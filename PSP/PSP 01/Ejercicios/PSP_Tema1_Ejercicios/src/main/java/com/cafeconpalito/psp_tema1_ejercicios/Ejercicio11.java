@@ -39,9 +39,9 @@ public class Ejercicio11 {
             //Este programa espera por consola que se le envie informacion
             //La cual se la suministrara el siguiente programa.
             System.out.println("Introduce la primera cadena");
-            System.out.println(br.readLine());
+            System.out.println(br.readLine()); //Captura y escupe la linea (esta metido en una sola linea)
             System.out.println("Introduce la segunda cadena");
-            System.out.println(br.readLine());
+            System.out.println(br.readLine()); //Captura y escupe la linea
 
         } catch (Exception e) {
         }
@@ -64,14 +64,17 @@ public class Ejercicio11 {
             //Hace que el padre envie al Hijo las dos lineas de texto que espera.
             try (OutputStream os = p.getOutputStream(); BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));){
                 
-                bw.write("Enviando del padre al hijo la 1º Linea");
-                bw.newLine();
-                bw.write("Enviando del padre al hijo la 2º Linea");
+                bw.write("Enviando del padre al hijo la 1º Linea"); //Esta es la 1º linea que le paso al hijo.
+                bw.newLine(); //Fin de la primera linea
+                bw.write("Enviando del padre al hijo la 2º Linea"); //Paso la 2º linea al hijo.
 
             } catch (Exception e) {
             }
             
             String linea = null;
+            
+            
+            //Capturo todo lo que devuelve el hijo. y lo muestro por pantalla
             
             // declaramos los Flujos dentro del Try con "try-with-resources" para que cierre los flujos al finalizar el Try.
             try (InputStream is = p.getInputStream(); BufferedReader br = new BufferedReader(new InputStreamReader(is));) {

@@ -18,8 +18,8 @@ import java.util.logging.Logger;
  * @author damt207
  */
 public class Metodos {
-
-    /**
+    
+        /**
      * Metodo que recibe un entero para saber el numero de ficheros a generar y
      * la cantidad de numeros que este generara en el fichero.
      * @param numFicheros numero de ficheros que se quieren crear

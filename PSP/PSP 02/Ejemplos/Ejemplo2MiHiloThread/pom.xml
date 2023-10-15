@@ -11,4 +11,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.cafeconpalito.ejemplo2mihilothread.Ejemplo2MiHiloThread</exec.mainClass>
     </properties>
+    <name>PSP_Tema2_Ejemplo2MiHiloThread</name>
 </project>

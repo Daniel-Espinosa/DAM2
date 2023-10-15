@@ -11,4 +11,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.cafeconpalito.ejercicio1.Ejercicio1</exec.mainClass>
     </properties>
+    <name>PSP_Tema2_Ejercicio1</name>
 </project>
