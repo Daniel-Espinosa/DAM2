@@ -1,0 +1,5 @@
+HEX: #171a21, RGB: [23, 26, 33];  OSCURO
+HEX: #66c0f4, RGB: [102, 192, 244]; Azul Claro
+HEX: #1b2838, RGB: [27, 40, 56] MEDIO
+HEX: #2a475e, RGB: [42, 71, 94]; Claro
+HEX: #acd550, RGB: [172, 213, 80] VERDE
