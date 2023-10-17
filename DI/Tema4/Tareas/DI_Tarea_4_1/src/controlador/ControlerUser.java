@@ -86,7 +86,9 @@ public class ControlerUser implements Serializable {
     public static boolean conectar(String user, String pass) {
         // si no hay Usuarios en el array devuelve un mensaje de que esta vacio
         if (arrayUser.isEmpty()) {
-            System.out.println("La lista esta vacia, no se puede buscar un Usuario");
+            System.err.println("La lista esta vacia, no se puede buscar un Usuario");
+            return false;
+            
         } else {
             //se recorre el array buscando coincidencia con el nombre Ignorando Case
             for (User i : arrayUser) {
@@ -97,5 +99,30 @@ public class ControlerUser implements Serializable {
         }
         return false;
     }
+    
+    public static boolean usuarioExist (String user){
+        
+        if (arrayUser.isEmpty()) {
+            System.err.println("La lista esta vacia, no se puede buscar un Usuario");
+            return false;
+        } else {
+            //se recorre el array buscando coincidencia con el nombre Ignorando Case
+            for (User i : arrayUser) {
+                if (user.equalsIgnoreCase(i.getUser())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    
+    public static void añadirUsuario(String user, String pass, String nombre){
+        
+        User u = new User(user, pass, nombre);
+        arrayUser.add(u);
+        
+    }
+    
 
 }
