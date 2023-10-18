@@ -4,3 +4,11 @@ HEX: #1b2838, RGB: [27, 40, 56] MEDIO
 HEX: #2a475e, RGB: [42, 71, 94]; Claro
 HEX: #acd550, RGB: [172, 213, 80] VERDE
 HEX: #c5c3c0 RGM: [197,195,192] GRIS
+
+
+Panel Interno
+
+Alto = 654
+Ancho = 573
+
+[573,654]
