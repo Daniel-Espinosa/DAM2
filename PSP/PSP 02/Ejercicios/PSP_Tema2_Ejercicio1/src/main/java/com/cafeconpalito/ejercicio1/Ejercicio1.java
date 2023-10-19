@@ -7,6 +7,8 @@ package com.cafeconpalito.ejercicio1;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +18,9 @@ public class Ejercicio1 {
 
     public static void main(String[] args) {
        
+        
+        
+        
         Thread t = Thread.currentThread();
         
         /*
@@ -37,22 +42,29 @@ public class Ejercicio1 {
         */
         
         /*
+        
         //Punto2
         System.out.println("Inicio (Punto2)");
         ContarLineasPunto2 cont1= new ContarLineasPunto2("texto.txt");
         
         cont1.start();
                
-        while (cont1.isAlive()) {            
-            t.interrupt();
+        try {
+            cont1.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         System.out.println("Adios! (Punto2)");
+        
         */
         
         
         
-        /*
+        
+        
         //Punto3
+        //CARGAR COMO ARGUMENTOS texto1.txt texto2.txt texto3.txt texto4.txt
         System.out.println("Inicio (punto3)");
         
         ArrayList <ContarLineasPunto3> lista = new ArrayList();
@@ -66,13 +78,15 @@ public class Ejercicio1 {
         }
         
         for (ContarLineasPunto3 i : lista) {
-            while (i.isAlive()) {                
-                t.interrupt();
+            try {
+                i.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Ejercicio1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
         System.out.println("Adios! (punto3)");
-        */
+        
         
                 
     }

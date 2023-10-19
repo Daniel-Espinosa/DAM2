@@ -1,8 +1,10 @@
 /*
- 2.- Realiza un programa en java que reciba como argumento el nombre de un
-fichero de texto. El programa debe crear un hilo. El hilo debe contar cuantas
-líneas hay en el fichero de texto. El programa principal espera a que el hilo
-termine de ejecutarse y se despide.
+3.- Modifica el programa anterior para que lea el número de líneas de todos los 
+ficheros pasados como argumentos. El programa creará un array de hilos con 
+tantos elementos como ficheros pasados como argumentos. El programa 
+principal esperará a que termine la ejecución de todos los hilos.
+En este caso se creará un hilo por fichero a leer las líneas. Por cada hilo se 
+guardará una referencia en un array para hacer al final un join de todos los hilos
  */
 package com.cafeconpalito.ejercicio1;
 
