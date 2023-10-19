@@ -4,6 +4,7 @@
  */
 package main;
 
+import entidad.User;
 import view.Login;
 
 /**
@@ -11,6 +12,8 @@ import view.Login;
  * @author damt207
  */
 public class Main {
+    
+    public static User usuarioLogin = new User(null, null, null);
 
     /**
      * @param args the command line arguments
@@ -20,7 +23,7 @@ public class Main {
 
         Login vista = new Login();
         vista.setVisible(true);
-
+        
     }
 
 }

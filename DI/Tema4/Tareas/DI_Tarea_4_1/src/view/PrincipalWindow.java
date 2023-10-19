@@ -18,12 +18,12 @@ import javax.swing.JPanel;
  *
  * @author damt207
  */
-public class PantallaPrincipal extends javax.swing.JFrame {
+public class PrincipalWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    public PantallaPrincipal() {
+    public PrincipalWindow() {
 
         //Lectura de Arrays para arrancar
         ControlerUser.leer_coleccion_del_fichero();
@@ -52,7 +52,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         //Pinto en panel aqui para poder Trabajar en el editor con facilidad.
         jPanelCuerpo.setBackground(new Color(23, 26, 33));
 
-        Bienvenida panel = new Bienvenida();
+        Welcome panel = new Welcome();
         panel.setSize(940, 690);
         panel.setLocation(0, 0);
         getCuerpo().removeAll();
@@ -314,7 +314,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     private void jButtonViewGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewGamesActionPerformed
         // TODO add your handling code here:
-        BuscarJuego panel = new BuscarJuego();
+        FindGame panel = new FindGame();
         panel.setSize(940, 690);
         panel.setLocation(0, 0);
         getCuerpo().removeAll();
@@ -344,21 +344,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaPrincipal().setVisible(true);
+                new PrincipalWindow().setVisible(true);
             }
         });
     }

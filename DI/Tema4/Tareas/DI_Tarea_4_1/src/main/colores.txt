@@ -8,7 +8,16 @@ HEX: #c5c3c0 RGM: [197,195,192] GRIS
 
 Panel Interno
 
-Alto = 654
-Ancho = 573
+[940, 690]
 
-[573,654]
+
+
+
+        this.nombre = nombre;
+        this.genre = genre;
+        this.date = date;
+        this.company = company;
+        this.pegi = pegi;
+        this.descripcion = descripcion;
+        this.image = image;
+        this.precio = precio;

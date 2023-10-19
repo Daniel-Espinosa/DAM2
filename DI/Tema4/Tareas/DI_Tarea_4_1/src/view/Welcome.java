@@ -4,17 +4,22 @@
  */
 package view;
 
+import main.Main;
+
 /**
  *
  * @author damt207
  */
-public class Bienvenida extends javax.swing.JPanel {
+public class Welcome extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public Bienvenida() {
+    public Welcome() {
         initComponents();
+        
+        jLabelWelcome.setText("Hola " + Main.usuarioLogin.getName());
+        
     }
 
     /**
@@ -26,35 +31,37 @@ public class Bienvenida extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelWelcome = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(940, 690));
         setMinimumSize(new java.awt.Dimension(940, 690));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(940, 690));
 
-        jLabel1.setText("Hola");
+        jLabelWelcome.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelWelcome.setForeground(new java.awt.Color(197, 195, 192));
+        jLabelWelcome.setText("Hola");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1)
-                .addContainerGap(761, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(jLabel1)
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(579, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelWelcome;
     // End of variables declaration//GEN-END:variables
 }

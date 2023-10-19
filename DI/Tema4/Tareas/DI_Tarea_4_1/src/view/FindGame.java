@@ -8,12 +8,12 @@ package view;
  *
  * @author damt207
  */
-public class BuscarJuego extends javax.swing.JPanel {
+public class FindGame extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public BuscarJuego() {
+    public FindGame() {
         initComponents();
     }
 
@@ -26,34 +26,36 @@ public class BuscarJuego extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(940, 690));
         setMinimumSize(new java.awt.Dimension(940, 690));
         setPreferredSize(new java.awt.Dimension(940, 690));
 
-        jLabel1.setText("BuscarJuego");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(197, 195, 192));
+        jLabel2.setText("Buscar Juego");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel1)
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addContainerGap(790, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(jLabel1)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jLabel2)
+                .addContainerGap(605, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

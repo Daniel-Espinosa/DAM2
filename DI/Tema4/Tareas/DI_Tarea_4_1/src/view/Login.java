@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import main.Main;
 
 /**
  *
@@ -107,6 +108,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         jTextFielUser.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTextFielUser.setText("Prueba");
         jTextFielUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFielUserActionPerformed(evt);
@@ -114,6 +116,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPasswordField.setText("12345");
         jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPasswordFieldKeyPressed(evt);
@@ -298,11 +301,14 @@ public class Login extends javax.swing.JFrame {
     private void login(){
         if (comprobarCampoUsuario() && comprobarCampoPass()) {
             //Comprobamos que es correcto el Usuario.
-            if (ControlerUser.usuarioExist(jTextFielUser.getText())) {
+            if (ControlerUser.userExist(jTextFielUser.getText())) {
                 if (ControlerUser.conectar(jTextFielUser.getText(), String.valueOf(jPasswordField.getPassword()))) {
                     //vamos a la siguietne ventana.
                     //System.out.println("TODO OK PA LA SIGUIENTE");
-                    PantallaPrincipal vista = new PantallaPrincipal();
+                    
+                    
+                    
+                    PrincipalWindow vista = new PrincipalWindow();
                     vista.setVisible(true);
                     this.dispose();
                 } else {

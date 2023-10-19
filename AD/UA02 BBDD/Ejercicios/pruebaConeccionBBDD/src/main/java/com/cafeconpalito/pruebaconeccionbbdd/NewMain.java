@@ -15,8 +15,17 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        conecctionDB con = new conecctionDB();
-        con.conectar();
+        //Genero un objeto de tipo Coneccion.
+        conecctionDB conexion = new conecctionDB();
+        
+        //Seteo la conexion en los metodos para no tener que volver a llamarla (es una trampilla)
+        metodosBBDD.setCon(conexion.conectar());
+        
+        //Lista los productos.       
+        metodosBBDD.listarProductos();
+        
+        metodosBBDD.listarProductosNombrePrecio();
+        
     }
     
 }
