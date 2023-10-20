@@ -21,7 +21,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -516,10 +515,13 @@ public class AddGame extends javax.swing.JPanel {
                     jComboBoxCompani.getSelectedItem().toString(),
                     jSpinnerPegi.getValue().toString(),
                     jTextAreaDescripcion.getText(),
-                    jTextFielDirImagen.getText(),
+                    ruta,
                     Double.parseDouble(jTextFielPrice.getText())
             );
+            
             ControlerGame.grabar_coleccion_en_fichero();
+            
+            guardarFicheroImagen();
             
             //Mensaje de Juego Guardado correctamente.
             JOptionPane jop = new JOptionPane("Juego guardado correctamente ", JOptionPane.INFORMATION_MESSAGE);
@@ -535,15 +537,35 @@ public class AddGame extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButtonSaveGameActionPerformed
 
+    
+    private void guardarFicheroImagen(){
+              
+        try {
+            destinoPath = FileSystems.getDefault().getPath("repoImagesGames/" + jTextFielName.getText()+ ".png");
+            ruta = ("repoImagesGames/" + jTextFielName.getText()+ ".png");
+            Files.copy(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
+
+    File fichero;
+    String ruta;
+    Path destinoPath;
+    Path origenPath;
+    
     private void jLabelImageAddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImageAddMousePressed
 
+        /*
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        */
+        
+        
         //Creamos el objeto JFileChooser
         JFileChooser fc = new JFileChooser();
 
@@ -562,25 +584,14 @@ public class AddGame extends javax.swing.JPanel {
         //Si el usuario, pincha en aceptar
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
-            //Seleccionamos el fichero
-            File fichero = fc.getSelectedFile();
-            String ruta = fichero.getAbsolutePath();
-
-            Path origenPath = FileSystems.getDefault().getPath(ruta);
-            Path destinoPath = FileSystems.getDefault().getPath("repoImagesGames/" + fichero.getName());
-
-            try {
-                Files.copy(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
-
-                ruta = "repoImagesGames/" + fichero.getName();
-                //Ecribe la ruta del fichero seleccionado en el campo de texto
-                jTextFielDirImagen.setText(fichero.getAbsolutePath());
-
-            } catch (IOException ex) {
-                Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
+            //Seleccionamos el fichero y guardamos su informacion en un tipo File
+            fichero = fc.getSelectedFile();
+            //Guarda en el Path la ruta Original.
+            origenPath = FileSystems.getDefault().getPath(fichero.getAbsolutePath());
+            //Ecribe la ruta del fichero seleccionado en el campo de texto
+            jTextFielDirImagen.setText(fichero.getAbsolutePath());
+    
+        }     
     }//GEN-LAST:event_jLabelImageAddMousePressed
 
     private void jTextFielNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFielNameKeyReleased
@@ -602,10 +613,10 @@ public class AddGame extends javax.swing.JPanel {
         jTextFielName.setText("Nombre");
         jTextFielPrice.setText("Precio");
         jTextAreaDescripcion.setText("Añade una descripcion del juego");
-        jTextFielDirImagen.setText("Dirección");
+        jTextFielDirImagen.setText(ruta);
         jComboBoxCompani.setSelectedIndex(0);
         jComboBoxGenre.setSelectedIndex(0);
-        //jSpinnerPegi.Get
+        jSpinnerPegi.setValue("< Seleccionar >");
         
     }
     

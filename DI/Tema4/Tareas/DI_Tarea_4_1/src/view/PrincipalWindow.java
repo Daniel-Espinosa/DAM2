@@ -26,7 +26,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
     public PrincipalWindow() {
 
         //Lectura de Arrays para arrancar
-        ControlerUser.leer_coleccion_del_fichero();
+        //ControlerUser.leer_coleccion_del_fichero();
         ControlerGame.leer_coleccion_del_fichero();
         
         /*Añado Usuarios

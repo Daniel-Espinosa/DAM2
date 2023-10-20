@@ -11,7 +11,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import main.Main;
 
 /**
  *
@@ -29,7 +28,7 @@ public class Login extends javax.swing.JFrame {
         //Lectura de Arrays para arrancar
         
         ControlerUser.leer_coleccion_del_fichero();
-        ControlerGame.leer_coleccion_del_fichero();
+        //ControlerGame.leer_coleccion_del_fichero();
         
         /*Añado Usuarios
         //ControlerUser.añadirUsuario("Damt207", "1234", "Daniel");

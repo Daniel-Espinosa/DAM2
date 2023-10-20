@@ -20,19 +20,17 @@ public class Game implements Serializable {
     
 
     public Game(String nombre, String genre, String date, String company, String pegi, String descripcion, String image, double precio) {
-        this.nombre = nombre;
-        this.genre = genre;
-        this.date = date;
-        this.company = company;
-        this.pegi = pegi;
-        this.descripcion = descripcion;
-        this.image = image;
-        this.precio = precio;
+        this.nombre = nombre;//
+        this.genre = genre;//
+        this.date = date;//
+        this.company = company;//
+        this.pegi = pegi;//
+        this.descripcion = descripcion;//
+        this.image = image;//
+        this.precio = precio;//
     }
 
-    
-    
-    
+        
     public String getNombre() {
         return nombre;
     }

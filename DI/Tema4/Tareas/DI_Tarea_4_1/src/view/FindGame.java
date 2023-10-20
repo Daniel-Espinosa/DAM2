@@ -4,9 +4,12 @@
  */
 package view;
 
-import java.awt.Image;
-import static java.awt.image.ImageObserver.WIDTH;
-import javax.swing.ImageIcon;
+import controlador.ControlerGame;
+import entidad.Game;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -14,25 +17,32 @@ import javax.swing.ImageIcon;
  */
 public class FindGame extends javax.swing.JPanel {
 
+    private final  DefaultTableModel modelTabla;
+    
     /**
      * Creates new form NewJPanel
      */
     public FindGame() {
-        
+
         initComponents();
         
+        modelTabla = (DefaultTableModel) jTable1.getModel();
+
+        actualizarTabla();
+        
+        /*
         ImageIcon imageBuscar = new ImageIcon("src/images/Buscar.png");
-        Image imgBuscarEscalada = imageBuscar.getImage().getScaledInstance(26,26, WIDTH);
+        Image imgBuscarEscalada = imageBuscar.getImage().getScaledInstance(26, 26, WIDTH);
         ImageIcon imgBuscarFinal = new ImageIcon(imgBuscarEscalada);
         jLabelImageAdd.setIcon(imgBuscarFinal);
+        */
         
         /*
         ImageIcon image = new ImageIcon("src/images/SteamBlueLogo.png");
         Image imgEscalada = image.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), WIDTH);
         ImageIcon imgFinal = new ImageIcon(imgEscalada);
         jLabelLogo.setIcon(imgFinal);
-        */
-        
+         */
     }
 
     /**
@@ -49,23 +59,16 @@ public class FindGame extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jTextFielName = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jComboBoxCompani = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinnerPegi = new javax.swing.JSpinner();
         jComboBoxGenre = new javax.swing.JComboBox<>();
-        jTextFielPrice = new javax.swing.JTextField();
-        jLabelImageAdd = new javax.swing.JLabel();
-        jTextFielPrice1 = new javax.swing.JTextField();
-        jPanelDescripcion = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jButtonFindGame = new javax.swing.JButton();
+        jButtonSaveGame1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(940, 690));
         setMinimumSize(new java.awt.Dimension(940, 690));
@@ -83,7 +86,7 @@ public class FindGame extends javax.swing.JPanel {
             TituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TituloLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TituloLayout.setVerticalGroup(
@@ -104,73 +107,74 @@ public class FindGame extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(197, 195, 192));
         jLabel4.setText("Genero");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(197, 195, 192));
-        jLabel5.setText("Fecha Lanzamiento");
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(197, 195, 192));
         jLabel6.setText("Compañia");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(197, 195, 192));
-        jLabel7.setText("Precio");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(197, 195, 192));
-        jLabel8.setText("Descripcion");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(197, 195, 192));
         jLabel9.setText("Pegi");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(197, 195, 192));
-        jLabel10.setText("Imagen");
-
         jTextFielName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextFielName.setText("Nombre");
-        jTextFielName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFielNameActionPerformed(evt);
+        jTextFielName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFielNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFielNameFocusLost(evt);
             }
         });
-
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jComboBoxCompani.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxCompani.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Seleccionar >", "Bethesda", "CD PROJEKT RED", "Larian Studios", "Nintendo", "SEGA" }));
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerListModel(new String[] {"Pegi +3", "Pegi +4", "Pegi +6", "Pegi +7", "Pegi +12", "Pegi +16", "Pegi +18"}));
+        jSpinnerPegi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jSpinnerPegi.setModel(new javax.swing.SpinnerListModel(new String[] {"< Seleccionar >", "Pegi +3", "Pegi +4", "Pegi +6", "Pegi +7", "Pegi +12", "Pegi +16", "Pegi +18"}));
 
         jComboBoxGenre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Seleccionar >", "Accion", "Aventura", "Carreras", "Puzzle", "Rol", "Shooter", "Terror" }));
 
-        jTextFielPrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextFielPrice.setText("Precio");
+        jButtonFindGame.setBackground(new java.awt.Color(172, 213, 80));
+        jButtonFindGame.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonFindGame.setText("Buscar");
+        jButtonFindGame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButtonFindGame.setFocusPainted(false);
+        jButtonFindGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindGameActionPerformed(evt);
+            }
+        });
 
-        jLabelImageAdd.setMaximumSize(new java.awt.Dimension(26, 26));
-        jLabelImageAdd.setMinimumSize(new java.awt.Dimension(26, 26));
-        jLabelImageAdd.setPreferredSize(new java.awt.Dimension(26, 26));
+        jButtonSaveGame1.setBackground(new java.awt.Color(197, 195, 192));
+        jButtonSaveGame1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonSaveGame1.setText("Limpiar");
+        jButtonSaveGame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButtonSaveGame1.setFocusPainted(false);
+        jButtonSaveGame1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveGame1ActionPerformed(evt);
+            }
+        });
 
-        jTextFielPrice1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextFielPrice1.setText("Direccion");
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+            },
+            new String [] {
+                "Nombre", "Compañia", "Genero", "Pegi", "Fecha Lanzamiento", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        javax.swing.GroupLayout jPanelDescripcionLayout = new javax.swing.GroupLayout(jPanelDescripcion);
-        jPanelDescripcion.setLayout(jPanelDescripcionLayout);
-        jPanelDescripcionLayout.setHorizontalGroup(
-            jPanelDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-        );
-        jPanelDescripcionLayout.setVerticalGroup(
-            jPanelDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,74 +183,55 @@ public class FindGame extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                        .addComponent(jButtonSaveGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonFindGame, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFielName)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxGenre, 0, 188, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFielPrice))
+                            .addComponent(jTextFielName, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelImageAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFielPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxCompani, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxCompani, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSpinnerPegi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFielName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxCompani, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSpinnerPegi, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFielName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxCompani, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFielPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelImageAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFielPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
+                    .addComponent(jButtonFindGame, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSaveGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -265,33 +250,138 @@ public class FindGame extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFielNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielNameActionPerformed
+    
+    
+    private void actualizarTabla(){
+        
+        ArrayList<Game> lista = new ArrayList<>();
+
+        lista.addAll(ControlerGame.getArrayGame());
+        
+        //System.out.println(lista);
+        //System.out.println(ControlerGame.getArrayGame());
+        
+        //Filtra por Nombre
+        Iterator<Game> it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (!(jTextFielName.getText().equalsIgnoreCase("Nombre") || jTextFielName.getText().isBlank())) {
+                if (!(game.getNombre().contains(jTextFielName.getText()))) {
+                    it.remove();
+                }
+            }
+        }    
+        
+        //Filtra por Compañia
+        it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (jComboBoxCompani.getSelectedIndex()!= 0 ) {
+                if (!(jComboBoxCompani.getSelectedItem().toString().equalsIgnoreCase(game.getCompany()))) {
+                    it.remove();
+                }
+            }
+        }        
+        
+        //Filtra por genero
+        it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (jComboBoxGenre.getSelectedIndex()!= 0 ) {
+                if (!(jComboBoxGenre.getSelectedItem().toString().equalsIgnoreCase(game.getCompany()))) {
+                    it.remove();
+                }
+            }
+        }
+        
+        //Filtra por pegi
+        it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (!jSpinnerPegi.getValue().toString().equalsIgnoreCase("< Seleccionar >") ) {
+                if (!(jSpinnerPegi.getValue().toString().equalsIgnoreCase(game.getPegi()))) {
+                    it.remove();
+                }
+            }
+        }
+        
+        //Limpia la tabla    
+        modelTabla.setRowCount(0);
+        
+        //Creamos un array de objetos para añadir las tuplas.
+        Object[] row = new Object[6];
+        //System.out.println("\nLISTA");
+        for (Game i : lista) {
+            //System.out.println(i.getNombre());
+            row[0] = i.getNombre();
+            row[1] = i.getCompany();
+            row[2] = i.getGenre();
+            row[3] = i.getPegi();
+            row[4] = i.getDate();
+            row[5] = i.getPrecio();
+            modelTabla.addRow(row);
+        }
+                    
+        /*
+        System.out.println("\nARRAY GAME");
+        ControlerGame.listarJuegos();
+        */
+    }
+    
+    
+    
+    private void jTextFielNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielNameFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFielNameActionPerformed
+        if (jTextFielName.getText().equalsIgnoreCase("Nombre")) {
+            jTextFielName.setText("");
+        }
+    }//GEN-LAST:event_jTextFielNameFocusGained
+
+    private void jTextFielNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielNameFocusLost
+        // TODO add your handling code here:
+        if (jTextFielName.getText().isBlank()) {
+            jTextFielName.setText("Nombre");
+        }
+    }//GEN-LAST:event_jTextFielNameFocusLost
+
+    private void jButtonFindGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindGameActionPerformed
+        // TODO add your handling code here:
+
+        //PROGRAMAR BOTON BUSCAR.
+        actualizarTabla();
+    }//GEN-LAST:event_jButtonFindGameActionPerformed
+
+    
+    private void jButtonSaveGame1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveGame1ActionPerformed
+        // TODO add your handling code here:
+        limparFormulario();
+    }//GEN-LAST:event_jButtonSaveGame1ActionPerformed
+
+    private void limparFormulario(){
+        jTextFielName.setText("Nombre");
+        jComboBoxCompani.setSelectedIndex(0);
+        jComboBoxGenre.setSelectedIndex(0);
+        jSpinnerPegi.setValue("< Seleccionar >");
+    }
+    
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Titulo;
+    private javax.swing.JButton jButtonFindGame;
+    private javax.swing.JButton jButtonSaveGame1;
     private javax.swing.JComboBox<String> jComboBoxCompani;
     private javax.swing.JComboBox<String> jComboBoxGenre;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelImageAdd;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelDescripcion;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinnerPegi;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFielName;
-    private javax.swing.JTextField jTextFielPrice;
-    private javax.swing.JTextField jTextFielPrice1;
     // End of variables declaration//GEN-END:variables
 }

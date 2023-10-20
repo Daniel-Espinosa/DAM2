@@ -4,9 +4,7 @@
  */
 package controlador;
 
-import static controlador.ControlerUser.arrayUser;
 import entidad.Game;
-import entidad.User;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,9 +20,14 @@ import java.util.ArrayList;
  */
 public class ControlerGame {
 
-    public static ArrayList<Game> arrayGame = new ArrayList<>();
+    private static ArrayList<Game> arrayGame = new ArrayList<>();
     private final static File ARCHIVO = new File("Games.dat");
 
+    public static ArrayList<Game> getArrayGame() {
+        return arrayGame;
+    }
+
+    
     public static void leer_coleccion_del_fichero() {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARCHIVO))) {
@@ -36,11 +39,11 @@ public class ControlerGame {
                 //System.out.println("El archivo " + ARCHIVO.getName() + " no existe, No se carga nada");
             }
         } catch (FileNotFoundException e) {
-            System.err.println("FileNotFoundException");
+            //System.err.println("FileNotFoundException");
         } catch (IOException e) {
-            System.err.println("IOException");
+            //System.err.println("IOException");
         } catch (ClassNotFoundException ex) {
-            System.err.println("ClassNotFoundException");
+            //System.err.println("ClassNotFoundException");
         }
     }
 
@@ -49,9 +52,9 @@ public class ControlerGame {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO))) {
             oos.writeObject(arrayGame);
         } catch (FileNotFoundException e) {
-            System.err.println("FileNotFoundException");
+            //System.err.println("FileNotFoundException");
         } catch (IOException e) {
-            System.err.println("IOException");
+            //System.err.println("IOException");
         }
     }
 
