@@ -18,7 +18,9 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -90,6 +92,7 @@ public class AddGame extends javax.swing.JPanel {
         jLabelErrorDirImagen = new javax.swing.JLabel();
         jLabelErrorDescripcion = new javax.swing.JLabel();
         jButtonSaveGame = new javax.swing.JButton();
+        jButtonSaveGame1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(940, 690));
         setMinimumSize(new java.awt.Dimension(940, 690));
@@ -280,6 +283,17 @@ public class AddGame extends javax.swing.JPanel {
             }
         });
 
+        jButtonSaveGame1.setBackground(new java.awt.Color(197, 195, 192));
+        jButtonSaveGame1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonSaveGame1.setText("Limpiar");
+        jButtonSaveGame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButtonSaveGame1.setFocusPainted(false);
+        jButtonSaveGame1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveGame1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -290,7 +304,10 @@ public class AddGame extends javax.swing.JPanel {
                     .addComponent(jLabelErrorDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelErrorPegi, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButtonSaveGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -382,7 +399,9 @@ public class AddGame extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelErrorDescripcion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(jButtonSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSaveGame1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
 
@@ -501,9 +520,17 @@ public class AddGame extends javax.swing.JPanel {
                     Double.parseDouble(jTextFielPrice.getText())
             );
             ControlerGame.grabar_coleccion_en_fichero();
-
+            
+            //Mensaje de Juego Guardado correctamente.
+            JOptionPane jop = new JOptionPane("Juego guardado correctamente ", JOptionPane.INFORMATION_MESSAGE);
+            JDialog jd = jop.createDialog("Exito");
+            jd.setLocationRelativeTo(null);
+            jd.setVisible(true);
+            
+            
+            
         } else {
-            System.out.println("GUARDAR NO ESTA BIEN");
+            //System.out.println("GUARDAR NO ESTA BIEN");
         }
 
     }//GEN-LAST:event_jButtonSaveGameActionPerformed
@@ -566,6 +593,22 @@ public class AddGame extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextFielNameKeyReleased
 
+    private void jButtonSaveGame1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveGame1ActionPerformed
+        // TODO add your handling code here:
+        limparFormulario();
+    }//GEN-LAST:event_jButtonSaveGame1ActionPerformed
+
+    private void limparFormulario(){
+        jTextFielName.setText("Nombre");
+        jTextFielPrice.setText("Precio");
+        jTextAreaDescripcion.setText("Añade una descripcion del juego");
+        jTextFielDirImagen.setText("Dirección");
+        jComboBoxCompani.setSelectedIndex(0);
+        jComboBoxGenre.setSelectedIndex(0);
+        //jSpinnerPegi.Get
+        
+    }
+    
     private boolean comprobarFormulario() {
 
         boolean comprobar = true;
@@ -725,6 +768,7 @@ public class AddGame extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Titulo;
     private javax.swing.JButton jButtonSaveGame;
+    private javax.swing.JButton jButtonSaveGame1;
     private javax.swing.JComboBox<String> jComboBoxCompani;
     private javax.swing.JComboBox<String> jComboBoxGenre;
     private com.toedter.calendar.JDateChooser jDateChooserDateRelease;
