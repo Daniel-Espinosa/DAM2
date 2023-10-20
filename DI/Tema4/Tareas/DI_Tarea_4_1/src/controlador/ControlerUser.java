@@ -33,9 +33,9 @@ public class ControlerUser implements Serializable {
             if (ARCHIVO.isFile()) {
                 
                 arrayUser = (ArrayList) ois.readObject();
-                System.out.println("archivo " + ARCHIVO.getName() + " Cargado");
+                //System.out.println("archivo " + ARCHIVO.getName() + " Cargado");
             } else {
-                System.out.println("El archivo " + ARCHIVO.getName() + " no existe, No se carga nada");
+                //System.out.println("El archivo " + ARCHIVO.getName() + " no existe, No se carga nada");
             }
 
         } catch (FileNotFoundException e) {

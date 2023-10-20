@@ -27,6 +27,7 @@ public class Login extends javax.swing.JFrame {
     public Login(){
 
         //Lectura de Arrays para arrancar
+        
         ControlerUser.leer_coleccion_del_fichero();
         ControlerGame.leer_coleccion_del_fichero();
         

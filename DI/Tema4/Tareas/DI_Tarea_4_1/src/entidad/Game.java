@@ -16,6 +16,8 @@ public class Game implements Serializable {
     private String descripcion;
     private String image;
     private double precio;
+    
+    
 
     public Game(String nombre, String genre, String date, String company, String pegi, String descripcion, String image, double precio) {
         this.nombre = nombre;

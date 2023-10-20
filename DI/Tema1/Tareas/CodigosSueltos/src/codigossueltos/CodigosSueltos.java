@@ -69,6 +69,25 @@ public class CodigosSueltos {
         return true;
         */
                 
+        
+        //Solo permite numeros y puntos (Cambia la , por un punto)
+        
+        /*
+                String linea = jTextFielPrice.getText();
+        boolean tienePunto = false;
+        if (linea.contains(".")) {
+            tienePunto = true;
+        }       
+        char c = evt.getKeyChar();
+        if ((c == ',' || c == '.') && !tienePunto){
+            evt.setKeyChar('.');
+        } else if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+        */
+        
+        
+        
     }
 
 }
