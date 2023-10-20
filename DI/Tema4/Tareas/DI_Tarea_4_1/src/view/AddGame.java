@@ -508,6 +508,8 @@ public class AddGame extends javax.swing.JPanel {
             // Almaceno en date la fecha con el formato nuevo
             String date = formatter.format(jDateChooserDateRelease.getDate());
 
+            guardarFicheroImagen();
+            
             ControlerGame.addGame(
                     jTextFielName.getText(),
                     jComboBoxGenre.getSelectedItem().toString(),
@@ -518,10 +520,8 @@ public class AddGame extends javax.swing.JPanel {
                     ruta,
                     Double.parseDouble(jTextFielPrice.getText())
             );
-            
+                        
             ControlerGame.grabar_coleccion_en_fichero();
-            
-            guardarFicheroImagen();
             
             //Mensaje de Juego Guardado correctamente.
             JOptionPane jop = new JOptionPane("Juego guardado correctamente ", JOptionPane.INFORMATION_MESSAGE);

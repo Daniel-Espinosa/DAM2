@@ -174,6 +174,11 @@ public class FindGame extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -356,6 +361,37 @@ public class FindGame extends javax.swing.JPanel {
         // TODO add your handling code here:
         limparFormulario();
     }//GEN-LAST:event_jButtonSaveGame1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        if (evt.getClickCount()==2) {
+            //System.out.println("click doble");
+            //System.out.println("linea seleccionada= " + jTable1.getSelectedRow());
+            //System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+            //FichaJuego fj = new FichaJuego(, false);
+            //fj.setLocationRelativeTo(null);
+            //fj.setVisible(true);
+            
+            String[] juego = ControlerGame.buscarDatosJuego(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+            /*
+            for (String i : juego) {
+                System.out.println(i);
+            }
+            */
+            
+            
+            InfoGame ig = new InfoGame(juego[0],juego[1],juego[2],juego[3],juego[4],juego[5],juego[6],juego[7]);
+            ig.setLocationRelativeTo(null);
+            ig.setVisible(true);
+            
+            /*
+            InfoGame ig2 = new InfoGame();
+            ig2.setLocationRelativeTo(null);
+            ig2.setVisible(true);
+            */
+        }
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     private void limparFormulario(){
         jTextFielName.setText("Nombre");

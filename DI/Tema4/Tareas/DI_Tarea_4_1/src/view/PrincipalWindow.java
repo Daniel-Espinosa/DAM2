@@ -5,11 +5,9 @@
 package view;
 
 import controlador.ControlerGame;
-import controlador.ControlerUser;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -43,7 +41,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
         Image imgEscalada = image.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), WIDTH);
         ImageIcon imgFinal = new ImageIcon(imgEscalada);
         jLabelLogo.setIcon(imgFinal);
-
+        
         ImageIcon image2 = new ImageIcon("src/images/ValveLogoRecortado.png");
         Image imgEscalada2 = image2.getImage().getScaledInstance(jLabelLogoValve.getWidth(), jLabelLogoValve.getHeight(), WIDTH);
         ImageIcon imgFinal2 = new ImageIcon(imgEscalada2);

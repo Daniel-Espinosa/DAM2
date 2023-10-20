@@ -88,4 +88,21 @@ public class ControlerGame {
         }
     }
     
+    public static String[] buscarDatosJuego(String nombre){
+        //(String nombre, String compania, String genero, String Pegi, String dateRelease, String precio , String description, String dirImage)
+        String[] datosJuego = new String[8];
+        for (Game i : arrayGame) {
+            if (i.getNombre().equals(nombre)) {
+                datosJuego[0]=i.getNombre();
+                datosJuego[1]=i.getCompany();
+                datosJuego[2]=i.getGenre();
+                datosJuego[3]=i.getPegi();
+                datosJuego[4]=i.getDate();
+                datosJuego[5]=Double.toString(i.getPrecio());
+                datosJuego[6]=i.getDescripcion();
+                datosJuego[7]=i.getImage();               
+            }
+        }
+        return datosJuego;
+    }
 }
