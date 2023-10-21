@@ -6,6 +6,7 @@ package view;
 
 import controlador.ControlerGame;
 import java.awt.Image;
+import java.awt.Toolkit;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
 import java.io.IOException;
@@ -43,12 +44,6 @@ public class AddGame extends javax.swing.JPanel {
         ImageIcon imgBuscarFinal = new ImageIcon(imgBuscarEscalada);
         jLabelImageAdd.setIcon(imgBuscarFinal);
 
-        /*
-        ImageIcon image = new ImageIcon("src/images/SteamBlueLogo.png");
-        Image imgEscalada = image.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), WIDTH);
-        ImageIcon imgFinal = new ImageIcon(imgEscalada);
-        jLabelLogo.setIcon(imgFinal);
-         */
     }
 
     /**
@@ -202,6 +197,7 @@ public class AddGame extends javax.swing.JPanel {
             }
         });
 
+        jTextFielDirImagen.setEditable(false);
         jTextFielDirImagen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextFielDirImagen.setText("Dirección");
         jTextFielDirImagen.setToolTipText("");
@@ -467,16 +463,20 @@ public class AddGame extends javax.swing.JPanel {
 
     private void jTextFielDirImagenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielDirImagenFocusGained
         // TODO add your handling code here:
+        /*
         if (jTextFielDirImagen.getText().equalsIgnoreCase("Dirección")) {
             jTextFielDirImagen.setText("");
         }
+        */
     }//GEN-LAST:event_jTextFielDirImagenFocusGained
 
     private void jTextFielDirImagenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielDirImagenFocusLost
         // TODO add your handling code here:
+        /*
         if (jTextFielDirImagen.getText().isBlank()) {
             jTextFielDirImagen.setText("Dirección");
         }
+        */
     }//GEN-LAST:event_jTextFielDirImagenFocusLost
 
     private void jTextAreaDescripcionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextAreaDescripcionFocusGained
@@ -509,7 +509,7 @@ public class AddGame extends javax.swing.JPanel {
             String date = formatter.format(jDateChooserDateRelease.getDate());
 
             guardarFicheroImagen();
-            
+
             ControlerGame.addGame(
                     jTextFielName.getText(),
                     jComboBoxGenre.getSelectedItem().toString(),
@@ -520,29 +520,26 @@ public class AddGame extends javax.swing.JPanel {
                     ruta,
                     Double.parseDouble(jTextFielPrice.getText())
             );
-                        
+
+            //guarda el fichero
             ControlerGame.grabar_coleccion_en_fichero();
             
             //Mensaje de Juego Guardado correctamente.
-            JOptionPane jop = new JOptionPane("Juego guardado correctamente ", JOptionPane.INFORMATION_MESSAGE);
-            JDialog jd = jop.createDialog("Exito");
-            jd.setLocationRelativeTo(null);
-            jd.setVisible(true);
+            MensajesInformativos.lanzarMensaje("Exito", "Juego guardado correctamente", true);
             
-            
-            
+            limparFormulario();
+
         } else {
             //System.out.println("GUARDAR NO ESTA BIEN");
         }
 
     }//GEN-LAST:event_jButtonSaveGameActionPerformed
 
-    
-    private void guardarFicheroImagen(){
-              
+    private void guardarFicheroImagen() {
+
         try {
-            destinoPath = FileSystems.getDefault().getPath("repoImagesGames/" + jTextFielName.getText()+ ".png");
-            ruta = ("repoImagesGames/" + jTextFielName.getText()+ ".png");
+            destinoPath = FileSystems.getDefault().getPath("repoImagesGames/" + jTextFielName.getText() + extencionImagen);
+            ruta = ("repoImagesGames/" + jTextFielName.getText() + extencionImagen);
             Files.copy(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
@@ -554,7 +551,8 @@ public class AddGame extends javax.swing.JPanel {
     String ruta;
     Path destinoPath;
     Path origenPath;
-    
+    String extencionImagen;
+
     private void jLabelImageAddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelImageAddMousePressed
 
         /*
@@ -563,21 +561,37 @@ public class AddGame extends javax.swing.JPanel {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
-        
-        
+         */
         //Creamos el objeto JFileChooser
         JFileChooser fc = new JFileChooser();
 
         //Indicamos lo que podemos seleccionar
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-        //Creamos el filtro
+        //Creamos el filtro de archivos a recibir puede ser un String simple para 1 o un array de Strings para multiples tipos.    
+        
+        //SOLO UN TIPO
+        /*
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.png", "png");
-
-        //Le indicamos el filtro
         fc.setFileFilter(filtro);
+        */
+        
+        //MULTIPLES TIPOS
+        String[] tiposImagen = {"png","jpg","jpeg"};
+        String[] descripcion = {"*.png","*.jpg","*.jpeg"};
 
+        //setea para todas las extenciones de imagen que tengo
+        fc.setFileFilter(new FileNameExtensionFilter("Imagenes", tiposImagen));
+        
+        //añade uno por cada tipo de imagen
+        for (int i = 0; i < descripcion.length; i++) {
+            
+            fc.addChoosableFileFilter(new FileNameExtensionFilter(descripcion[i], tiposImagen[i]));
+        }
+        
+
+        
+        
         //Abrimos la ventana, guardamos la opcion seleccionada por el usuario
         int seleccion = fc.showOpenDialog(this);
 
@@ -586,12 +600,14 @@ public class AddGame extends javax.swing.JPanel {
 
             //Seleccionamos el fichero y guardamos su informacion en un tipo File
             fichero = fc.getSelectedFile();
+            //SACA LA EXTENCION DE LA IMAGEN
+            extencionImagen = fichero.toString().substring(fichero.toString().lastIndexOf("."));
             //Guarda en el Path la ruta Original.
             origenPath = FileSystems.getDefault().getPath(fichero.getAbsolutePath());
             //Ecribe la ruta del fichero seleccionado en el campo de texto
             jTextFielDirImagen.setText(fichero.getAbsolutePath());
-    
-        }     
+
+        }
     }//GEN-LAST:event_jLabelImageAddMousePressed
 
     private void jTextFielNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFielNameKeyReleased
@@ -609,17 +625,16 @@ public class AddGame extends javax.swing.JPanel {
         limparFormulario();
     }//GEN-LAST:event_jButtonSaveGame1ActionPerformed
 
-    private void limparFormulario(){
+    private void limparFormulario() {
         jTextFielName.setText("Nombre");
         jTextFielPrice.setText("Precio");
         jTextAreaDescripcion.setText("Añade una descripcion del juego");
-        jTextFielDirImagen.setText(ruta);
+        jTextFielDirImagen.setText("Dirección");
         jComboBoxCompani.setSelectedIndex(0);
         jComboBoxGenre.setSelectedIndex(0);
         jSpinnerPegi.setValue("< Seleccionar >");
-        
     }
-    
+
     private boolean comprobarFormulario() {
 
         boolean comprobar = true;
@@ -671,8 +686,6 @@ public class AddGame extends javax.swing.JPanel {
     private boolean comprobarNombre() {
 
         String nombre = jTextFielName.getText();
-
-        ControlerGame.listarJuegos();
 
         if (nombre.equalsIgnoreCase("Nombre") || nombre.isBlank() || nombre == null) {
             jLabelErrorNombre.setText("Introduce el nombre del Juego");

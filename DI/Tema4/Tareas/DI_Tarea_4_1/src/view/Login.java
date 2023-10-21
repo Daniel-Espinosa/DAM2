@@ -4,39 +4,30 @@
  */
 package view;
 
-import controlador.ControlerGame;
 import controlador.ControlerUser;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import main.Main;
 
 /**
  *
  * @author damt207
  */
 public class Login extends javax.swing.JFrame {
-    
-    //final static String LOOKANDFEEL = "Motif";
 
+    //final static String LOOKANDFEEL = "Motif";
     /**
      * Creates new form Main
      */
-    public Login(){
+    public Login() {
 
         //Lectura de Arrays para arrancar
-        
         ControlerUser.leer_coleccion_del_fichero();
         //ControlerGame.leer_coleccion_del_fichero();
-        
-        /*Añado Usuarios
-        //ControlerUser.añadirUsuario("Damt207", "1234", "Daniel");
-        //ControlerUser.añadirUsuario("Prueba", "12345", "Albano");
-        //ControlerUser.grabar_coleccion_en_fichero();
-        */
-        
-        
+
         initComponents();
 
         //Escalado de Imagen
@@ -108,15 +99,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         jTextFielUser.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextFielUser.setText("Prueba");
-        jTextFielUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFielUserActionPerformed(evt);
-            }
-        });
 
         jPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jPasswordField.setText("12345");
         jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPasswordFieldKeyPressed(evt);
@@ -243,6 +227,11 @@ public class Login extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem2.setText("Acerca de");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar2.add(jMenu2);
@@ -271,12 +260,10 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFielUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFielUserActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        MensajesInformativos.lanzarMensaje("Ayuda", """
+                                                    Si necesitas ayuda ponte en contacto con nuestro centro de soporte a trav\u00e9s del correo
+                                                    cafeconpalito-soporte@cafeconpalito.com""", true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
@@ -298,16 +285,22 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordFieldKeyPressed
 
-    private void login(){
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        MensajesInformativos.lanzarMensaje("Acerca de...", """
+                                                           Aplicaci\u00f3n desarrollada por Caf\u00e9 Con Palito S.L.
+                                                           Desarrollador Daniel Espinosa Garc\u00eda.
+                                                           Email: despinosag02@educantabria.es""", true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void login() {
         if (comprobarCampoUsuario() && comprobarCampoPass()) {
             //Comprobamos que es correcto el Usuario.
             if (ControlerUser.userExist(jTextFielUser.getText())) {
                 if (ControlerUser.conectar(jTextFielUser.getText(), String.valueOf(jPasswordField.getPassword()))) {
                     //vamos a la siguietne ventana.
                     //System.out.println("TODO OK PA LA SIGUIENTE");
-                    
-                    
-                    
+
                     PrincipalWindow vista = new PrincipalWindow();
                     vista.setVisible(true);
                     this.dispose();
@@ -319,7 +312,7 @@ public class Login extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private boolean comprobarCampoUsuario() {
         if (jTextFielUser.getText().isBlank()) {
             jLabelErrorUser.setText("El usuario no puede estar vacio");

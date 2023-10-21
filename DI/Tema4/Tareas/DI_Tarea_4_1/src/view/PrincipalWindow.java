@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import main.Main;
 
 /**
  *
@@ -91,7 +92,6 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jLabelLogo = new javax.swing.JLabel();
         jButtonAddGame = new javax.swing.JButton();
         jButtonViewGames = new javax.swing.JButton();
-        jButtonLogout3 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -201,14 +201,6 @@ public class PrincipalWindow extends javax.swing.JFrame {
             }
         });
 
-        jButtonLogout3.setBackground(new java.awt.Color(27, 40, 56));
-        jButtonLogout3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButtonLogout3.setForeground(new java.awt.Color(197, 195, 192));
-        jButtonLogout3.setText("Logout");
-        jButtonLogout3.setBorder(null);
-        jButtonLogout3.setFocusPainted(false);
-        jButtonLogout3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -219,7 +211,6 @@ public class PrincipalWindow extends javax.swing.JFrame {
                     .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonViewGames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonLogout3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
@@ -233,9 +224,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
                 .addComponent(jButtonAddGame, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonViewGames, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonLogout3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
                 .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,6 +247,11 @@ public class PrincipalWindow extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem2.setText("Acerca de");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar2.add(jMenu2);
@@ -269,6 +263,9 @@ public class PrincipalWindow extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+                MensajesInformativos.lanzarMensaje("Ayuda", """
+                                                    Si necesitas ayuda ponte en contacto con nuestro centro de soporte a trav\u00e9s del correo
+                                                    cafeconpalito-soporte@cafeconpalito.com""", true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -277,6 +274,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
      */
     private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
         
+        Main.usuarioLogin.setName(null);
         Login vista = new Login();
         vista.setVisible(true);
         this.dispose();
@@ -320,6 +318,14 @@ public class PrincipalWindow extends javax.swing.JFrame {
         getCuerpo().revalidate();
         getCuerpo().repaint();
     }//GEN-LAST:event_jButtonViewGamesActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+                MensajesInformativos.lanzarMensaje("Acerca de...", """
+                                                                   Aplicaci\u00f3n desarrollada por Caf\u00e9 Con Palito S.L.
+                                                                   Desarrollador Daniel Espinosa Garc\u00eda.
+                                                                   Email: despinosag02@educantabria.es""", true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public JPanel getCuerpo() {
         return jPanelCuerpo;
@@ -367,7 +373,6 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddGame;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLogout;
-    private javax.swing.JButton jButtonLogout3;
     private javax.swing.JButton jButtonViewGames;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelLogo;

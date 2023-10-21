@@ -39,8 +39,8 @@ public class EscaladoImagen extends javax.swing.JFrame {
         //SIN DISTORCIONAR CODIGO REDUCIDO
         //ES NECESARIO LLEVARSE EL ESCALADOR DE IMAGEN y MODIFICAR EL LABEL QUE SE QUIERE AJUSTAR
         ImageIcon image = new ImageIcon("logo-negative.png");
-        Dimension escalaCorrecta = getScaledDimension(new Dimension(image.getIconWidth(), image.getIconHeight()), 
-                                    new Dimension(jLabelSinDeformar.getWidth(), jLabelSinDeformar.getHeight()));
+        Dimension escalaCorrecta = getScaledDimension(  new Dimension(image.getIconWidth(), image.getIconHeight()), 
+                                                        new Dimension(jLabelSinDeformar.getWidth(), jLabelSinDeformar.getHeight()));
         Image imgEscalada = image.getImage().getScaledInstance(escalaCorrecta.width, escalaCorrecta.height, WIDTH);
         ImageIcon imgFinal = new ImageIcon(imgEscalada);
         jLabelSinDeformar.setIcon(imgFinal);

@@ -10,34 +10,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author damt207
  */
 public class FindGame extends javax.swing.JPanel {
 
-    private final  DefaultTableModel modelTabla;
-    
+    private final DefaultTableModel modelTabla;
+
     /**
      * Creates new form NewJPanel
      */
     public FindGame() {
 
         initComponents();
-        
+
         modelTabla = (DefaultTableModel) jTable1.getModel();
 
         actualizarTabla();
-        
+
         /*
         ImageIcon imageBuscar = new ImageIcon("src/images/Buscar.png");
         Image imgBuscarEscalada = imageBuscar.getImage().getScaledInstance(26, 26, WIDTH);
         ImageIcon imgBuscarFinal = new ImageIcon(imgBuscarEscalada);
         jLabelImageAdd.setIcon(imgBuscarFinal);
-        */
-        
-        /*
+         */
+ /*
         ImageIcon image = new ImageIcon("src/images/SteamBlueLogo.png");
         Image imgEscalada = image.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), WIDTH);
         ImageIcon imgFinal = new ImageIcon(imgEscalada);
@@ -125,15 +123,35 @@ public class FindGame extends javax.swing.JPanel {
                 jTextFielNameFocusLost(evt);
             }
         });
+        jTextFielName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFielNameKeyReleased(evt);
+            }
+        });
 
         jComboBoxCompani.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxCompani.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Seleccionar >", "Bethesda", "CD PROJEKT RED", "Larian Studios", "Nintendo", "SEGA" }));
+        jComboBoxCompani.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCompaniActionPerformed(evt);
+            }
+        });
 
         jSpinnerPegi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jSpinnerPegi.setModel(new javax.swing.SpinnerListModel(new String[] {"< Seleccionar >", "Pegi +3", "Pegi +4", "Pegi +6", "Pegi +7", "Pegi +12", "Pegi +16", "Pegi +18"}));
+        jSpinnerPegi.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPegiStateChanged(evt);
+            }
+        });
 
         jComboBoxGenre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Seleccionar >", "Accion", "Aventura", "Carreras", "Puzzle", "Rol", "Shooter", "Terror" }));
+        jComboBoxGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxGenreActionPerformed(evt);
+            }
+        });
 
         jButtonFindGame.setBackground(new java.awt.Color(172, 213, 80));
         jButtonFindGame.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -157,6 +175,7 @@ public class FindGame extends javax.swing.JPanel {
             }
         });
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,6 +193,8 @@ public class FindGame extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setCellSelectionEnabled(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -255,64 +276,61 @@ public class FindGame extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    private void actualizarTabla(){
-        
+    private void actualizarTabla() {
+
         ArrayList<Game> lista = new ArrayList<>();
 
         lista.addAll(ControlerGame.getArrayGame());
-        
+
         //System.out.println(lista);
         //System.out.println(ControlerGame.getArrayGame());
-        
         //Filtra por Nombre
         Iterator<Game> it = lista.iterator();
         while (it.hasNext()) {
             Game game = it.next();
             if (!(jTextFielName.getText().equalsIgnoreCase("Nombre") || jTextFielName.getText().isBlank())) {
-                if (!(game.getNombre().contains(jTextFielName.getText()))) {
-                    it.remove();
-                }
-            }
-        }    
-        
-        //Filtra por Compañia
-        it = lista.iterator();
-        while (it.hasNext()) {
-            Game game = it.next();
-            if (jComboBoxCompani.getSelectedIndex()!= 0 ) {
-                if (!(jComboBoxCompani.getSelectedItem().toString().equalsIgnoreCase(game.getCompany()))) {
-                    it.remove();
-                }
-            }
-        }        
-        
-        //Filtra por genero
-        it = lista.iterator();
-        while (it.hasNext()) {
-            Game game = it.next();
-            if (jComboBoxGenre.getSelectedIndex()!= 0 ) {
-                if (!(jComboBoxGenre.getSelectedItem().toString().equalsIgnoreCase(game.getCompany()))) {
+                if (!(game.getNombre().toLowerCase().contains(jTextFielName.getText().toLowerCase()))) {
                     it.remove();
                 }
             }
         }
-        
+
+        //Filtra por Compañia
+        it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (jComboBoxCompani.getSelectedIndex() != 0) {
+                if (!(jComboBoxCompani.getSelectedItem().toString().equalsIgnoreCase(game.getCompany()))) {
+                    it.remove();
+                }
+            }
+        }
+
+        //Filtra por genero
+        it = lista.iterator();
+        while (it.hasNext()) {
+            Game game = it.next();
+            if (jComboBoxGenre.getSelectedIndex() != 0) {
+                if (!(jComboBoxGenre.getSelectedItem().toString().equalsIgnoreCase(game.getGenre()))) {
+                    it.remove();
+                }
+            }
+        }
+
         //Filtra por pegi
         it = lista.iterator();
         while (it.hasNext()) {
             Game game = it.next();
-            if (!jSpinnerPegi.getValue().toString().equalsIgnoreCase("< Seleccionar >") ) {
+            if (!jSpinnerPegi.getValue().toString().equalsIgnoreCase("< Seleccionar >")) {
                 if (!(jSpinnerPegi.getValue().toString().equalsIgnoreCase(game.getPegi()))) {
                     it.remove();
                 }
             }
         }
-        
+
         //Limpia la tabla    
         modelTabla.setRowCount(0);
-        
+
         //Creamos un array de objetos para añadir las tuplas.
         Object[] row = new Object[6];
         //System.out.println("\nLISTA");
@@ -326,81 +344,76 @@ public class FindGame extends javax.swing.JPanel {
             row[5] = i.getPrecio();
             modelTabla.addRow(row);
         }
-                    
-        /*
-        System.out.println("\nARRAY GAME");
-        ControlerGame.listarJuegos();
-        */
+
     }
-    
-    
-    
+
+
     private void jTextFielNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielNameFocusGained
-        // TODO add your handling code here:
+    
         if (jTextFielName.getText().equalsIgnoreCase("Nombre")) {
             jTextFielName.setText("");
         }
     }//GEN-LAST:event_jTextFielNameFocusGained
 
     private void jTextFielNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFielNameFocusLost
-        // TODO add your handling code here:
+
         if (jTextFielName.getText().isBlank()) {
             jTextFielName.setText("Nombre");
         }
     }//GEN-LAST:event_jTextFielNameFocusLost
 
     private void jButtonFindGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindGameActionPerformed
-        // TODO add your handling code here:
 
-        //PROGRAMAR BOTON BUSCAR.
         actualizarTabla();
     }//GEN-LAST:event_jButtonFindGameActionPerformed
 
-    
+
     private void jButtonSaveGame1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveGame1ActionPerformed
-        // TODO add your handling code here:
+
         limparFormulario();
     }//GEN-LAST:event_jButtonSaveGame1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
-        if (evt.getClickCount()==2) {
-            //System.out.println("click doble");
-            //System.out.println("linea seleccionada= " + jTable1.getSelectedRow());
-            //System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(), 0));
-            //FichaJuego fj = new FichaJuego(, false);
-            //fj.setLocationRelativeTo(null);
-            //fj.setVisible(true);
-            
+
+        if (evt.getClickCount() == 2) {
+
             String[] juego = ControlerGame.buscarDatosJuego(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-            /*
-            for (String i : juego) {
-                System.out.println(i);
-            }
-            */
-            
-            
-            InfoGame ig = new InfoGame(juego[0],juego[1],juego[2],juego[3],juego[4],juego[5],juego[6],juego[7]);
+
+            InfoGame ig = new InfoGame(juego[0], juego[1], juego[2], juego[3], juego[4], juego[5], juego[6], juego[7]);
             ig.setLocationRelativeTo(null);
             ig.setVisible(true);
-            
-            /*
-            InfoGame ig2 = new InfoGame();
-            ig2.setLocationRelativeTo(null);
-            ig2.setVisible(true);
-            */
+
         }
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void limparFormulario(){
+    private void jTextFielNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFielNameKeyReleased
+        
+        actualizarTabla();
+    }//GEN-LAST:event_jTextFielNameKeyReleased
+
+    private void jComboBoxGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGenreActionPerformed
+        
+        actualizarTabla();
+    }//GEN-LAST:event_jComboBoxGenreActionPerformed
+
+    private void jComboBoxCompaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCompaniActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_jComboBoxCompaniActionPerformed
+
+    private void jSpinnerPegiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPegiStateChanged
+
+        actualizarTabla();
+    }//GEN-LAST:event_jSpinnerPegiStateChanged
+
+    private void limparFormulario() {
         jTextFielName.setText("Nombre");
         jComboBoxCompani.setSelectedIndex(0);
         jComboBoxGenre.setSelectedIndex(0);
         jSpinnerPegi.setValue("< Seleccionar >");
+
+        actualizarTabla();
     }
-    
-   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
