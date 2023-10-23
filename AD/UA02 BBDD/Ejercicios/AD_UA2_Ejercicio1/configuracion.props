@@ -1,0 +1,5 @@
+DB=bugisoft
+SERVER=localhost
+PORT=3306
+USER = admin
+PASSWORD=Admin-123
