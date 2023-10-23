@@ -561,7 +561,8 @@ public class AddGame extends javax.swing.JPanel {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AddGame.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+        */
+        
         //Creamos el objeto JFileChooser
         JFileChooser fc = new JFileChooser();
 

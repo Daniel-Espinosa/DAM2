@@ -27,20 +27,20 @@ public class HiloControlJuegoTiempo extends Thread {
 
                 //Hilo duerme 1 segundo;
                 Thread.sleep(1000);
-                //System.out.println("tiempo trasncurrido: " + i + " segundos");
+                System.out.println("tiempo trasncurrido: " + i + " segundos");
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloControlJuegoTiempo.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             if (hna.isAcertar()) {
-                hna.stop();
+                //hna.stop(); //SOBRA!
                 break;
             }
         }
-
+        
         System.out.println("Fin del tiempo de juego. Perdiste");
-        hna.stop();
+        System.exit(0);
 
     }
 

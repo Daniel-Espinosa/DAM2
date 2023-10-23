@@ -19,11 +19,10 @@ public class HiloNumeroAleatorio extends Thread {
         return acertar;
     }
 
-
     @Override
     public void run() {
 
-        String numAleat = "" + ((int)(Math.random() * 10) + 1);
+        String numAleat = "" + ((int) (Math.random() * 10) + 1);
         System.out.println("El numero aleatorio es: " + numAleat);
 
         Scanner sc = new Scanner(System.in);
@@ -38,8 +37,8 @@ public class HiloNumeroAleatorio extends Thread {
             }
 
         }
-        
+
         System.out.println("Ganaste!");
     }
-
+    
 }

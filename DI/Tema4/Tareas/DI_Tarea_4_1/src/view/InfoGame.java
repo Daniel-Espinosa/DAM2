@@ -51,6 +51,7 @@ public class InfoGame extends javax.swing.JFrame {
         ImageIcon imgFinal = new ImageIcon(imgEscalada);
         jLabelImagen.setIcon(imgFinal);
         
+        this.setTitle(nombre);
     }
 
     public InfoGame() {
@@ -119,6 +120,7 @@ public class InfoGame extends javax.swing.JFrame {
         jLabelImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(27, 40, 56));
