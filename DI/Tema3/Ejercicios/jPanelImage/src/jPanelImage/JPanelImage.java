@@ -57,14 +57,19 @@ public class JPanelImage extends JPanel implements Serializable {
 
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
 
+        
         if (rutaImagen != null && rutaImagen.exists()) {
             ImageIcon image = new ImageIcon(rutaImagen.getAbsolutePath());
-            Dimension escalaCorrecta = getScaledDimension(new Dimension(image.getIconWidth(), image.getIconHeight()),
-                    new Dimension(this.getWidth(), this.getHeight()));
-            Image imgEscalada = image.getImage().getScaledInstance(escalaCorrecta.width, escalaCorrecta.height, WIDTH);
-            g.drawImage(imgEscalada, 0, 0, escalaCorrecta.width, escalaCorrecta.height, null);
+            Dimension escalaCorrecta = getScaledDimension(new Dimension(image.getIconWidth(), image.getIconHeight()), //Dimension Imagen
+                                                            new Dimension(this.getWidth(), this.getHeight())); // Dimension del Panel
+            
+            //Distorciona Imagen
+            //g.drawImage(image.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+            
+            //Sin distorcion
+            g.drawImage(image.getImage(), 0, 0, escalaCorrecta.width, escalaCorrecta.height, null);
         }
-
+        
     }
 
     public static Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {
