@@ -4,6 +4,7 @@
  */
 package entidad;
 
+import java.io.File;
 import java.io.Serializable;
 
 /**
@@ -21,6 +22,7 @@ public class User implements Serializable{
         this.pass = pass;
         this.name = name;
     }
+    
     
 
     public String getUser() {

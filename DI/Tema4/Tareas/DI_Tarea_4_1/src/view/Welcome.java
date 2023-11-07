@@ -36,6 +36,8 @@ public class Welcome extends javax.swing.JPanel {
         jLabelLogo.setIcon(imgFinal);
         */
         
+        
+        
     }
 
     /**
@@ -51,6 +53,7 @@ public class Welcome extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelSaludo = new javax.swing.JLabel();
+        jPanelUsuario1 = new di_tarea_3_1_jpanelusuario.JPanelUsuario();
 
         setMaximumSize(new java.awt.Dimension(940, 690));
         setMinimumSize(new java.awt.Dimension(940, 690));
@@ -91,7 +94,9 @@ public class Welcome extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabelSaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,7 +104,9 @@ public class Welcome extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jLabelSaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -124,5 +131,6 @@ public class Welcome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelSaludo;
     private javax.swing.JPanel jPanel1;
+    private di_tarea_3_1_jpanelusuario.JPanelUsuario jPanelUsuario1;
     // End of variables declaration//GEN-END:variables
 }
