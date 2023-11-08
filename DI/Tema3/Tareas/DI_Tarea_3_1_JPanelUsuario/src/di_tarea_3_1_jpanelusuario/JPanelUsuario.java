@@ -60,6 +60,8 @@ public class JPanelUsuario extends javax.swing.JPanel {
         jLabelDateLogin.setForeground(new java.awt.Color(197, 195, 192));
         jLabelDateLogin.setText("DateLogin");
 
+        jPanelUsuarioImagen1.setOpaque(false);
+
         javax.swing.GroupLayout jPanelUsuarioImagen1Layout = new javax.swing.GroupLayout(jPanelUsuarioImagen1);
         jPanelUsuarioImagen1.setLayout(jPanelUsuarioImagen1Layout);
         jPanelUsuarioImagen1Layout.setHorizontalGroup(

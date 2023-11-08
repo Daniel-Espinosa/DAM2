@@ -74,6 +74,7 @@ public class ControlerUser implements Serializable {
             for (User i : arrayUser) {
                 if (user.equalsIgnoreCase(i.getUser()) && pass.equals(i.getPass())) {
                     Main.usuarioLogin.setName(i.getName());
+                    Main.usuarioLogin.setRutaImagen(i.getRutaImagen());
                     return true;
                 }
             }

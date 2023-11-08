@@ -4,6 +4,13 @@
  */
 package di_tarea_3_1_jpanelusuario.Main;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 /**
  *
  * @author damt207
@@ -15,6 +22,11 @@ public class PrincipalWindow extends javax.swing.JFrame {
      */
     public PrincipalWindow() {
         initComponents();
+        
+        jPanelUsuario.getjLabelUserName().setText("Usuario: " + Main.usuarioLogin.getName());
+        jPanelUsuario.getjLabelDateLogin().setText("Ultima Conexion: " + LocalDate.now() + " " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond());
+        jPanelUsuario.setRutaImagen(new File(Main.usuarioLogin.getRutaImagen()));
+        
     }
 
     /**
@@ -27,42 +39,69 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanelUsuario1 = new di_tarea_3_1_jpanelusuario.JPanelUsuario();
+        jPanelUsuario = new di_tarea_3_1_jpanelusuario.JPanelUsuario();
+        jButtonLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(23, 26, 33));
+
+        jButtonLogout.setBackground(new java.awt.Color(27, 40, 56));
+        jButtonLogout.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButtonLogout.setForeground(new java.awt.Color(197, 195, 192));
+        jButtonLogout.setText("Logout");
+        jButtonLogout.setBorder(null);
+        jButtonLogout.setFocusPainted(false);
+        jButtonLogout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jPanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
+
+        Main.usuarioLogin.setName(null);
+        Login vista = new Login();
+        vista.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,7 +139,8 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonLogout;
     private javax.swing.JPanel jPanel1;
-    private di_tarea_3_1_jpanelusuario.JPanelUsuario jPanelUsuario1;
+    private di_tarea_3_1_jpanelusuario.JPanelUsuario jPanelUsuario;
     // End of variables declaration//GEN-END:variables
 }

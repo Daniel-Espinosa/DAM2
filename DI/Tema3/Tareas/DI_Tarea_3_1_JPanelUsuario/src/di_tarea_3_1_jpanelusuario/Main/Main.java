@@ -4,7 +4,13 @@
  */
 package di_tarea_3_1_jpanelusuario.Main;
 
+import controlador.ControlerUser;
 import entidad.User;
+import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -20,12 +26,16 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        /*
+
         //Añado Usuarios
-        ControlerUser.addUsuario("Damt207", "12345", "Daniel Espinosa Garcia");
-        ControlerUser.addUsuario("Prueba", "1234", "Usuario Prueba");
+        /*
+        ControlerUser.addUsuario("Damt207", "12345", "Daniel Espinosa Garcia","daniel.png");
+        ControlerUser.addUsuario("CafeOld", "1234", "CafeConPalito 1º","logo-old.png");
+        ControlerUser.addUsuario("CafeNew", "1234", "CafeConPalito 2º","logo-simple.png");
         ControlerUser.grabar_coleccion_en_fichero();
         */
+        
+        
         
         Login vista = new Login();
         vista.setVisible(true);
