@@ -96,9 +96,7 @@ public class ConsultasDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        
-        //ARREGLAR
-        String select = "select alias,juego.nombre,fecha from jugador inner join sesion using id_jugador inner join juego using id_juego ";
+        String select = "select alias,juego.nombre,fecha from jugador inner join sesion using (id_jugador) inner join juego using (id_juego)";
 
         try {
             

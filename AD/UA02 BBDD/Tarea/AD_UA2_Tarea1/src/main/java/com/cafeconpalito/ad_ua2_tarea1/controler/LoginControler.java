@@ -54,9 +54,10 @@ public class LoginControler implements MouseListener {
                     Connection con = ConnectionDB.getInstance().getConnection();
                     //System.out.println("log ok");
                     
-                    ConsultasDB.juego();
-                    ConsultasDB.jugador();
-                    ConsultasDB.jugadorSesionJuego();
+                    ConsultasControler cc = new ConsultasControler();
+                    cc.launchConsultas();
+                    
+                    login.dispose();
                     
                 } catch (SQLException ex) {
                    System.out.println("ERROR Conection");
