@@ -42,7 +42,7 @@ public class ConsultasDB {
             while (rs.next()) {
                 String[] e = {rs.getString(1),rs.getString(2),rs.getString(3)};
                 lista.add(e);
-                System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
+                //System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
             }
 
         } catch (NumberFormatException e) {
@@ -76,7 +76,7 @@ public class ConsultasDB {
             while (rs.next()) {
                 String[] e = {rs.getString(1),rs.getString(2),rs.getString(3)};
                 lista.add(e);
-                System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
+                //System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
             }
 
         } catch (NumberFormatException e) {
@@ -110,7 +110,7 @@ public class ConsultasDB {
             while (rs.next()) {
                 String[] e = {rs.getString(1),rs.getString(2),rs.getString(3)};
                 lista.add(e);
-                System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
+                //System.out.println(rs.getString(1) + " " +rs.getString(2) + " " + rs.getString(3));
             }
 
         } catch (NumberFormatException e) {

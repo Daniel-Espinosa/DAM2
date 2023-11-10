@@ -4,10 +4,15 @@
  */
 package com.cafeconpalito.ad_ua2_tarea1.controler;
 
+import com.cafeconpalito.ad_ua2_tarea1.model.ConsultasDB;
 import com.cafeconpalito.ad_ua2_tarea1.view.Consultas;
 import com.cafeconpalito.ad_ua2_tarea1.view.Login;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -46,17 +51,77 @@ public class ConsultasControler implements MouseListener {
 
         //Boton Jugadores
         if (e.getComponent().getName().equals("Jugadores")) {
+            DefaultTableModel model = new DefaultTableModel();
+            model.setColumnCount(3);
+            model.setRowCount(0);
+            
+            consulta.getjTable1().setModel(model);
+                 
+            JTableHeader tableHeader = consulta.getjTable1().getTableHeader();
+            TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+            tableColumnModel.getColumn(0).setHeaderValue("id_jugador");
+            tableColumnModel.getColumn(1).setHeaderValue("Alias");
+            tableColumnModel.getColumn(2).setHeaderValue("Nombre");
+            
+            ArrayList<String[]> lista = ConsultasDB.jugador();
+            
+            for (String[] i : lista) {
+                model.addRow(i);
+            }
+            
+            consulta.getjTable1().repaint();
             
         }
 
         //Boton Juegos
         if (e.getComponent().getName().equals("Juegos")) {
+            
+            DefaultTableModel model = new DefaultTableModel();
+            model.setColumnCount(3);
+            model.setRowCount(0);
+            
+            consulta.getjTable1().setModel(model);
+                 
+            JTableHeader tableHeader = consulta.getjTable1().getTableHeader();
+            TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+            tableColumnModel.getColumn(0).setHeaderValue("id_juego");
+            tableColumnModel.getColumn(1).setHeaderValue("Nombre Juego");
+            tableColumnModel.getColumn(2).setHeaderValue("Tipo");
+            
+            ArrayList<String[]> lista = ConsultasDB.juego();
+            
+            for (String[] i : lista) {
+                model.addRow(i);
+            }
+            
+            consulta.getjTable1().repaint();
            
         }
         
         
         //Boton Jugadores / Juego
         if (e.getComponent().getName().equals("JugJuego")) {
+            
+            DefaultTableModel model = new DefaultTableModel();
+            model.setColumnCount(3);
+            model.setRowCount(0);
+            
+            consulta.getjTable1().setModel(model);
+                 
+            JTableHeader tableHeader = consulta.getjTable1().getTableHeader();
+            TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+            tableColumnModel.getColumn(0).setHeaderValue("Alias Jugador");
+            tableColumnModel.getColumn(1).setHeaderValue("Juego Nombre");
+            tableColumnModel.getColumn(2).setHeaderValue("Fecha Partida");
+            
+            
+            ArrayList<String[]> lista = ConsultasDB.jugadorSesionJuego();
+            
+            for (String[] i : lista) {
+                model.addRow(i);
+            }
+            
+            consulta.getjTable1().repaint();
 
         }
 

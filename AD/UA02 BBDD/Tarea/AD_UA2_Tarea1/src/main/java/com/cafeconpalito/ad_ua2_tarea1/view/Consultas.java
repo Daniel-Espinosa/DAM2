@@ -6,6 +6,7 @@ package com.cafeconpalito.ad_ua2_tarea1.view;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -18,6 +19,14 @@ public class Consultas extends javax.swing.JFrame {
      */
     public Consultas() {
         initComponents();
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
     }
 
     public JButton getjButtonExit() {
@@ -84,19 +93,16 @@ public class Consultas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jButtonJugadores.setText("Jugadores");
-        jButtonJugadores.setName("Juegadores"); // NOI18N
+        jButtonJugadores.setName("Jugadores"); // NOI18N
 
         jButtonJugJuego.setText("Jugadores / Juegos");
         jButtonJugJuego.setName("JugJuego"); // NOI18N

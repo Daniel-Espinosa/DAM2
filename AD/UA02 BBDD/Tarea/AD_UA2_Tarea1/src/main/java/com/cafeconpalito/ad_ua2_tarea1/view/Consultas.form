@@ -71,11 +71,7 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                  </Table>
+                  <Table columnCount="0" rowCount="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -117,7 +113,7 @@
             <Component class="javax.swing.JButton" name="jButtonJugadores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Jugadores"/>
-                <Property name="name" type="java.lang.String" value="Juegadores" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Jugadores" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonJugJuego">
