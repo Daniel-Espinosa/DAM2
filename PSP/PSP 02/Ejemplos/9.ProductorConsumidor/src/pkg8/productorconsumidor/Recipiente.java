@@ -18,7 +18,7 @@ public class Recipiente {
     /*Método get, lo usan los consumidores. Si no está lleno, se bloquea hasta que se llene.
      Cuando está lleno, sale del bloqueo, indica que coge el contenido del recipiente, lo deja
      vacio y notifica a los procesos que puedan estar bloqueados esperando para llenarlo.*/
-    public synchronized int get(){
+    public synchronized int get(){ // SACAR, QUITAR, 
         while(lleno==false){
             try{
                 wait();
@@ -34,7 +34,7 @@ public class Recipiente {
      esperando la notificación de que está vacio. Cuando se le comunica, llena el recipiente
      y notifica que está lleno a los hilos que puedan estar bloqueados a la espera de que
      se llenara.*/
-    public synchronized void put(int valor){
+    public synchronized void put(int valor){ // METER, ENTRAR, COLOCAR
         while(lleno==true){
             try{
                 wait();
