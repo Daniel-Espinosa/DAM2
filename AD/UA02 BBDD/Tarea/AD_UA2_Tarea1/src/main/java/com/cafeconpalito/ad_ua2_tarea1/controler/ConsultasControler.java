@@ -51,6 +51,7 @@ public class ConsultasControler implements MouseListener {
 
         //Boton Jugadores
         if (e.getComponent().getName().equals("Jugadores")) {
+            
             DefaultTableModel model = new DefaultTableModel();
             model.setColumnCount(3);
             model.setRowCount(0);
