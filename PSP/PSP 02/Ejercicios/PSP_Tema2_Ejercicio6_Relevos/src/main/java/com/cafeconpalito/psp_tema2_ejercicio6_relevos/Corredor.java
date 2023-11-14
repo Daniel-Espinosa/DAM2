@@ -24,9 +24,8 @@ public class Corredor implements Runnable{
     public void run() {
         System.out.println("Corredor " + id + " Preparado");
         r.espera();
-        System.out.println("Corredor " + id + " Inicia la carrera");
-        r.correr();
-        System.out.println("Corredor " + id + " Pasa el testigo");
+        r.correr(id);
+        
     }
     
     

@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 public class Relevos {
 
     private int corredores = 0;
-    private boolean testigo = false;
 
     public Relevos() {
 
@@ -34,8 +33,9 @@ public class Relevos {
     }
     
     
-    public synchronized void correr(){
+    public synchronized void correr(int id){
         
+        System.out.println("Corredor " + id + " Inicia la carrera");
         try {
             int tiempo = (int) (Math.random()*(2000-1000+1)+1000 );
             Thread.sleep(tiempo);
@@ -43,6 +43,7 @@ public class Relevos {
         } catch (InterruptedException ex) {
             Logger.getLogger(Relevos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("Corredor " + id + " Pasa el testigo");
         notify();
         
     }
