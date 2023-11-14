@@ -49,12 +49,12 @@
     <Component class="di_tema3_3_compcolortextofondo.JTextFieldPersonalizado" name="jTextFieldPersonalizado1">
       <Properties>
         <Property name="a_change_Backgroun_Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="0" green="0" red="66" type="rgb"/>
         </Property>
         <Property name="a_change_Text_Color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
+          <Color blue="ff" green="ff" red="66" type="rgb"/>
         </Property>
-        <Property name="a_numCharacters" type="int" value="8"/>
+        <Property name="a_numCharacters" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="di_tema3_3_compcolortextofondo.JTextFieldPersonalizado" name="jTextFieldPersonalizado2">

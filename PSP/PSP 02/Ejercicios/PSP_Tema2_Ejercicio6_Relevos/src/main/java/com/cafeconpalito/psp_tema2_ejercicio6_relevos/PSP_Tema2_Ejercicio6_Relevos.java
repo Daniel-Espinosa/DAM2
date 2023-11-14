@@ -15,6 +15,10 @@ propia.
 
 package com.cafeconpalito.psp_tema2_ejercicio6_relevos;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author damt207
@@ -22,11 +26,32 @@ package com.cafeconpalito.psp_tema2_ejercicio6_relevos;
 public class PSP_Tema2_Ejercicio6_Relevos {
 
     public static void main(String[] args) {
-
         
+        System.out.println("Inicia la Carrera");
         
+        Relevos r = new Relevos();
         
+        ArrayList<Thread> lista = new ArrayList<>();
         
+        for (int i = 0; i < 4; i++) {
+            Corredor c = new Corredor(r, i+1);
+            Thread t = new Thread(c);
+            lista.add(t);
+        }
+        
+        for (Thread thread : lista) {
+            thread.start();
+        }
+        
+        for (Thread thread : lista) {
+            try {
+                thread.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PSP_Tema2_Ejercicio6_Relevos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        System.out.println("Termino la Carrera");
         
     }
 }

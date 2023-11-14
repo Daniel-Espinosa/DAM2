@@ -31,9 +31,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextFieldPersonalizado1.setA_change_Backgroun_Color(new java.awt.Color(255, 255, 255));
-        jTextFieldPersonalizado1.setA_change_Text_Color(java.awt.Color.blue);
-        jTextFieldPersonalizado1.setA_numCharacters(8);
+        jTextFieldPersonalizado1.setA_change_Backgroun_Color(new java.awt.Color(102, 0, 0));
+        jTextFieldPersonalizado1.setA_change_Text_Color(new java.awt.Color(102, 255, 255));
+        jTextFieldPersonalizado1.setA_numCharacters(4);
 
         jTextFieldPersonalizado2.setA_change_Backgroun_Color(new java.awt.Color(204, 0, 0));
         jTextFieldPersonalizado2.setA_change_Text_Color(new java.awt.Color(204, 204, 204));
