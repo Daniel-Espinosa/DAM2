@@ -34,6 +34,8 @@ public class LoginController implements Initializable {
     private PasswordField passTextField;
     @FXML
     private TextField userTextField;
+    @FXML
+    private Button helloWorldButton;
 
     /**
      * Initializes the controller class.
@@ -68,6 +70,11 @@ public class LoginController implements Initializable {
     @FXML
     private void entroElRaton(MouseEvent event) {
         System.out.println("entro el raton");
+    }
+
+    @FXML
+    private void clickHelloWorldButton(ActionEvent event) {
+        userTextField.setText("Hello World");
     }
     
 }
