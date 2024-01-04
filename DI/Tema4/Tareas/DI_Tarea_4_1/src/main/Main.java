@@ -22,12 +22,12 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        /*
+        
         //Añado Usuarios
         ControlerUser.addUsuario("Damt207", "12345", "Daniel Espinosa Garcia");
         ControlerUser.addUsuario("Prueba", "1234", "Usuario Prueba");
         ControlerUser.grabar_coleccion_en_fichero();
-        */
+        
         
         Login vista = new Login();
         vista.setVisible(true);
