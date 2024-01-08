@@ -24,18 +24,32 @@ public class AD_UA3_Ejercicio2 {
         System.out.println("");
         productos(em);
         System.out.println("");
-        todoProducto(em);
+        //todoProducto(em);
         System.out.println("");
-        porNombreProducto(em);
+        //porNombreProducto(em);
         System.out.println("");
-        consultaPersonalizada(em);
+        //consultaPersonalizada(em);
         System.out.println("");
         //insertarDato(em);
         System.out.println("");
 
+        prueba(em);
+
         //Cierro la conexion
         em.close();
         emf.close();
+
+    }
+    
+    public static void prueba(EntityManager em) {
+
+        //Busqueda
+        Query q = em.createNamedQuery("Producto.findAllProducto");
+        ArrayList<String> lista = (ArrayList<String>) q.getResultList();
+
+        for (String i : lista) {
+            System.out.println(i);
+        }
 
     }
 
@@ -44,6 +58,8 @@ public class AD_UA3_Ejercicio2 {
     a. Método que muestra por pantalla el listado de productos: pkproducto, nombre, precio, nombre de la categoría. 
     b. Método que muestra por pantalla todos los datos de un producto a partir de su pkproducto. 
 
+    
+    
     
      */
     /**
