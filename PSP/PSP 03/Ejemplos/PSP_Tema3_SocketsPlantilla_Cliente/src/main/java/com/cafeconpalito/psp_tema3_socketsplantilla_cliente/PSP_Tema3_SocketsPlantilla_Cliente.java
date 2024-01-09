@@ -8,13 +8,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author Cafe Con Palito
  */
 public class PSP_Tema3_SocketsPlantilla_Cliente {
 

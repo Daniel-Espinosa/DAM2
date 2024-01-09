@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author Cafe Con Palito
  */
 public class HiloServer implements Runnable{
     

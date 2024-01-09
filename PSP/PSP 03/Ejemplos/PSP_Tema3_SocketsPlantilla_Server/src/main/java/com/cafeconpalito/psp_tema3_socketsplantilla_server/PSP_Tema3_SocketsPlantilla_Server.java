@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author Cafe Con Palito
  */
 public class PSP_Tema3_SocketsPlantilla_Server {
 
