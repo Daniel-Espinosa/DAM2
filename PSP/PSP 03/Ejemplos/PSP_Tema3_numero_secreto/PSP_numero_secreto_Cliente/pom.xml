@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cafeconpalito</groupId>
-    <artifactId>PSP_Tansferencia_Cliente</artifactId>
+    <artifactId>Cliente_numero_secreto</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.cafeconpalito.psp_tansferencia_cliente.PSP_Tansferencia_Cliente</exec.mainClass>
+        <exec.mainClass>com.cafeconpalito.cliente_numero_secreto.Cliente_numero_secreto</exec.mainClass>
     </properties>
     <build>
         <plugins>
@@ -20,7 +20,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.cafeconpalito.psp_tansferencia_cliente.PSP_Tansferencia_Cliente</mainClass>
+                            <mainClass>com.cafeconpalito.cliente_numero_secreto.Cliente_numero_secreto</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -39,4 +39,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>PSP_Tema3_Cliente_numero_secreto</name>
 </project>
