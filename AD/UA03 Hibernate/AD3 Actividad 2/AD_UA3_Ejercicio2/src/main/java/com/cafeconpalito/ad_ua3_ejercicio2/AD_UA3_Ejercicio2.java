@@ -3,7 +3,6 @@
  */
 package com.cafeconpalito.ad_ua3_ejercicio2;
 
-import com.cafeconpalito.ad_ua3_ejercicio2.Entity.Cliente;
 import com.cafeconpalito.ad_ua3_ejercicio2.Entity.Producto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
