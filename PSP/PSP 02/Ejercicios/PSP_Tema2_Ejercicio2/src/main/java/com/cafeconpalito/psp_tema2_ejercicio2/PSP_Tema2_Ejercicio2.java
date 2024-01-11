@@ -3,6 +3,8 @@
  */
 package com.cafeconpalito.psp_tema2_ejercicio2;
 
+import java.io.File;
+
 /**
  *
  * @author produccion
