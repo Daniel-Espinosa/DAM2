@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
-
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  *
@@ -91,24 +93,38 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private static Connection con = ConexionBBDD.getInstance().getConnection();
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            
-            Class.forName("org.hsqldb.jdbcDriver").getDeclaredConstructor().newInstance();
-            Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://127.0.0.1/","sa","");
-            
+
+            System.out.println("0");
+
+            System.out.println("1");
+
+            System.out.println("2");
             Map parametros = new HashMap();
-            
+
+            System.out.println("3");
+            //parametros.put("CITY", jComboBox1.getSelectedItem());
             parametros.put("CIUDAD", jComboBox1.getSelectedItem());
-            
+
+            System.out.println("4");
+            JasperPrint print = JasperFillManager.fillReport("Informes_Ireport/ejercicio1.jasper", parametros, con);
+
+            System.out.println("5");
+            JasperExportManager.exportReportToPdfFile(print, "MiPdf.pdf");
+
+            System.out.println("TODO OK");
+
         } catch (Throwable e) {
-            
-            
+            System.out.println("ERROR!");
+            System.out.println(e.getMessage());
+
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
