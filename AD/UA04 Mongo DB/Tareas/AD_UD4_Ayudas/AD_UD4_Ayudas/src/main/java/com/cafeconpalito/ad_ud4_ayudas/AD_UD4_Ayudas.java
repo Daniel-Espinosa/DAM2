@@ -56,5 +56,7 @@ public class AD_UD4_Ayudas {
         Consultas.muestraDatosDeProvinciaPorSolicitudesInferiores(collection, minimoSolicitudes);
         System.out.println("\n----------------------------------------------------------------------\n");
         
+        ConexionMongoDB.getInstance().desconectar();
+        
     }
 }

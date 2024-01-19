@@ -15,7 +15,7 @@ import org.bson.Document;
 
 /**
  *
- * @author CafeConPalito
+ * @author Cafe Con Palito
  */
 public class Consultas {
 
@@ -68,7 +68,7 @@ public class Consultas {
      *
      * @return int con el número total de solicitudes
      */
-    public static Integer solicitudesPorProvincia(MongoCollection collection, String provincia) {
+    public static int solicitudesPorProvincia(MongoCollection collection, String provincia) {
 
         FindIterable<Document> documents = collection.find(eq("provincia", provincia));
         MongoCursor<Document> cursor = documents.iterator();

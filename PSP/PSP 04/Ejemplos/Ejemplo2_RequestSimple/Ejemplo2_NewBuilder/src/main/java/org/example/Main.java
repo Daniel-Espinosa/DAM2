@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Main {
@@ -15,7 +14,7 @@ public class Main {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("http://www.google.com"))
+                    .uri(new URI("https://es.wikipedia.org/wiki/Santo%C3%B1a"))
                     .GET()
                     .build();
 
