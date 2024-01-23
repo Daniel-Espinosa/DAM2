@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tema5_Tarea5v2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f8eaa1da-4b12-4c8f-8401-d0003e121918">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Fabrica"/>
+	<parameter name="Filtro" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT fabrica.articulos.`Descripcion`,
+	fabrica.articulos.`Id_articulo`,
+	sum( fabrica.detalle_pedidos.`Unidades`)
+FROM fabrica.articulos inner join fabrica.detalle_pedidos using(`Id_articulo` )
+WHERE  $P{Filtro} = fabrica.detalle_pedidos.`ID_Articulo`
+GROUP BY fabrica.detalle_pedidos.`ID_Articulo`]]>
+	</queryString>
+	<field name="Descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Descripcion"/>
+		<property name="com.jaspersoft.studio.field.label" value="Descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="articulos"/>
+	</field>
+	<field name="Id_articulo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Id_articulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Id_articulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="articulos"/>
+	</field>
+	<field name="sum( fabrica.detalle_pedidos.`Unidades`)" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="sum( fabrica.detalle_pedidos.`Unidades`)"/>
+		<property name="com.jaspersoft.studio.field.label" value="sum( fabrica.detalle_pedidos.`Unidades`)"/>
+	</field>
+	<group name="Id_articulo">
+		<groupExpression><![CDATA[$F{Id_articulo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="20" width="140" height="20" uuid="8e144749-a19c-4d3c-9d8d-b2771fd445fc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Unidades Vendidas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="203" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="10" width="270" height="180" uuid="7d4d90be-2484-4910-9222-3ae1a6ec8671"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Tabla 1"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Id_articulo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{sum( fabrica.detalle_pedidos.`Unidades`)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<stackedBar3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="290" y="10" width="260" height="180" uuid="2eb57314-b4ac-452e-854a-1f22bfb90aa6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Articulo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Id_articulo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{sum( fabrica.detalle_pedidos.`Unidades`)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="0" width="140" height="20" uuid="b497b61c-6b3d-456e-b9b0-40d61b1c8f80">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e995574-55d1-4274-b8f2-fc6a3dd2b6ce"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="140" height="20" uuid="88dc5743-7d92-42da-9a11-edb16adef1e7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66880525-ecc3-4cf4-ab9c-caf483b5f752"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad vendida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="0" width="110" height="20" uuid="5631e7e4-814b-4483-bd1b-6d2dd652cda2"/>
+				<textElement textAlignment="Left">
+					<font isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Articulo Nº]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="0" width="140" height="20" uuid="38ce9791-3eb3-4eb7-a5d0-fbd794c221d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e995574-55d1-4274-b8f2-fc6a3dd2b6ce"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="140" height="20" uuid="131235d8-3856-430b-81d8-6fd02c56e650">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66880525-ecc3-4cf4-ab9c-caf483b5f752"/>
+				</reportElement>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{sum( fabrica.detalle_pedidos.`Unidades`)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="110" height="20" uuid="246556d3-7e9f-4a26-8c0b-2e893963aae2"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="13" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="560" height="21" uuid="6ee4b2e0-8285-45db-a907-18f85b5d33d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Made by Cafe Con Palito ® V 0.0.1]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
