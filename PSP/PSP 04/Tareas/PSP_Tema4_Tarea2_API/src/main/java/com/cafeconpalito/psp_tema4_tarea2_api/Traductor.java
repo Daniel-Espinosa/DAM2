@@ -63,7 +63,7 @@ public class Traductor extends javax.swing.JFrame {
             JDialog jd = jop.createDialog("ERROR");
             jd.setLocationRelativeTo(null);
             jd.setVisible(true);
-            
+
             System.exit(0);
         }
 
@@ -301,8 +301,8 @@ public class Traductor extends javax.swing.JFrame {
     }
 
     /**
-     * Metodo que comprube el status de los servicios de la api. 
-     * si todos son correctos devuelve true;
+     * Metodo que comprube el status de los servicios de la api. si todos son
+     * correctos devuelve true;
      */
     private boolean statusService() {
 
@@ -316,8 +316,6 @@ public class Traductor extends javax.swing.JFrame {
             //Recibo la respuesta de la API COMO UN STRING
             HttpResponse<String> responseUsage = HttpClient.newHttpClient().send(getUsage, HttpResponse.BodyHandlers.ofString());
 
-            //System.out.println(responseUsage);
-
             HttpRequest getLanguages = HttpRequest.newBuilder()
                     .uri(URI.create("https://api-free.deepl.com/v2/languages?type=target"))
                     .header("Authorization", "DeepL-Auth-Key " + apyKeyTranslate)
@@ -325,16 +323,12 @@ public class Traductor extends javax.swing.JFrame {
                     .GET()
                     .build();
             HttpResponse<String> responseLang = HttpClient.newHttpClient().send(getLanguages, HttpResponse.BodyHandlers.ofString());
-            
-            //System.out.println(responseLang);
 
             return true;
-            
+
         } catch (IOException | InterruptedException ex) {
-            
             return false;
         }
-
     }
 
     /**
@@ -347,6 +341,7 @@ public class Traductor extends javax.swing.JFrame {
             HttpRequest getLanguages = HttpRequest.newBuilder()
                     .uri(URI.create("https://api-free.deepl.com/v2/languages?type=target"))
                     .header("Authorization", "DeepL-Auth-Key " + apyKeyTranslate)
+                    .timeout(Duration.ofSeconds(5))
                     .GET()
                     .build();
             //Recibo la respuesta de la API COMO UN STRING
@@ -360,7 +355,6 @@ public class Traductor extends javax.swing.JFrame {
             for (int i = 0; i < jArrayLang.length(); i++) {
                 JSONObject aux = jArrayLang.getJSONObject(i);
                 languages.put(aux.getString("name"), aux.getString("language"));
-                //System.out.println(aux);
             }
 
         } catch (IOException ex) {
@@ -368,7 +362,6 @@ public class Traductor extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(Traductor.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
@@ -406,11 +399,11 @@ public class Traductor extends javax.swing.JFrame {
                     .uri(URI.create("https://api-free.deepl.com/v2/translate"))
                     .header("Authorization", "DeepL-Auth-Key " + apyKeyTranslate)
                     .header("content-type", "application/x-www-form-urlencoded")
+                    .timeout(Duration.ofSeconds(5))
                     .method("POST", HttpRequest.BodyPublishers.ofString("text=" + texto + "&" + "target_lang=" + languageSelected()))
                     .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-            //System.out.println(response.body());
             JSONObject traduc = new JSONObject(response.body());
 
             jTextAreaTraduction.setText(traduc.getJSONArray("translations").getJSONObject(0).getString("text"));
@@ -432,6 +425,7 @@ public class Traductor extends javax.swing.JFrame {
             HttpRequest getUsage = HttpRequest.newBuilder()
                     .uri(URI.create("https://api-free.deepl.com/v2/usage"))
                     .header("Authorization", "DeepL-Auth-Key " + apyKeyTranslate)
+                    .timeout(Duration.ofSeconds(5))
                     .GET()
                     .build();
             //Recibo la respuesta de la API COMO UN STRING
