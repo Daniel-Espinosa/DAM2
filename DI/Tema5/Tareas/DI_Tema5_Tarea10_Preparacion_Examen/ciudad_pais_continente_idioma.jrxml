@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ciudad_pais_continente_idioma" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c72f96d9-38c2-435f-af49-97a4a2b29c57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="687"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="world"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
+	<parameter name="Filtro" class="java.lang.String">
+		<parameterDescription><![CDATA[Idioma]]></parameterDescription>
+		<defaultValueExpression><![CDATA["English"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT world.city.`Name` AS City_Name,
+	world.country.`Code`,
+	world.country.`Continent`,
+	world.country.`Population`,
+	world.countrylanguage.`IsOfficial`,
+	world.country.`Name` AS Country_Name
+FROM world.city
+	INNER JOIN world.country ON 
+	 world.city.`CountryCode` = world.country.`Code` 
+	inner Join world.countrylanguage ON 
+	 world.countrylanguage.`CountryCode` = world.country.`Code` 
+WHERE 
+	 world.countrylanguage.`IsOfficial` = 'NULL' 
+	 AND world.countrylanguage.`Language` = $P{Filtro} 
+ORDER BY world.country.`Continent` ASC ,
+	world.country.`Code` ASC]]>
+	</queryString>
+	<field name="City_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="City_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="city"/>
+	</field>
+	<field name="Code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Code"/>
+		<property name="com.jaspersoft.studio.field.label" value="Code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
+	</field>
+	<field name="Continent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Continent"/>
+		<property name="com.jaspersoft.studio.field.label" value="Continent"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
+	</field>
+	<field name="Population" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Population"/>
+		<property name="com.jaspersoft.studio.field.label" value="Population"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
+	</field>
+	<field name="IsOfficial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IsOfficial"/>
+		<property name="com.jaspersoft.studio.field.label" value="IsOfficial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="countrylanguage"/>
+	</field>
+	<field name="Country_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Country_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
+	</field>
+	<variable name="Population1" class="java.lang.Integer" resetType="Group" resetGroup="Country" calculation="Sum">
+		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
+	</variable>
+	<variable name="Population2" class="java.lang.Integer" resetType="Group" resetGroup="Continente" calculation="Sum">
+		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
+	</variable>
+	<variable name="Population3" class="java.lang.Integer" resetType="Group" resetGroup="Continente" calculation="Sum">
+		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
+	</variable>
+	<group name="Continente">
+		<groupExpression><![CDATA[$F{Continent}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="557" height="39" backcolor="#D4D4D4" uuid="c0f6b9d6-ca8f-4d21-8ead-1a382dcd482a"/>
+				</frame>
+				<textField>
+					<reportElement x="0" y="0" width="178" height="20" uuid="7a1ee274-164c-40ff-ba05-d637a3f8533e"/>
+					<textElement>
+						<font size="13" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Continent}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="68" y="19" width="110" height="20" uuid="ae266e88-00f2-4992-a9f8-c13778d79e87"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CODE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="190" y="19" width="100" height="20" uuid="8411c8bf-8831-4f7f-b57f-f54b1ae49e81"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Country Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="330" y="20" width="100" height="20" uuid="7daab272-1da7-4612-b916-aede59b4c6b4"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Population]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<textField evaluationTime="Auto">
+					<reportElement x="310" y="0" width="173" height="18" uuid="be9d4d87-ce99-404e-8c29-814b026ef3b4"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total: " + $V{Population3}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Country">
+		<groupExpression><![CDATA[$F{Code}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<textField>
+					<reportElement x="68" y="1" width="110" height="19" uuid="9971a79f-d317-48d8-bc30-a7bfe292b3cd"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Code}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="190" y="0" width="100" height="19" uuid="24f3e191-4395-464e-9b70-3397c89092db"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Country_Name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="330" y="1" width="100" height="19" uuid="a9d388f3-86c1-4c39-ac16-7af64306115a"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{Population}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="23" width="555" height="1" uuid="46cf3178-bb72-4e0d-9c9e-984ba135b9eb"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="336" y="65" width="217" height="29" uuid="7a8ee983-690c-4f4d-9330-42613bd3d628"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Flower SubTitle]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="597" height="85" forecolor="#006699" backcolor="#006699" uuid="29f958b3-9df5-4ee0-905e-9fd33029926f"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="595" height="85" uuid="cf1fabd8-9376-4a95-a65d-c762a7404011"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="28" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ciudades de países con inglés como idioma oficial 
+por continentes]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="68" y="0" width="212" height="20" uuid="8ae8c3af-d656-40d8-91d9-d8ebae90e146">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4550ebb1-7ddd-4646-b7c8-53b84f9b9eef"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{City_Name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="0a05d19c-77ff-48d5-91d6-460d221419e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699" uuid="21b8ec89-3912-4f38-b1d2-846c348d496b"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="2f1f4647-386f-4ee9-b3b1-779c70fd7960"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="c50a7647-9d9b-4145-89d7-15adb353fac4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="2a75ce15-0152-4154-9a45-a23c6a9d3107"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
