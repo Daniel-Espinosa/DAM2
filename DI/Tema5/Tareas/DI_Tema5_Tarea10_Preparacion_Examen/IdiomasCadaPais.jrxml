@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IdiomasCadaPais" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ced95029-b569-4027-895c-af2843a4e088">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="world"/>
 	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[d29ybGQuY291bnRyeWxhbmd1YWdlICwxNSwxNTgsZDIyYjkyNmQtNThiMC00YzhjLWI1NDEtYTRh
-ZDAyMzY3ODAzO3dvcmxkLmNvdW50cnkgLDE3MSwxNSxhOThlZmQxNi03MTRhLTRmZDItOWM1My0w
-NjExZTM4ZjZhYjQ7]]>
+		<![CDATA[d29ybGQuY291bnRyeSAsMTcxLDE1LGU1MjdmOWM4LTAzZTYtNGFmMy05OGQ2LWMwYTA5YzZkMWE2
+Yjt3b3JsZC5jb3VudHJ5bGFuZ3VhZ2UgLDE1LDE1OCwxYzUzZjk3OS1kY2ZmLTQ0NGItYWYyMy04
+ZjI5NWNiZDdjMTg7]]>
 	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DatosFabrica"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -18,21 +18,16 @@ NjExZTM4ZjZhYjQ7]]>
 		</conditionalStyle>
 	</style>
 	<queryString>
-		<![CDATA[SELECT world.countrylanguage.`CountryCode`,
-	world.countrylanguage.`Language`,
+		<![CDATA[SELECT world.countrylanguage.`Language`,
 	world.countrylanguage.`IsOfficial`,
 	world.countrylanguage.`Percentage`,
 	world.country.`Name`,
-	world.country.`Population`
+	world.country.`Population`,
+	world.countrylanguage.`CountryCode`
 FROM world.countrylanguage
 	INNER JOIN world.country ON 
 	 world.countrylanguage.`CountryCode` = world.country.`Code`]]>
 	</queryString>
-	<field name="CountryCode" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="CountryCode"/>
-		<property name="com.jaspersoft.studio.field.label" value="CountryCode"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="countrylanguage"/>
-	</field>
 	<field name="Language" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Language"/>
 		<property name="com.jaspersoft.studio.field.label" value="Language"/>
@@ -58,17 +53,30 @@ FROM world.countrylanguage
 		<property name="com.jaspersoft.studio.field.label" value="Population"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
 	</field>
+	<field name="CountryCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CountryCode"/>
+		<property name="com.jaspersoft.studio.field.label" value="CountryCode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="countrylanguage"/>
+	</field>
+	<variable name="Language1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{Language}]]></variableExpression>
+	</variable>
+	<variable name="Language2" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Count">
+		<variableExpression><![CDATA[$F{Language}]]></variableExpression>
+	</variable>
 	<group name="Group1" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{CountryCode}]]></groupExpression>
 		<groupHeader>
-			<band height="58">
+			<band height="50">
 				<frame>
-					<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="430eacf0-f79c-4d7f-979c-2274c3fedccb"/>
+					<reportElement mode="Opaque" x="1" y="1" width="554" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="430eacf0-f79c-4d7f-979c-2274c3fedccb"/>
 					<staticText>
-						<reportElement x="256" y="-1" width="100" height="25" uuid="bd6cf923-7fea-47db-8901-7869158bf484">
+						<reportElement x="300" y="-1" width="100" height="25" forecolor="#030303" uuid="bd6cf923-7fea-47db-8901-7869158bf484">
 							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98ef130c-71ed-44c1-8bb7-6d2777ea15bc"/>
 						</reportElement>
-						<textElement textAlignment="Left" verticalAlignment="Middle"/>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font size="14" isBold="true"/>
+						</textElement>
 						<text><![CDATA[Población]]></text>
 					</staticText>
 				</frame>
@@ -76,116 +84,118 @@ FROM world.countrylanguage
 					<reportElement x="0" y="26" width="103" height="24" uuid="8f11d3bc-419f-4fad-a350-fe32c75eb256">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46bbc969-fb3a-4acf-baab-7ff89c74f4e6"/>
 					</reportElement>
-					<textElement textAlignment="Center"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{CountryCode}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="0" width="103" height="25" backcolor="#D2BE97" uuid="dae335b3-9118-4b84-b518-0862b8f9e4bf">
+					<reportElement mode="Opaque" x="0" y="0" width="103" height="25" forecolor="#030303" backcolor="#D2BE97" uuid="dae335b3-9118-4b84-b518-0862b8f9e4bf">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46bbc969-fb3a-4acf-baab-7ff89c74f4e6"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
 					<text><![CDATA[Código]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="120" y="26" width="100" height="24" uuid="3bd42bf5-ef37-40f9-b272-6bf58dcc38dc">
+					<reportElement x="120" y="26" width="180" height="24" uuid="3bd42bf5-ef37-40f9-b272-6bf58dcc38dc">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fea327c-b21c-4c5a-98a1-52ae9010627a"/>
 					</reportElement>
-					<textElement textAlignment="Left"/>
+					<textElement textAlignment="Left">
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="120" y="0" width="100" height="25" uuid="a078eccc-9ab9-4138-8269-394853162780">
+					<reportElement x="120" y="0" width="180" height="25" forecolor="#030303" uuid="a078eccc-9ab9-4138-8269-394853162780">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fea327c-b21c-4c5a-98a1-52ae9010627a"/>
 					</reportElement>
-					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
 					<text><![CDATA[Nombre del País]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="235" y="26" width="100" height="24" uuid="c6710a01-c8ad-4a78-8fd8-0e587b4851f9">
+					<reportElement x="300" y="26" width="100" height="24" uuid="c6710a01-c8ad-4a78-8fd8-0e587b4851f9">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98ef130c-71ed-44c1-8bb7-6d2777ea15bc"/>
 					</reportElement>
 					<textElement textAlignment="Left"/>
 					<textFieldExpression><![CDATA[$F{Population}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="335" y="0" width="100" height="25" uuid="817cc075-c953-46c2-9698-2f14575ecbae">
+					<reportElement x="400" y="0" width="100" height="25" forecolor="#030303" uuid="817cc075-c953-46c2-9698-2f14575ecbae">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="de47f635-b9ed-4d85-b5c0-30f50166d0e6"/>
 					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
 					<text><![CDATA[Nº Idiomas]]></text>
 				</staticText>
+				<textField evaluationTime="Auto">
+					<reportElement x="400" y="26" width="100" height="24" uuid="db3cfc44-2726-456f-8b8b-c1b200dc6608"/>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA[$V{Language2}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="275"/>
+			<band height="299">
+				<pieChart>
+					<chart evaluationTime="Group" evaluationGroup="Group1">
+						<reportElement x="52" y="10" width="450" height="280" printWhenGroupChanges="Group1" uuid="5ed1dbe5-e89a-4180-8d92-d6afc3304591"/>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<pieDataset>
+						<dataset resetType="Group" resetGroup="Group1"/>
+						<keyExpression><![CDATA[$F{Language}]]></keyExpression>
+						<valueExpression><![CDATA[$F{Percentage}]]></valueExpression>
+					</pieDataset>
+					<piePlot>
+						<plot/>
+						<itemLabel/>
+					</piePlot>
+				</pieChart>
+			</band>
 		</groupFooter>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="114" splitType="Stretch">
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="102" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="3" y="0" width="432" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
+				<reportElement style="Title" x="0" y="14" width="491" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
 				<textElement verticalAlignment="Middle">
-					<font size="30"/>
+					<font size="36"/>
 				</textElement>
 				<text><![CDATA[Idiomas hablados en cada país]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="239" y="62" width="196" height="22" uuid="88d4231e-f014-4b0d-b871-1737ba63a1ae"/>
+				<reportElement style="SubTitle" x="304" y="71" width="196" height="22" uuid="88d4231e-f014-4b0d-b871-1737ba63a1ae"/>
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<text><![CDATA[Oficiales y no oficiales]]></text>
 			</staticText>
 			<image>
-				<reportElement x="433" y="-115" width="267" height="209" uuid="5d64e5b3-07bb-48ab-89dc-15c0c46bb19a"/>
+				<reportElement x="447" y="-126" width="267" height="209" uuid="5d64e5b3-07bb-48ab-89dc-15c0c46bb19a"/>
 				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
 			</image>
-			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="b8cc4a6e-f439-4480-9759-9c9162086eeb"/>
-				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="04c0f8d5-306c-4c2d-b991-4eb3503004b1"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="21b5d97b-25ea-4da7-9f2c-27240c094deb"/>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="062b5ffa-e07e-4afd-98be-8cdbc13cf208"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-			</frame>
 		</band>
-	</title>
-	<pageHeader>
-		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="55" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="1a61a836-d137-48b1-ad67-6ff64600bf93"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="7" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="597" height="19" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="9270ee63-d6ec-4cda-89ca-7e1506c46679">
+				<reportElement mode="Opaque" x="1" y="1" width="554" height="19" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="9270ee63-d6ec-4cda-89ca-7e1506c46679">
 					<printWhenExpression><![CDATA[$V{COLUMN_COUNT}%2==0]]></printWhenExpression>
 				</reportElement>
 			</frame>
@@ -206,7 +216,7 @@ FROM world.countrylanguage
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="57" splitType="Stretch">
+		<band height="4" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fa45a887-615a-4d84-a2d7-8a2219671b3c"/>
 				<graphicElement>
