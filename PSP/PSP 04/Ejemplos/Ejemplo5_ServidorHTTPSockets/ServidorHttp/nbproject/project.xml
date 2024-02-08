@@ -9,7 +9,7 @@
             </extension>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-            <name>ServidorHttp</name>
+            <name>PSP_Tema4_Ejemplo_ServidorHttp</name>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

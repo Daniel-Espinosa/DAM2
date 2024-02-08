@@ -1,0 +1,10 @@
+httplocalhost8069web#cids=1&menu_id=4&action=29&active_id=553&model=ir.ui.view&view_type=form&id=1673
+
+VISTA
+http://localhost:8069/web#cids=1&menu_id=4&action=29&active_id=553&model=ir.ui.view&view_type=form&id=1673
+
+Informe
+http://localhost:8069/web#id=33490&cids=1&menu_id=4&model=ir.model.data&view_type=form
+
+Informes
+http://localhost:8069/web#id=553&cids=1&menu_id=4&action=6&model=ir.actions.report&view_type=form

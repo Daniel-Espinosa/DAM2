@@ -11,4 +11,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>es.iesaugustogonzalez.jfranco.ejemplo2._headers.Ejemplo22_Headers</exec.mainClass>
     </properties>
+    <name>PSP_Tema4_Ejemplo2.2_Headers</name>
 </project>
