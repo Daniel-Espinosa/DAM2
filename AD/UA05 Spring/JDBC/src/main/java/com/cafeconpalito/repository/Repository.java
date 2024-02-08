@@ -10,7 +10,8 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author damt207
+ * @author cafeconpalito
+ * 
  */
 public interface Repository extends CrudRepository<Entity, Id> {
     

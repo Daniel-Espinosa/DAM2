@@ -22,28 +22,21 @@
 		<defaultValueExpression><![CDATA["English"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT world.city.`Name` AS City_Name,
-	world.country.`Code`,
+		<![CDATA[SELECT DISTINCT world.country.`Code`,
 	world.country.`Continent`,
 	world.country.`Population`,
-	world.countrylanguage.`IsOfficial`,
-	world.country.`Name` AS Country_Name
+	world.country.`Name` AS Country_Name,
+	world.city.`District`
 FROM world.city
 	INNER JOIN world.country ON 
 	 world.city.`CountryCode` = world.country.`Code` 
 	inner Join world.countrylanguage ON 
 	 world.countrylanguage.`CountryCode` = world.country.`Code` 
 WHERE 
-	 world.countrylanguage.`IsOfficial` = 'NULL' 
+	 world.countrylanguage.`IsOfficial` = 'T' 
 	 AND world.countrylanguage.`Language` = $P{Filtro} 
-ORDER BY world.country.`Continent` ASC ,
-	world.country.`Code` ASC]]>
+ORDER BY world.country.`Continent` ASC]]>
 	</queryString>
-	<field name="City_Name" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="Name"/>
-		<property name="com.jaspersoft.studio.field.label" value="City_Name"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="city"/>
-	</field>
 	<field name="Code" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Code"/>
 		<property name="com.jaspersoft.studio.field.label" value="Code"/>
@@ -59,23 +52,20 @@ ORDER BY world.country.`Continent` ASC ,
 		<property name="com.jaspersoft.studio.field.label" value="Population"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
 	</field>
-	<field name="IsOfficial" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="IsOfficial"/>
-		<property name="com.jaspersoft.studio.field.label" value="IsOfficial"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="countrylanguage"/>
-	</field>
 	<field name="Country_Name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Name"/>
 		<property name="com.jaspersoft.studio.field.label" value="Country_Name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
 	</field>
+	<field name="District" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="District"/>
+		<property name="com.jaspersoft.studio.field.label" value="District"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="city"/>
+	</field>
 	<variable name="Population1" class="java.lang.Integer" resetType="Group" resetGroup="Country" calculation="Sum">
 		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
 	</variable>
-	<variable name="Population2" class="java.lang.Integer" resetType="Group" resetGroup="Continente" calculation="Sum">
-		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
-	</variable>
-	<variable name="Population3" class="java.lang.Integer" resetType="Group" resetGroup="Continente" calculation="Sum">
+	<variable name="Population3" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{Population}]]></variableExpression>
 	</variable>
 	<group name="Continente">
@@ -86,28 +76,28 @@ ORDER BY world.country.`Continent` ASC ,
 					<reportElement mode="Opaque" x="0" y="0" width="557" height="39" backcolor="#D4D4D4" uuid="c0f6b9d6-ca8f-4d21-8ead-1a382dcd482a"/>
 				</frame>
 				<textField>
-					<reportElement x="0" y="0" width="178" height="20" uuid="7a1ee274-164c-40ff-ba05-d637a3f8533e"/>
+					<reportElement x="0" y="0" width="178" height="20" forecolor="#006699" uuid="7a1ee274-164c-40ff-ba05-d637a3f8533e"/>
 					<textElement>
 						<font size="13" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Continent}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="68" y="19" width="110" height="20" uuid="ae266e88-00f2-4992-a9f8-c13778d79e87"/>
+					<reportElement x="68" y="19" width="110" height="20" forecolor="#006699" uuid="ae266e88-00f2-4992-a9f8-c13778d79e87"/>
 					<textElement verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
 					<text><![CDATA[CODE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="190" y="19" width="100" height="20" uuid="8411c8bf-8831-4f7f-b57f-f54b1ae49e81"/>
+					<reportElement x="190" y="19" width="100" height="20" forecolor="#006699" uuid="8411c8bf-8831-4f7f-b57f-f54b1ae49e81"/>
 					<textElement verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
 					<text><![CDATA[Country Name]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="330" y="20" width="100" height="20" uuid="7daab272-1da7-4612-b916-aede59b4c6b4"/>
+					<reportElement x="330" y="20" width="100" height="20" forecolor="#006699" uuid="7daab272-1da7-4612-b916-aede59b4c6b4"/>
 					<textElement verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
@@ -116,13 +106,10 @@ ORDER BY world.country.`Continent` ASC ,
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="18">
-				<textField evaluationTime="Auto">
-					<reportElement x="310" y="0" width="173" height="18" uuid="be9d4d87-ce99-404e-8c29-814b026ef3b4"/>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Total: " + $V{Population3}]]></textFieldExpression>
+			<band height="20">
+				<textField>
+					<reportElement x="330" y="0" width="100" height="20" uuid="7b83fcbb-3603-4433-b7ec-88702354120b"/>
+					<textFieldExpression><![CDATA[$V{Population3}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -133,17 +120,23 @@ ORDER BY world.country.`Continent` ASC ,
 			<band height="24">
 				<textField>
 					<reportElement x="68" y="1" width="110" height="19" uuid="9971a79f-d317-48d8-bc30-a7bfe292b3cd"/>
-					<textElement verticalAlignment="Middle"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{Code}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="190" y="0" width="100" height="19" uuid="24f3e191-4395-464e-9b70-3397c89092db"/>
-					<textElement verticalAlignment="Middle"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{Country_Name}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="330" y="1" width="100" height="19" uuid="a9d388f3-86c1-4c39-ac16-7af64306115a"/>
-					<textElement verticalAlignment="Middle"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{Population}]]></textFieldExpression>
 				</textField>
 				<line>
@@ -192,10 +185,10 @@ por continentes]]></text>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="68" y="0" width="212" height="20" uuid="8ae8c3af-d656-40d8-91d9-d8ebae90e146">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4550ebb1-7ddd-4646-b7c8-53b84f9b9eef"/>
+				<reportElement x="68" y="0" width="100" height="20" uuid="108d1c61-5cc9-49b7-81c8-ecfff4f6fee0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b08c73d3-4efb-4f63-9c33-e21eebaec26f"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{City_Name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{District}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
