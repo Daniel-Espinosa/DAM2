@@ -1,27 +1,31 @@
 create database if not exists vacunas;
 use vacunas;
 create table if not exists laboratorio (
-	pklaboratorio int primary key,
-	nombre varchar(50),	
-	pvpdosis float	
+	pklaboratorio int AUTO_INCREMENT,
+	nombre varchar(50),
+	pvpdosis float,
+	PRIMARY KEY (pklaboratorio)
 );
 create table if not exists vacuna (
-	pkvacuna int primary key,
+	pkvacuna int AUTO_INCREMENT,
 	aklaboratorio int not null,
 	stock	int,
+	PRIMARY KEY (pkvacuna),
 	foreign key (aklaboratorio) references laboratorio (pklaboratorio)
 );
 create table if not exists persona (
-	pkpersona int primary key,
+	pkpersona int AUTO_INCREMENT,
 	nombre varchar(50),	
 	fechanacimiento date not null,
-	ndosis int	
+	ndosis int,
+	PRIMARY KEY (pkpersona)
 );
 create table if not exists vacunapersona (
-	pkvacunapersona int primary key,
+	pkvacunapersona int AUTO_INCREMENT,
 	akpersona int not null,
 	akvacuna int not null,
 	fecha date not null,
+	PRIMARY KEY (pkvacunapersona),
 	foreign key (akpersona) references persona (pkpersona),
 	foreign key (akvacuna) references vacuna (pkvacuna)
 );

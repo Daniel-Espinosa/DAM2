@@ -55,7 +55,7 @@ public class TratamientoService {
         System.out.println("\tMedicamento ID: " +t.getAkmedicina().getPkmedicamento() + " | PVP: " + t.getAkmedicina().getPvp());
         
         
-        System.out.println("INSERCION REALIZADA EN TRATAMIENTO CON ID: " + idmax + " CON FECHA: " + fecha);
+        System.out.println("INSERCION REALIZADA EN TRATAMIENTO CON ID: " + idmax + " CON FECHA: " + fecha + "\n");
         
         trata.save(t);
     }

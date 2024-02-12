@@ -10,12 +10,15 @@ import com.cafeconpalito.jpa.entities.Tratamiento;
 import com.cafeconpalito.jpa.repositories.IMedicamento;
 import com.cafeconpalito.jpa.repositories.IPersona;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author produccion
  */
+@Service
 public class MedicamentoService {
 
     ApplicationContext context;

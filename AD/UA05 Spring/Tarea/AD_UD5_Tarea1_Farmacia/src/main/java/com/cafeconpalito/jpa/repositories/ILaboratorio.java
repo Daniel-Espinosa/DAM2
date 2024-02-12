@@ -8,7 +8,6 @@ import com.cafeconpalito.jpa.entities.Laboratorio;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author produccion
  */
 @Repository
-public interface ILaboratorio extends CrudRepository<Laboratorio, Integer> {
+public interface ILaboratorio extends JpaRepository<Laboratorio, Integer> {
     
     @Query("select l from Medicamento m inner join m.aklaboratorio l order by m.pvp asc")
     public List<Laboratorio> laboratoriesWhitStock();
