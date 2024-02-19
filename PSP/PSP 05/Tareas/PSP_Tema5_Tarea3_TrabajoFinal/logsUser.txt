@@ -1,0 +1,4 @@
+feb 19, 2024 6:35:14 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.PSP_Tema5_Tarea3_TrabajoFinal main
+INFO: Este es un mensaje de informacion.
+feb 19, 2024 6:35:14 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Pruebas bla
+INFO: BLASLBLASDKASDQIWHE
