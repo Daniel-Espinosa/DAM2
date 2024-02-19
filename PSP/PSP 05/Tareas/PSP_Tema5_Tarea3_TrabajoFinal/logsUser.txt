@@ -1,4 +1,8 @@
-feb 19, 2024 6:35:14 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.PSP_Tema5_Tarea3_TrabajoFinal main
-INFO: Este es un mensaje de informacion.
-feb 19, 2024 6:35:14 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Pruebas bla
-INFO: BLASLBLASDKASDQIWHE
+feb 19, 2024 8:59:13 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: ASD
+feb 19, 2024 8:59:13 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación: MD5, para el texto: ERA UN DOMINGO EN LA TARDE EN LOS COCHES DE CHOQUE PRIPAIRIAPRA
+feb 19, 2024 9:00:29 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: ASD
+feb 19, 2024 9:00:29 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación: MD5, para el texto: ERA UN DOMINGO EN LA TARDE EN LOS COCHES DE CHOQUE PRIPAIRIAPRA
