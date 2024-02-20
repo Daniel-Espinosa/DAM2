@@ -4,12 +4,10 @@
  */
 package com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos;
 
-import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.PSP_Tema5_Tarea3_TrabajoFinal;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Filter;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -38,34 +36,38 @@ public class Logs {
     //LOGGER_ERRORS.severe("Este es un mensaje de error.");
     //Añado la info al log
     //LOGGER_USER.info("Este es un mensaje de informacion.");
+    
     /**
      * Metodo para inicializar los logs y abrir los flujos.
      */
     public static void openLogs() {
 
         try {
+            
+            File logsPath = new File("logs");
+            if (!logsPath.isDirectory()) {
+                logsPath.mkdir();
+            }
 
             //Formato para guardar el error
             SimpleFormatter formatter = new SimpleFormatter();
 
             //Log ERRORES, defino el nombre del archivo.
-            fileHandlerErrors = new FileHandler("logsErrors.txt", true);
+            fileHandlerErrors = new FileHandler("logs/logsErrors.txt", true);
             LOGGER_ERRORS.addHandler(fileHandlerErrors);
             fileHandlerErrors.setFormatter(formatter);
 
             //Log USUARIO, defino el nombre del archivo.
-            fileHandlerUser = new FileHandler("logsUser.txt", true);
+            fileHandlerUser = new FileHandler("logs/logsUser.txt", true);
             LOGGER_USER.addHandler(fileHandlerUser);
             fileHandlerUser.setFormatter(formatter);
 
             //Para que solo salgan por el output los mensajes de error Severos.
             LOGGER_ERRORS.setLevel(Level.SEVERE);
             
-            
             //CON ESTO NO MUESTRA POR CONSOLA LOS MESAJES DEL USUARIO PERO SI LOS REGISTRA
+            //FALSE para que no los muestre por pantalla pero si los registra.
             LOGGER_USER.setUseParentHandlers(false);
-            
-            
             
         } catch (IOException | SecurityException ex) {
             //Logger.getLogger(PSP_Tema5_Tarea3_TrabajoFinal.class.getName()).log(Level.SEVERE, null, ex);

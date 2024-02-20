@@ -12,6 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.Security;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
@@ -25,22 +26,25 @@ public class HashTool {
      *
      * @return
      */
-    public static String getAlgorithms() {
+    public static ArrayList<String> getAlgorithms() {
+        
+        ArrayList<String> lista = new ArrayList();
 
-        String algorithms = "";
+        //String algorithms = "";
 
         for (Provider e : Security.getProviders()) {
             for (Provider.Service s : e.getServices()) {
                 //System.out.println(s.getType());
                 if (s.getType().contains("MessageDigest")) {
                     //System.out.println(s.getAlgorithm());
-                    algorithms += s.getAlgorithm() + "\n";
+                    //algorithms += s.getAlgorithm() + "\n";
+                    lista.add(s.getAlgorithm());
                 }
             }
         }
 
         //System.out.println(algorithms);
-        return algorithms;
+        return lista;
 
     }
 
@@ -98,7 +102,7 @@ public class HashTool {
         }
 
 
-        Logs.LOGGER_USER.log(Level.INFO, "Algoritmo de encriptaci\u00f3n: {0}, archivo: {1}", new Object[]{algorithm, file.getName()});
+        Logs.LOGGER_USER.log(Level.INFO, "Algoritmo de encriptaci\u00f3n File | Algoritmo: {0} | File: {1} | Resultado: {2} ", new Object[]{algorithm, file.getName(),textHexa});
 
         return textHexa;
 
@@ -134,7 +138,7 @@ public class HashTool {
             return null;
         }
         
-        Logs.LOGGER_USER.log(Level.INFO, "Algoritmo de encriptaci\u00f3n: {0}, para el texto: {1}", new Object[]{algorithm, plaintext});
+        Logs.LOGGER_USER.log(Level.INFO, "Algoritmo de encriptaci\u00f3n String | Algoritmo: {0} | String: {1} | Resultado: {2}", new Object[]{algorithm, plaintext,textHexa});
 
         return textHexa;
     }

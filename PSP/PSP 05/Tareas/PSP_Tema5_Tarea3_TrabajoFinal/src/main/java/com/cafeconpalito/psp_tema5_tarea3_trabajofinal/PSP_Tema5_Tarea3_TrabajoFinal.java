@@ -15,7 +15,7 @@ public class PSP_Tema5_Tarea3_TrabajoFinal {
 
     
     public static void main(String[] args) {
-        
+                
         Logs.openLogs();
         
         //HashTool.getAlgorithms();
