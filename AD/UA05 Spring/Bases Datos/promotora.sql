@@ -4,6 +4,8 @@ use promotora;
 CREATE TABLE festival (
     pkfestival INT(11) PRIMARY KEY,
     nombre VARCHAR(80),
+    anyo DATE,
+    num_personas INT(11)
 );
 
 CREATE TABLE escenario (
