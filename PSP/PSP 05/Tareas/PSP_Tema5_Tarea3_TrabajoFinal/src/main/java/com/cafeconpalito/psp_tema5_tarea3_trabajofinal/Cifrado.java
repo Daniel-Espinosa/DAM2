@@ -8,13 +8,9 @@ import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.Logs;
 import java.awt.Color;
 import java.awt.Desktop;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -57,9 +53,10 @@ public class Cifrado extends javax.swing.JFrame {
         jButtonSelectFile = new javax.swing.JButton();
         jButtonCifrarArchivo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldResponse = new javax.swing.JTextField();
         jButtonLimpiar = new javax.swing.JButton();
         jTextFieldRutaArchivo = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaResponse = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabelLogs = new javax.swing.JLabel();
@@ -124,6 +121,10 @@ public class Cifrado extends javax.swing.JFrame {
 
         jTextFieldRutaArchivo.setFocusable(false);
 
+        jTextAreaResponse.setColumns(20);
+        jTextAreaResponse.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaResponse);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,6 +132,10 @@ public class Cifrado extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonLimpiar)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
@@ -147,10 +152,6 @@ public class Cifrado extends javax.swing.JFrame {
                                 .addComponent(jLabelString, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
                             .addComponent(jButtonCifrarTexto)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonLimpiar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextFieldResponse)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(491, 491, 491)))
@@ -163,13 +164,16 @@ public class Cifrado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelString)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxHash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCifrarTexto)
-                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCifrarTexto)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jComboBoxHash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)))
                 .addComponent(jLabelFile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,11 +183,11 @@ public class Cifrado extends javax.swing.JFrame {
                 .addComponent(jTextFieldRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonLimpiar)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         jTabbedPane1.addTab("Cifrado HASH", jPanel1);
@@ -198,7 +202,7 @@ public class Cifrado extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Cifrado AES", jPanel2);
@@ -232,7 +236,7 @@ public class Cifrado extends javax.swing.JFrame {
                 .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLogs)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Help", jPanel4);
@@ -281,10 +285,10 @@ public class Cifrado extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,7 +306,7 @@ public class Cifrado extends javax.swing.JFrame {
         clearErrors();
         jTextFieldRutaArchivo.setText("");
         jTextAreaString.setText("");
-        jTextFieldResponse.setText("");
+        jTextAreaResponse.setText("");
 
     }
 
@@ -310,7 +314,7 @@ public class Cifrado extends javax.swing.JFrame {
 
         clearErrors();
         if (!jTextAreaString.getText().isBlank()) {
-            jTextFieldResponse.setText(HashTool.getStringHash(jComboBoxHash.getSelectedItem().toString(), jTextAreaString.getText()));
+            jTextAreaResponse.setText(HashTool.getStringHash(jComboBoxHash.getSelectedItem().toString(), jTextAreaString.getText()));
         } else {
             jLabelString.setForeground(Color.red);
         }
@@ -321,7 +325,7 @@ public class Cifrado extends javax.swing.JFrame {
 
         clearErrors();
         if (!jTextFieldRutaArchivo.getText().isBlank()) {
-            jTextFieldResponse.setText(HashTool.getFilehash(jComboBoxHash.getSelectedItem().toString(), new File(jTextFieldRutaArchivo.getText())));
+            jTextAreaResponse.setText(HashTool.getFilehash(jComboBoxHash.getSelectedItem().toString(), new File(jTextFieldRutaArchivo.getText())));
         } else {
             jLabelFile.setForeground(Color.red);
         }
@@ -357,6 +361,9 @@ public class Cifrado extends javax.swing.JFrame {
             
             String path = new File(".").getCanonicalPath();
             Desktop.getDesktop().open(new File(path+"/logs"));
+            
+            Logs.LOGGER_USER.log(Level.INFO, "El usuario accede a la carpeta de Logs");
+
             
         } catch (IOException ex) {
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
@@ -418,9 +425,10 @@ public class Cifrado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextAreaResponse;
     private javax.swing.JTextArea jTextAreaString;
-    private javax.swing.JTextField jTextFieldResponse;
     private javax.swing.JTextField jTextFieldRutaArchivo;
     // End of variables declaration//GEN-END:variables
 }

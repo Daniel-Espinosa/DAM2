@@ -1,0 +1,6 @@
+feb 21, 2024 3:34:15 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación String | Algoritmo: SHA3-512 | String: asq1e asd q3e  | Resultado: dcee3ebf78d238af45afec52bf2edb6912d7988fbf9b16d8e421e2c7c82f6ff2c99d0f2a89b262b3efc41a5e8df4b6490b1a858c04e307656ad9032a6e537072
+feb 21, 2024 3:35:29 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación String | Algoritmo: SHA-1 | String: asdwew | Resultado: 783688522a88e3437861b73d718bb76b76b6dd51
+feb 21, 2024 3:39:09 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación String | Algoritmo: SHA3-512 | String: asd123dasd | Resultado: 371c0461e7ac3217d5613b00f8452f16959c5166c06c1ffebcde5f08a8e9b53ddcedfbfd6f35d60f00861fd85ecf09196bd4afa9402d145dd6c025ca99ba3569

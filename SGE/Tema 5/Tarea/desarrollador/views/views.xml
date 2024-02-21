@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="desarrollador.list">
+      <field name="name">desarrollador list</field>
+      <field name="model">desarrollador.desarrollador</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="desarrollador.action_window">
+      <field name="name">desarrollador window</field>
+      <field name="res_model">desarrollador.desarrollador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="desarrollador.action_server">
+      <field name="name">desarrollador server</field>
+      <field name="model_id" ref="model_desarrollador_desarrollador"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="desarrollador" id="desarrollador.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="desarrollador.menu_1" parent="desarrollador.menu_root"/>
+    <menuitem name="Menu 2" id="desarrollador.menu_2" parent="desarrollador.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="desarrollador.menu_1_list" parent="desarrollador.menu_1"
+              action="desarrollador.action_window"/>
+    <menuitem name="Server to list" id="desarrollador" parent="desarrollador.menu_2"
+              action="desarrollador.action_server"/>
+-->
+  </data>
+</odoo>
