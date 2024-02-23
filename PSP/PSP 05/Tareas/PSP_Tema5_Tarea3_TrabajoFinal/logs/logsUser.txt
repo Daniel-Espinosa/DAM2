@@ -4,3 +4,7 @@ feb 21, 2024 3:35:29 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metod
 INFO: Algoritmo de encriptación String | Algoritmo: SHA-1 | String: asdwew | Resultado: 783688522a88e3437861b73d718bb76b76b6dd51
 feb 21, 2024 3:39:09 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
 INFO: Algoritmo de encriptación String | Algoritmo: SHA3-512 | String: asd123dasd | Resultado: 371c0461e7ac3217d5613b00f8452f16959c5166c06c1ffebcde5f08a8e9b53ddcedfbfd6f35d60f00861fd85ecf09196bd4afa9402d145dd6c025ca99ba3569
+feb 22, 2024 8:21:00 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool getStringHash
+INFO: Algoritmo de encriptación String | Algoritmo: SHA-1 | String: asdadads | Resultado: ca4ec566861879507ba5ed3b6c273865222afd9f
+feb 22, 2024 8:21:09 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Cifrado jButtonLogsActionPerformed
+INFO: El usuario accede a la carpeta de Logs

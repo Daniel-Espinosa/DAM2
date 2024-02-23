@@ -78,7 +78,7 @@ class juego(models.Model):
         required=True,
         translate=False
         )
-    desarrollador = fields.One2one(
+    desarrollador = fields.Many2one(
         'modulo.desarrollador',
         string='Desarrolador',
         store=True,

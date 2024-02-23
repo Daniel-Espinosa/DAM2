@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Nueva Categoria</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>
+            <h1>Añadir una categoria nueva a la BD.</h1>
+            <form action="#" th:action="@{/formulario}" 
+                  th:object="${categoria}" method="post">
+                <p>Identificador: <input type="text" 
+                                         th:field="*{pkcategoria}" /></p>
+                <p>Nombre: <input type="text" 
+                                  th:field="*{nombre}" /></p>
+                <p>
+                    <input type="submit" value="Enviar" />
+                    <input type="reset" value="Cancelar" />
+                </p>
+            </form>
+        </div>
+    </body>
+</html>
