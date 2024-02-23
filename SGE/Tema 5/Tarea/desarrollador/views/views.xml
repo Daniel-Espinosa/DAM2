@@ -3,7 +3,7 @@
     <!-- explicit list view definition -->
 
     <!-- Tree de Desarroladores -->
-    <record model="ir.ui.view" id="desarrollador.list">
+    <record model="ir.ui.view" id="desarrollador.desarrollador_list">
       <field name="name">Desarrolladores</field>
       <field name="model">modulo.desarrollador</field>
       <field name="arch" type="xml">
@@ -18,7 +18,7 @@
     </record>
 
     <!-- Tree de Juegos -->
-    <!-- <record model="ir.ui.view" id="juego.list">
+    <record model="ir.ui.view" id="desarrollador.juego_list">
       <field name="name">Juegos</field>
       <field name="model">modulo.juego</field>
       <field name="arch" type="xml">
@@ -31,14 +31,14 @@
           <field name="desarrollador"/>
         </tree>
       </field>
-    </record> -->
+    </record>
 
     <!-- Form de Desarrolador -->
-    <record model="ir.ui.view" id="desarrollador.form">
+    <record model="ir.ui.view" id="desarrollador.desarrollador_form">
       <field name="name">Desarrolador</field>
       <field name="model">modulo.desarrollador</field>
       <field name="arch" type="xml">
-        <form name="Desarollador">
+        <form string="Desarollador">
           <sheet>
             <h1>Nombre: <field name="nombre"/></h1>
             <group>
@@ -53,7 +53,7 @@
     </record>
 
     <!-- Form de Juego -->
-    <!-- <record model="ir.ui.view" id="juego.form">
+    <record model="ir.ui.view" id="desarrollador.juego_form">
       <field name="name">Juego</field>
       <field name="model">modulo.juego</field>
       <field name="arch" type="xml">
@@ -70,7 +70,7 @@
           </sheet>
         </form>
       </field>
-    </record> -->
+    </record>
 
     <!-- Accion de Desarollador -->
     <record model="ir.actions.act_window" id="desarrollador.action_window">
@@ -80,11 +80,11 @@
     </record>
 
     <!-- Accion de Juego -->
-    <!-- <record model="ir.actions.act_window" id="juego.action_window">
+    <record model="ir.actions.act_window" id="desarrollador.juego_action_window">
       <field name="name">juego window</field>
       <field name="res_model">modulo.juego</field>
       <field name="view_mode">tree,form</field>
-    </record> -->
+    </record>
 
 
     <!-- server action to the one above -->
@@ -123,22 +123,22 @@
     <!-- menu categories -->
 
     <menuitem name="Desarrolladores" id="desarrollador.menu" parent="desarrollador.menu_root"/>
-    <!-- <menuitem name="Juego" id="juego.menu" parent="steam.menu_root"/> -->
+    <menuitem name="Juego" id="desarrollador.juego_menu" parent="desarrollador.menu_root"/>
 
     <!-- actions -->
 
-    
-    <menuitem name="Desarrollador_Action" id="desarrollador.menu_list" parent="desarrollador.menu"
-              action="desarrollador.action_window"/>
+    <menuitem name="Desarrollador_Action" id="desarrollador.menu_list" parent="desarrollador.menu" action="desarrollador.action_window"/>
 
-    <!-- <menuitem name="Juego" id="juego.menu_list" parent="juego.menu"
-              action="juego.action_window"/> -->
-    
-    <!-- <menuitem name="Server to list Desarrollador" id="desarrollador" parent="desarrollador.menu_list"
-              action="desarrollador.action_server"/> -->
+    <menuitem name="Juego" id="desarrollador.juego_menu_list" parent="desarrollador.juego_menu" action="desarrollador.juego_action_window"/>
 
-    <!-- <menuitem name="Server to list Juego" id="juego" parent="juego.menu_list"
-              action="juego.action_server"/>           -->
+<!-- ESTO NO-->
+<!-- 
+    <menuitem name="Server to list Desarrollador" id="desarrollador" parent="desarrollador.menu_list"
+              action="desarrollador.action_server"/>
+
+    <menuitem name="Server to list Juego" id="juego" parent="juego.menu_list"
+              action="juego.action_server"/>          
+ -->
 
   </data>
 </odoo>

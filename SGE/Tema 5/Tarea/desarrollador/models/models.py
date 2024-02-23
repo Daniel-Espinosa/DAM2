@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api
 
-
 class desarrollador(models.Model):
     _name = 'modulo.desarrollador'
     _description = 'modulo.desarrollador'
@@ -49,7 +48,7 @@ class juego(models.Model):
         required=True,
         translate=False)
     pegi = fields.Selection(
-        [('1','PEGI-3'),('2','PEGI-7'),('3','PEGI-12'),('4','PEGI-16'),('5','PEGI-18')],
+        selection=[('1','PEGI-3'),('2','PEGI-7'),('3','PEGI-12'),('4','PEGI-16'),('5','PEGI-18')],
         string='PEGI',
         store=True,
         readonly=False,
@@ -71,7 +70,7 @@ class juego(models.Model):
         required=True,
         translate=False)
     genero = fields.Selection(
-        [('1','Accion'),('2','Aventura'),('3','Puzzle'),('4','Rol'),('5','Carrera'),('6','Lucha'),('7','Estrategia'),('8','Simulacion')],
+        selection=[('1','Accion'),('2','Aventura'),('3','Puzzle'),('4','Rol'),('5','Carrera'),('6','Lucha'),('7','Estrategia'),('8','Simulacion')],
         string='GENERO',
         store=True,
         readonly=False,
@@ -86,7 +85,6 @@ class juego(models.Model):
         required=True,
         translate=False
         )
-
 
     # @api.depends('value')
     # def _value_pc(self):
