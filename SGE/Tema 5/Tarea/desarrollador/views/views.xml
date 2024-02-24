@@ -8,7 +8,7 @@
       <field name="model">modulo.desarrollador</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre"/>
+          <field name="name"/>
           <field name="cif"/>
           <field name="direccion"/>
           <field name="telefono"/>
@@ -23,7 +23,7 @@
       <field name="model">modulo.juego</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre"/>
+          <field name="name"/>
           <field name="pegi"/>
           <field name="fecha"/>
           <field name="precio"/>
@@ -40,7 +40,7 @@
       <field name="arch" type="xml">
         <form string="Desarollador">
           <sheet>
-            <h1>Nombre: <field name="nombre"/></h1>
+            <h1>Nombre: <field name="name"/></h1>
             <group>
               <field name="cif" label="CIF: "/>
               <field name="direccion" label="Direccion: "/>
@@ -59,7 +59,7 @@
       <field name="arch" type="xml">
         <form name="Juego">
           <sheet>
-            <h1>Nombre: <field name="nombre"/></h1>
+            <h1>Nombre: <field name="name"/></h1>
             <group>
               <field name="pegi" label="PEGI: "/>
               <field name="fecha" label="Fecha: "/>

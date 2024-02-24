@@ -6,7 +6,7 @@ class desarrollador(models.Model):
     _name = 'modulo.desarrollador'
     _description = 'modulo.desarrollador'
 
-    nombre = fields.Char(
+    name = fields.Char(
         string='Nombre',
         store=True,
         readonly=False,
@@ -41,7 +41,7 @@ class juego(models.Model):
     _name = 'modulo.juego'
     _description = 'modulo.juego'
 
-    nombre = fields.Char(
+    name = fields.Char(
         string='Nombre',
         store=True,
         readonly=False,
