@@ -42,7 +42,7 @@ public class Ejemplo3_cifradoRSAMaven {
             PublicKey clavePublica=clavesRSA.getPublic();
             
             System.out.println(clavePrivada.toString());
-            
+            System.out.println(clavePublica.toString());
             
             String mensaje="Este es el mensaje secreto";
             

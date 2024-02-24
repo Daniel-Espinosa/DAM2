@@ -149,7 +149,7 @@ public class HashTool {
      * @param inf
      * @return
      */
-    private static String enHexadecimal(byte[] inf) {
+    public static String enHexadecimal(byte[] inf) {
         String hexadecimal = "";
         for (int i = 0; i < inf.length; i++) {
             String hx = Integer.toHexString(inf[i] & 0xFF);
@@ -159,7 +159,6 @@ public class HashTool {
             hexadecimal += hx;
         }
 
-        //TODO: Añadir el logger
         return hexadecimal;
 
     }

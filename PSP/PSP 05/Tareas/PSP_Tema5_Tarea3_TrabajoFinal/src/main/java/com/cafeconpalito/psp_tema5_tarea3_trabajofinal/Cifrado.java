@@ -5,6 +5,7 @@
 package com.cafeconpalito.psp_tema5_tarea3_trabajofinal;
 
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool;
+import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.KeyPairManagerRSA;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.Logs;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -26,11 +27,26 @@ public class Cifrado extends javax.swing.JFrame {
 
         Logs.openLogs();
 
+        //CARGA LOS DISTINTOS ALGORITMOS DE CIFRADO PARA EL HASH
         for (String algorithm : HashTool.getAlgorithms()) {
             jComboBoxHash.addItem(algorithm);
         }
+        
+        //PERMITE EL WRAP PARA LOS TEXT AREA Y QUE SOLO HAGAN SCROLL PARA ABAJO
+        jTextAreaRSAgeneratorPrivateKey.setLineWrap(true);
+        jTextAreaRSAgeneratorPrivateKey.setWrapStyleWord(true);
+        
+        jTextAreaRSAgeneratorPublicKey.setLineWrap(true);
+        jTextAreaRSAgeneratorPublicKey.setWrapStyleWord(true);
+    
+        jTextAreaHASHResponse.setLineWrap(true);
+        jTextAreaHASHResponse.setWrapStyleWord(true);
+        
+        jTextHASHAreaString.setLineWrap(true);
+        jTextHASHAreaString.setWrapStyleWord(true);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +61,7 @@ public class Cifrado extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelString = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaString = new javax.swing.JTextArea();
+        jTextHASHAreaString = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxHash = new javax.swing.JComboBox<>();
         jButtonCifrarTexto = new javax.swing.JButton();
@@ -53,10 +69,37 @@ public class Cifrado extends javax.swing.JFrame {
         jButtonSelectFile = new javax.swing.JButton();
         jButtonCifrarArchivo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButtonLimpiar = new javax.swing.JButton();
+        jButtonLimpiarHASH = new javax.swing.JButton();
         jTextFieldRutaArchivo = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaResponse = new javax.swing.JTextArea();
+        jTextAreaHASHResponse = new javax.swing.JTextArea();
+        jPanel5 = new javax.swing.JPanel();
+        jLabelRSAgeneratorKeySize = new javax.swing.JLabel();
+        jComboBoxRSAgeneratorKeySize = new javax.swing.JComboBox<>();
+        jButtonRSAgeneratorLimpiar = new javax.swing.JButton();
+        jLabelRSAgeneratorKeySeed = new javax.swing.JLabel();
+        jTextFieldRSAgeneratorKeySeed = new javax.swing.JTextField();
+        jButtonRSAgeneratorGenerarPair = new javax.swing.JButton();
+        jLabelRSAprivateKey = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaRSAgeneratorPrivateKey = new javax.swing.JTextArea();
+        jLabelRSApubliKey = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaRSAgeneratorPublicKey = new javax.swing.JTextArea();
+        jButtonRSAgeneratorSaveKeys = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabelRSAKeySize1 = new javax.swing.JLabel();
+        jComboBoxRSAKeySize1 = new javax.swing.JComboBox<>();
+        jButtonRSALimpiar1 = new javax.swing.JButton();
+        jLabelRSAKeySeed1 = new javax.swing.JLabel();
+        jTextFieldRSAKeySeed1 = new javax.swing.JTextField();
+        jButtonRSAgenerarPair1 = new javax.swing.JButton();
+        jLabelRSAprivateKey1 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaRSAprivateKey1 = new javax.swing.JTextArea();
+        jLabelRSApubliKey1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextAreaRSApublicKey1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabelLogs = new javax.swing.JLabel();
@@ -66,6 +109,7 @@ public class Cifrado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cifrado Tema 5 Tarea Final");
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -78,9 +122,9 @@ public class Cifrado extends javax.swing.JFrame {
         jLabelString.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelString.setText("Introduce un texto para cifrar");
 
-        jTextAreaString.setColumns(20);
-        jTextAreaString.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaString);
+        jTextHASHAreaString.setColumns(20);
+        jTextHASHAreaString.setRows(5);
+        jScrollPane1.setViewportView(jTextHASHAreaString);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Selecciona metodo de Cifrado");
@@ -112,18 +156,18 @@ public class Cifrado extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Funcion resumen HASH");
 
-        jButtonLimpiar.setText("Limpiar");
-        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpiarHASH.setText("Limpiar");
+        jButtonLimpiarHASH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimpiarActionPerformed(evt);
+                jButtonLimpiarHASHActionPerformed(evt);
             }
         });
 
         jTextFieldRutaArchivo.setFocusable(false);
 
-        jTextAreaResponse.setColumns(20);
-        jTextAreaResponse.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaResponse);
+        jTextAreaHASHResponse.setColumns(20);
+        jTextAreaHASHResponse.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaHASHResponse);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,13 +178,13 @@ public class Cifrado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonLimpiar)
+                        .addComponent(jButtonLimpiarHASH)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(jComboBoxHash, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldRutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -186,11 +230,213 @@ public class Cifrado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonLimpiar)
+                .addComponent(jButtonLimpiarHASH)
                 .addGap(17, 17, 17))
         );
 
-        jTabbedPane1.addTab("Cifrado HASH", jPanel1);
+        jTabbedPane1.addTab("HASH Cifrado ", jPanel1);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabelRSAgeneratorKeySize.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAgeneratorKeySize.setText("Selecciona tamaño clave");
+
+        jComboBoxRSAgeneratorKeySize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "512", "1024", "2048", "3072", "4096" }));
+
+        jButtonRSAgeneratorLimpiar.setText("Limpiar");
+        jButtonRSAgeneratorLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRSAgeneratorLimpiarActionPerformed(evt);
+            }
+        });
+
+        jLabelRSAgeneratorKeySeed.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAgeneratorKeySeed.setText("Selecciona tamaño clave");
+
+        jButtonRSAgeneratorGenerarPair.setText("Generar");
+        jButtonRSAgeneratorGenerarPair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRSAgeneratorGenerarPairActionPerformed(evt);
+            }
+        });
+
+        jLabelRSAprivateKey.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAprivateKey.setText("Clave Privada");
+
+        jTextAreaRSAgeneratorPrivateKey.setColumns(20);
+        jTextAreaRSAgeneratorPrivateKey.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaRSAgeneratorPrivateKey);
+
+        jLabelRSApubliKey.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSApubliKey.setText("Clave Publica");
+
+        jTextAreaRSAgeneratorPublicKey.setColumns(20);
+        jTextAreaRSAgeneratorPublicKey.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaRSAgeneratorPublicKey);
+
+        jButtonRSAgeneratorSaveKeys.setText("Guardar");
+        jButtonRSAgeneratorSaveKeys.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRSAgeneratorSaveKeysActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButtonRSAgeneratorLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRSAgeneratorGenerarPair)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRSAgeneratorSaveKeys))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelRSApubliKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelRSAgeneratorKeySize, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                .addComponent(jComboBoxRSAgeneratorKeySize, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelRSAgeneratorKeySeed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldRSAgeneratorKeySeed))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelRSAprivateKey, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabelRSAgeneratorKeySize)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxRSAgeneratorKeySize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelRSAgeneratorKeySeed)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldRSAgeneratorKeySeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRSAgeneratorLimpiar)
+                            .addComponent(jButtonRSAgeneratorGenerarPair)
+                            .addComponent(jButtonRSAgeneratorSaveKeys))
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabelRSAprivateKey)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelRSApubliKey)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(64, Short.MAX_VALUE))))
+        );
+
+        jTabbedPane1.addTab("RSA Key Generator", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabelRSAKeySize1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAKeySize1.setText("Selecciona tamaño clave");
+
+        jComboBoxRSAKeySize1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "512", "1024", "2048", "3072", "4096" }));
+
+        jButtonRSALimpiar1.setText("Limpiar");
+        jButtonRSALimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRSALimpiar1ActionPerformed(evt);
+            }
+        });
+
+        jLabelRSAKeySeed1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAKeySeed1.setText("Selecciona tamaño clave");
+
+        jButtonRSAgenerarPair1.setText("Generar");
+        jButtonRSAgenerarPair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRSAgenerarPair1ActionPerformed(evt);
+            }
+        });
+
+        jLabelRSAprivateKey1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSAprivateKey1.setText("Clave Privada");
+
+        jTextAreaRSAprivateKey1.setColumns(20);
+        jTextAreaRSAprivateKey1.setRows(5);
+        jScrollPane5.setViewportView(jTextAreaRSAprivateKey1);
+
+        jLabelRSApubliKey1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelRSApubliKey1.setText("Clave Publica");
+
+        jTextAreaRSApublicKey1.setColumns(20);
+        jTextAreaRSApublicKey1.setRows(5);
+        jScrollPane6.setViewportView(jTextAreaRSApublicKey1);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jButtonRSALimpiar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRSAgenerarPair1))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelRSApubliKey1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelRSAKeySize1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                .addComponent(jComboBoxRSAKeySize1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelRSAKeySeed1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldRSAKeySeed1))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelRSAprivateKey1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabelRSAKeySize1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxRSAKeySize1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelRSAKeySeed1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldRSAKeySeed1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRSALimpiar1)
+                            .addComponent(jButtonRSAgenerarPair1))
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabelRSAprivateKey1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelRSApubliKey1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(64, Short.MAX_VALUE))))
+        );
+
+        jTabbedPane1.addTab("RSA Cifrado", jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -198,14 +444,14 @@ public class Cifrado extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 796, Short.MAX_VALUE)
+            .addGap(0, 808, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 438, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Cifrado AES", jPanel2);
+        jTabbedPane1.addTab("AES Cifrado", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -227,7 +473,7 @@ public class Cifrado extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLogs))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +532,7 @@ public class Cifrado extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -294,27 +540,40 @@ public class Cifrado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clearErrors() {
+    private void clearErrorsHASH() {
 
         jLabelString.setForeground(Color.black);
         jLabelFile.setForeground(Color.black);
 
     }
 
-    private void clearFields() {
+    private void clearFieldsHASH() {
 
-        clearErrors();
+        clearErrorsHASH();
         jTextFieldRutaArchivo.setText("");
-        jTextAreaString.setText("");
-        jTextAreaResponse.setText("");
+        jTextHASHAreaString.setText("");
+        jTextAreaHASHResponse.setText("");
+
+    }
+    
+    private void clearErrorsRSA() {
+
+        jLabelRSAgeneratorKeySeed.setForeground(Color.black);
 
     }
 
+    private void clearFieldsRSA() {
+
+        clearErrorsRSA();
+        jTextFieldRSAgeneratorKeySeed.setText("");
+
+    }
+    
     private void jButtonCifrarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCifrarTextoActionPerformed
 
-        clearErrors();
-        if (!jTextAreaString.getText().isBlank()) {
-            jTextAreaResponse.setText(HashTool.getStringHash(jComboBoxHash.getSelectedItem().toString(), jTextAreaString.getText()));
+        clearErrorsHASH();
+        if (!jTextHASHAreaString.getText().isBlank()) {
+            jTextAreaHASHResponse.setText(HashTool.getStringHash(jComboBoxHash.getSelectedItem().toString(), jTextHASHAreaString.getText()));
         } else {
             jLabelString.setForeground(Color.red);
         }
@@ -323,9 +582,9 @@ public class Cifrado extends javax.swing.JFrame {
 
     private void jButtonCifrarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCifrarArchivoActionPerformed
 
-        clearErrors();
+        clearErrorsHASH();
         if (!jTextFieldRutaArchivo.getText().isBlank()) {
-            jTextAreaResponse.setText(HashTool.getFilehash(jComboBoxHash.getSelectedItem().toString(), new File(jTextFieldRutaArchivo.getText())));
+            jTextAreaHASHResponse.setText(HashTool.getFilehash(jComboBoxHash.getSelectedItem().toString(), new File(jTextFieldRutaArchivo.getText())));
         } else {
             jLabelFile.setForeground(Color.red);
         }
@@ -338,10 +597,10 @@ public class Cifrado extends javax.swing.JFrame {
         // ponerElfile en el label
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
-    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+    private void jButtonLimpiarHASHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarHASHActionPerformed
         // TODO add your handling code here:
-        clearFields();
-    }//GEN-LAST:event_jButtonLimpiarActionPerformed
+        clearFieldsHASH();
+    }//GEN-LAST:event_jButtonLimpiarHASHActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
@@ -370,6 +629,36 @@ public class Cifrado extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButtonLogsActionPerformed
+
+    private void jButtonRSAgeneratorLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRSAgeneratorLimpiarActionPerformed
+        // TODO add your handling code here:
+        clearFieldsRSA();
+    }//GEN-LAST:event_jButtonRSAgeneratorLimpiarActionPerformed
+
+    private void jButtonRSAgeneratorGenerarPairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRSAgeneratorGenerarPairActionPerformed
+        // TODO add your handling code here:
+        KeyPairManagerRSA RSApair = new KeyPairManagerRSA();
+        RSApair.makeKeyPair(jTextFieldRSAgeneratorKeySeed.getText(), Integer.parseInt((String) jComboBoxRSAgeneratorKeySize.getSelectedItem()));
+        
+        jTextAreaRSAgeneratorPrivateKey.setText(RSApair.getPrivateKeyStr());
+        jTextAreaRSAgeneratorPublicKey.setText(RSApair.getPublicKeyStr());
+        
+        
+    }//GEN-LAST:event_jButtonRSAgeneratorGenerarPairActionPerformed
+
+    private void jButtonRSALimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRSALimpiar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRSALimpiar1ActionPerformed
+
+    private void jButtonRSAgenerarPair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRSAgenerarPair1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRSAgenerarPair1ActionPerformed
+
+    private void jButtonRSAgeneratorSaveKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRSAgeneratorSaveKeysActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButtonRSAgeneratorSaveKeysActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,26 +698,53 @@ public class Cifrado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCifrarArchivo;
     private javax.swing.JButton jButtonCifrarTexto;
-    private javax.swing.JButton jButtonLimpiar;
+    private javax.swing.JButton jButtonLimpiarHASH;
     private javax.swing.JButton jButtonLogs;
+    private javax.swing.JButton jButtonRSALimpiar1;
+    private javax.swing.JButton jButtonRSAgenerarPair1;
+    private javax.swing.JButton jButtonRSAgeneratorGenerarPair;
+    private javax.swing.JButton jButtonRSAgeneratorLimpiar;
+    private javax.swing.JButton jButtonRSAgeneratorSaveKeys;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonSelectFile;
     private javax.swing.JComboBox<String> jComboBoxHash;
+    private javax.swing.JComboBox<String> jComboBoxRSAKeySize1;
+    private javax.swing.JComboBox<String> jComboBoxRSAgeneratorKeySize;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelCafeConPalito;
     private javax.swing.JLabel jLabelFile;
     private javax.swing.JLabel jLabelLogs;
+    private javax.swing.JLabel jLabelRSAKeySeed1;
+    private javax.swing.JLabel jLabelRSAKeySize1;
+    private javax.swing.JLabel jLabelRSAgeneratorKeySeed;
+    private javax.swing.JLabel jLabelRSAgeneratorKeySize;
+    private javax.swing.JLabel jLabelRSAprivateKey;
+    private javax.swing.JLabel jLabelRSAprivateKey1;
+    private javax.swing.JLabel jLabelRSApubliKey;
+    private javax.swing.JLabel jLabelRSApubliKey1;
     private javax.swing.JLabel jLabelString;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextAreaResponse;
-    private javax.swing.JTextArea jTextAreaString;
+    private javax.swing.JTextArea jTextAreaHASHResponse;
+    private javax.swing.JTextArea jTextAreaRSAgeneratorPrivateKey;
+    private javax.swing.JTextArea jTextAreaRSAgeneratorPublicKey;
+    private javax.swing.JTextArea jTextAreaRSAprivateKey1;
+    private javax.swing.JTextArea jTextAreaRSApublicKey1;
+    private javax.swing.JTextField jTextFieldRSAKeySeed1;
+    private javax.swing.JTextField jTextFieldRSAgeneratorKeySeed;
     private javax.swing.JTextField jTextFieldRutaArchivo;
+    private javax.swing.JTextArea jTextHASHAreaString;
     // End of variables declaration//GEN-END:variables
 }
