@@ -3,9 +3,11 @@
  */
 package com.cafeconpalito.psp_tema5_tarea3_trabajofinal;
 
-import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool;
-import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.Logs;
-import java.util.logging.Level;
+import com.google.common.io.Files;
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -16,13 +18,31 @@ public class PSP_Tema5_Tarea3_TrabajoFinal {
     
     public static void main(String[] args) {
                 
-        Logs.openLogs();
+
+        File f = new File("pom.xml");
+        String absolutePath = f.getAbsolutePath();
+       
         
-        //HashTool.getAlgorithms();
+        Path p = Paths.get(absolutePath);
+        String encripName = p.getFileName().toString().replaceFirst("."+com.google.common.io.Files.getFileExtension(p.getFileName().toString()), ".rsa");
+        String encripPath = p.getParent()+FileSystems.getDefault().getSeparator()+"encripted_"+encripName;
+        p = Paths.get(encripPath);
         
-        HashTool.getStringHash("MD5", "ERA UN DOMINGO EN LA TARDE EN LOS COCHES DE CHOQUE PRIPAIRIAPRA");
+        System.out.println(encripPath);
+        System.out.println(p);
         
-        Logs.closeLogs();
+        
+        
+//        try {
+//            InputStream is = Files.newInputStream(new File(absolutePath).toPath());
+//        } catch (IOException ex) {
+//            Logger.getLogger(PSP_Tema5_Tarea3_TrabajoFinal.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        
+        
+        
+       
 
     }
     

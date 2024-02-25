@@ -101,7 +101,6 @@ public class HashTool {
             }
         }
 
-
         Logs.LOGGER_USER.log(Level.INFO, "Algoritmo de encriptaci\u00f3n File | Algoritmo: {0} | File: {1} | Resultado: {2} ", new Object[]{algorithm, file.getName(),textHexa});
 
         return textHexa;

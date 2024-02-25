@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JEditorPane" name="jEditorPane1">
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Cifrado Tema 5 Tarea Final"/>
@@ -115,28 +128,28 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButtonLimpiarHASH" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonHASHLimpiar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jLabel3" alignment="0" pref="251" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxHash" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxHASH" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="53" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldRutaArchivo" min="-2" pref="450" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jButtonCifrarArchivo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jButtonSelectFile" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextFieldHASHRutaArchivo" min="-2" pref="450" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabelFile" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jLabelString" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabelHASHFilePath" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jLabelHASHString" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jScrollPane1" alignment="0" pref="450" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jButtonCifrarTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonHASHCifrarTexto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButtonHASHCifrarArchivo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonHASHSelectFile" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -153,7 +166,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelString" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelHASHString" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -161,35 +174,35 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jScrollPane1" min="-2" pref="98" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonCifrarTexto" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonHASHCifrarTexto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jComboBoxHash" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxHASH" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jLabelFile" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelHASHFilePath" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButtonSelectFile" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonCifrarArchivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHASHRutaArchivo" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonHASHCifrarArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonHASHSelectFile" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldRutaArchivo" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonLimpiarHASH" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonHASHLimpiar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabelString">
+                <Component class="javax.swing.JLabel" name="jLabelHASHString">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -220,7 +233,7 @@
                     <Property name="text" type="java.lang.String" value="Selecciona metodo de Cifrado"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxHash">
+                <Component class="javax.swing.JComboBox" name="jComboBoxHASH">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -230,15 +243,15 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonCifrarTexto">
+                <Component class="javax.swing.JButton" name="jButtonHASHCifrarTexto">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cifrar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCifrarTextoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHASHCifrarTextoActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabelFile">
+                <Component class="javax.swing.JLabel" name="jLabelHASHFilePath">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -246,20 +259,20 @@
                     <Property name="text" type="java.lang.String" value="Selecciona un archivo para cifrar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonSelectFile">
+                <Component class="javax.swing.JButton" name="jButtonHASHSelectFile">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Seleccionar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelectFileActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHASHSelectFileActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonCifrarArchivo">
+                <Component class="javax.swing.JButton" name="jButtonHASHCifrarArchivo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cifrar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCifrarArchivoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHASHCifrarArchivoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -270,15 +283,15 @@
                     <Property name="text" type="java.lang.String" value="Funcion resumen HASH"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonLimpiarHASH">
+                <Component class="javax.swing.JButton" name="jButtonHASHLimpiar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimpiarHASHActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHASHLimpiarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldRutaArchivo">
+                <Component class="javax.swing.JTextField" name="jTextFieldHASHRutaArchivo">
                   <Properties>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
@@ -380,7 +393,7 @@
                                   <Component id="jLabelRSApubliKey" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" pref="149" max="-2" attributes="0"/>
-                                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                                  <EmptySpace pref="70" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -425,7 +438,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Selecciona tama&#xf1;o clave"/>
+                    <Property name="text" type="java.lang.String" value="Introduce una semilla"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldRSAgeneratorKeySeed">
@@ -512,34 +525,44 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButtonRSALimpiar1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButtonRSAgenerarPair1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabelRSApubliKey1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane6" alignment="0" min="-2" pref="589" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabelRSAKeySize1" alignment="0" pref="146" max="32767" attributes="0"/>
-                                          <Component id="jComboBoxRSAKeySize1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabelRSAKeySeed1" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldRSAKeySeed1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelRSAcifradoFilePubKey" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelRSAcifradoFilePrivKey" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButtonRSAcifradoSelectPubKeyPath" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonRSAcifradoCifraPubKey" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonRSAcifradoDesciPubKey" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabelRSAprivateKey1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane5" alignment="0" pref="589" max="32767" attributes="0"/>
+                                      <Component id="jButtonRSAcifradoSelectFilePubKeyPath" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButtonRSAcifradoSelectPrivKeyPath" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonRSAcifradoCifraPrivKey" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonRSAcifradoDesciPrivKey" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jLabelRSAcifradoPrivKey" pref="589" max="32767" attributes="0"/>
+                                      <Component id="jButtonRSAcifradoSelectFilePrivKeyPath" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelRSAcifradoPubKey" alignment="0" pref="589" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldRSAcifradoPivKeyPath" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldRSAcifradoFilePrivKeyPath" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldRSAcifradoPubKeyPath" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldRSAcifradoFilePubKeyPath" alignment="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="28" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="jButtonRSAcifradoLimpiar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -547,89 +570,54 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabelRSAKeySize1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBoxRSAKeySize1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabelRSAKeySeed1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextFieldRSAKeySeed1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButtonRSALimpiar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButtonRSAgenerarPair1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabelRSAprivateKey1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" min="-2" pref="149" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabelRSApubliKey1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" min="-2" pref="149" max="-2" attributes="0"/>
-                                  <EmptySpace pref="64" max="32767" attributes="0"/>
-                              </Group>
+                          <Component id="jLabelRSAcifradoPrivKey" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="jTextFieldRSAcifradoPivKeyPath" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonRSAcifradoSelectPrivKeyPath" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonRSAcifradoCifraPrivKey" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonRSAcifradoDesciPrivKey" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelRSAcifradoFilePrivKey" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldRSAcifradoFilePrivKeyPath" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonRSAcifradoSelectFilePrivKeyPath" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabelRSAcifradoPubKey" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldRSAcifradoPubKeyPath" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonRSAcifradoSelectPubKeyPath" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonRSAcifradoCifraPubKey" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonRSAcifradoDesciPubKey" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelRSAcifradoFilePubKey" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldRSAcifradoFilePubKeyPath" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonRSAcifradoSelectFilePubKeyPath" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButtonRSAcifradoLimpiar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabelRSAKeySize1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Selecciona tama&#xf1;o clave"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxRSAKeySize1">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="512"/>
-                        <StringItem index="1" value="1024"/>
-                        <StringItem index="2" value="2048"/>
-                        <StringItem index="3" value="3072"/>
-                        <StringItem index="4" value="4096"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonRSALimpiar1">
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoLimpiar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSALimpiar1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoLimpiarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabelRSAKeySeed1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Selecciona tama&#xf1;o clave"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldRSAKeySeed1">
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonRSAgenerarPair1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Generar"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAgenerarPair1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabelRSAprivateKey1">
+                <Component class="javax.swing.JLabel" name="jLabelRSAcifradoPrivKey">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -637,22 +625,7 @@
                     <Property name="text" type="java.lang.String" value="Clave Privada"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextAreaRSAprivateKey1">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="jLabelRSApubliKey1">
+                <Component class="javax.swing.JLabel" name="jLabelRSAcifradoPubKey">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -660,21 +633,106 @@
                     <Property name="text" type="java.lang.String" value="Clave Publica"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane6">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextAreaRSApublicKey1">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
+                <Component class="javax.swing.JLabel" name="jLabelRSAcifradoFilePrivKey">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Selecciona un archivo para cifrar o descifrar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextFieldRSAcifradoFilePrivKeyPath">
+                  <Properties>
+                    <Property name="focusable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextFieldRSAcifradoPivKeyPath">
+                  <Properties>
+                    <Property name="focusable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextFieldRSAcifradoPubKeyPath">
+                  <Properties>
+                    <Property name="focusable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextFieldRSAcifradoFilePubKeyPath">
+                  <Properties>
+                    <Property name="focusable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelRSAcifradoFilePubKey">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Selecciona un archivo para cifrar o descifrar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoSelectPrivKeyPath">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoSelectPrivKeyPathActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoSelectFilePrivKeyPath">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoSelectFilePrivKeyPathActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoSelectPubKeyPath">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoSelectPubKeyPathActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoSelectFilePubKeyPath">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Seleccionar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoSelectFilePubKeyPathActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoCifraPrivKey">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cifrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoCifraPrivKeyActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoCifraPubKey">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cifrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoCifraPubKeyActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoDesciPrivKey">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Descifrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoDesciPrivKeyActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonRSAcifradoDesciPubKey">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Descifrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRSAcifradoDesciPubKeyActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel2">
@@ -699,7 +757,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="438" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="444" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -738,7 +796,7 @@
                           <Component id="jLabelLogs" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonLogs" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="361" max="32767" attributes="0"/>
+                          <EmptySpace pref="367" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
