@@ -35,8 +35,11 @@ public class RSAEncryption {
      * @param absolutePath absolute absolutePath del archivo a encriptar
      * @param key PrivateKey o PublicKey
      * @param isPrivate True para PrivateKey, False para PublicKey
+     * @return Absolute Path del archivo cifrado
      */
-    public static void cifrar(String absolutePath, Object key, boolean isPrivate) {
+    public static String cifrar(String absolutePath, Object key, boolean isPrivate) {
+
+        String encripPath = null;
 
         PrivateKey privKey;
         PublicKey pubKey;
@@ -54,10 +57,11 @@ public class RSAEncryption {
         try {
             p = Paths.get(absolutePath);
             String encripName = p.getFileName().toString().replaceFirst("." + com.google.common.io.Files.getFileExtension(p.getFileName().toString()), ".rsa");
-            String encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + encripKey + encripName;
+            encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + encripKey + encripName;
             p = Paths.get(encripPath);
         } catch (Exception ex) {
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
         }
 
         try (InputStream is = Files.newInputStream(new File(absolutePath).toPath()); OutputStream os = Files.newOutputStream(p)) {
@@ -99,9 +103,11 @@ public class RSAEncryption {
             os.write(bufferFinal);
 
             Logs.LOGGER_USER.log(Level.INFO, "Encriptado de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            return encripPath;
 
         } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
         }
 
     }
@@ -110,25 +116,76 @@ public class RSAEncryption {
      * Descifrado de ficheros utilizando el algoritmo de criptografía asimétrica
      * RSA.
      *
-     * @param path
+     * @param absolutePath
      * @param key
      * @param isPrivate
+     * @return Absolute Path del archivo descifrado
      */
-    /**
-     * Descifrado de ficheros utilizando el algoritmo de criptografía asimétrica
-     * RSA.
-     *
-     * @param path
-     * @param key
-     * @param isPrivate
-     */
-    public static void descifrar(String path, Object key, boolean isPrivate) {
-        File f;
+    public static String descifrar(String absolutePath, Object key, boolean isPrivate) {
 
-        if (isPrivate) { //Clave Privada
+        String encripPath = null;
 
-        } else { // Clave Publica
+        PrivateKey privKey;
+        PublicKey pubKey;
+        Cipher c;
+        Path p = null;
+        String encripKey = "DECRIPTED_";
 
+        //Desde la ruta absoluta del archivo original creo un nuevo Path para el nuevo fichero encriptado
+        try {
+            p = Paths.get(absolutePath);
+            String encripName = p.getFileName().toString().replaceFirst("." + com.google.common.io.Files.getFileExtension(p.getFileName().toString()), ".txt");
+            encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + encripKey + encripName;
+            p = Paths.get(encripPath);
+        } catch (Exception ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+        try (InputStream is = Files.newInputStream(new File(absolutePath).toPath()); OutputStream os = Files.newOutputStream(p)) {
+
+            //Evaluo si es privada o publica
+            if (isPrivate) { //Clave Privada
+
+                //recasteo la clave que recibo
+                privKey = (PrivateKey) key;
+
+                //Instancio el Objeto a encriptar con la Key
+                c = Cipher.getInstance(privKey.getAlgorithm());
+                c.init(Cipher.DECRYPT_MODE, privKey);
+
+            } else {
+
+                //Recastelo la clave que recibo
+                pubKey = (PublicKey) key;
+
+                //Instancio el Objeto a encriptar con la Key
+                c = Cipher.getInstance(pubKey.getAlgorithm());
+                c.init(Cipher.DECRYPT_MODE, pubKey);
+
+            }
+
+            //Lectura y escritura de ficheros por bloques de Bytes de 512
+            byte[] bufferLecura = new byte[512];
+            int bytesLeidos = is.read(bufferLecura);
+
+            //Escritura de los bloques
+            while (bytesLeidos != -1) {
+                byte[] bufferEncriptado = c.update(bufferLecura, 0, bytesLeidos);
+                os.write(bufferEncriptado);
+                bytesLeidos = is.read(bufferLecura);
+
+            }
+            //Bloque final
+            byte[] bufferFinal = c.doFinal();
+            os.write(bufferFinal);
+
+            Logs.LOGGER_USER.log(Level.INFO, "Desencriptado de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            return encripPath;
+
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
         }
 
     }

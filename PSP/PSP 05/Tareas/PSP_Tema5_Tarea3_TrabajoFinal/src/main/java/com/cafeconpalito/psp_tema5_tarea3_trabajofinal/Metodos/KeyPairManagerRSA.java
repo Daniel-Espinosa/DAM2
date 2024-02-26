@@ -67,7 +67,7 @@ public class KeyPairManagerRSA {
      */
     public static boolean saveClave(String directoryPath, KeyPair clavesRSA) {
 
-        try (FileOutputStream fosPri = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "privateKey.dat"); FileOutputStream fosPub = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "publicKey.dat")) {
+        try (FileOutputStream fosPri = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "privateKey.rkey"); FileOutputStream fosPub = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "publicKey.rkey")) {
 
             fosPri.write(clavesRSA.getPrivate().getEncoded());
             fosPub.write(clavesRSA.getPublic().getEncoded());
@@ -89,10 +89,10 @@ public class KeyPairManagerRSA {
      * Cargar una clave pública o privada de un fichero.
      *
      * @param path Ruta del archivo
-     * @param option True Private Key, False Public Key
+     * @param isPrivate True Private Key, False Public Key
      * @return Objeto Generico, recastear a PrivateKey o PublicKey
      */
-    public static Object loadClave(String path, boolean option) {
+    public static Object loadClave(String path, boolean isPrivate) {
 
         //Almacenara la clave solicitada.
         KeyFactory kf = null;
@@ -106,7 +106,7 @@ public class KeyPairManagerRSA {
             File f = new File(path);
             
             if (f.exists()) {
-                if (option) { //Clave privada
+                if (isPrivate) { //Clave privada
 
                     keyBytes = Files.readAllBytes(f.toPath());
                     
@@ -124,8 +124,6 @@ public class KeyPairManagerRSA {
                     
                     //Utiliza X509 con el array de bytes para consegir la clave Publica
                     X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(keyBytes);
-
-                    // Obtendo de publicKeySpec el algoritmo de encriptacion.
                     kf = KeyFactory.getInstance("RSA");
 
                     Logs.LOGGER_USER.log(Level.INFO, "Lectura de RSA Public Key \n\tRuta: {0}", new Object[]{path});
@@ -146,7 +144,6 @@ public class KeyPairManagerRSA {
             return null;
         }
 
-        //Inalcanzable
         return null;
     }
 
