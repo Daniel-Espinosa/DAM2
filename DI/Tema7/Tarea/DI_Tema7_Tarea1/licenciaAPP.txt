@@ -1,0 +1,19 @@
+Licencia Apache, Versión 2.0
+
+Copyright 2024 Cafe con Palito
+
+Este producto incluye software desarrollado por el
+equipo de "Tarea_DI7_Daniel_Espinosa_Garcia" de
+Cafe con Palito (https://github.com/CafeConPalito).
+
+Licenciado bajo la Licencia Apache, Versión 2.0 (la "Licencia");
+no puedes usar este archivo excepto en conformidad con la Licencia.
+Puedes obtener una copia de la Licencia en
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+A menos que lo exija la ley aplicable o se acuerde por escrito,
+el software se distribuye bajo una licencia "TAL CUAL",
+SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea expresa o implícita.
+Consulta la Licencia para el idioma específico que rige los permisos y
+limitaciones bajo la Licencia.
