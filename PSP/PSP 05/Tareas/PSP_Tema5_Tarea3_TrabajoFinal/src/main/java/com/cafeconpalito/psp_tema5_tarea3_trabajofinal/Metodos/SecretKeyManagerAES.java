@@ -11,41 +11,59 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.FileSystems;
-import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Scanner;
 import java.util.logging.Level;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
  * @author damt207
  */
 public class SecretKeyManagerAES {
-  
+
     /**
      * Se generará la clave secreta AES a partir de una contraseña introducida
-     * por el usuario convertida en un array de bytes. Para hacerlo, mirar la
-     * clase SecretKeySpec.
+     * por el usuario convertida en un array de bytes
+     *
+     * @param pass Password para crear la contraseña
+     * @param keySize Tamaño de la contraseña, valores validos 128, 192, 256
+     * @return
      */
-    public static SecretKeySpec generateKeyAES(String pass){
-        
-        SecretKeySpec claveAES = new SecretKeySpec(pass.getBytes(), "AES");
+    public static SecretKey generateKeyAES(String pass, int keySize) {
 
-        Logs.LOGGER_USER.log(Level.INFO, "AES Key Generada | Password: {0}", new Object[]{pass});
-
-        return claveAES;
-    }
-    
-    public static boolean saveKeyAES(String directoryPath, SecretKeySpec claveAES) {
-
-        try (FileOutputStream fos = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "AES_Key.akey")) {
-
-            fos.write(claveAES.getEncoded());
+        try {
             
+            SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+            sr.setSeed(pass.getBytes());
+            KeyGenerator kg = KeyGenerator.getInstance("AES");
+            kg.init(keySize, sr);
+            SecretKey claveAES = kg.generateKey();
+
+            Logs.LOGGER_USER.log(Level.INFO, "AES Key Generada \n\tPassword: {0} \n\tClave AES: {1}", new Object[]{pass, claveAES.toString()});
+            return claveAES;
+            
+        } catch (NoSuchAlgorithmException ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    /**
+     * Metodo que guarda en un archivo una clave AES.
+     * @param directoryPath Ruta donde se quiere guardar.
+     * @param claveAES Secret Key.
+     * @return True si todo es correcto, False si da error.
+     */
+    public static boolean saveKeyAES(String directoryPath, SecretKey claveAES) {
+
+        try (FileOutputStream fos = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "AES_Key.akey"); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+
+            oos.write(claveAES.getEncoded());
+
+            Logs.LOGGER_USER.log(Level.INFO, "AES Key Generada \n\tRuta: {0} \n\tClave AES: {1}", new Object[]{directoryPath, claveAES.toString()});
+
         } catch (FileNotFoundException ex) {
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
             return false;
@@ -55,98 +73,27 @@ public class SecretKeyManagerAES {
         }
 
         Logs.LOGGER_USER.log(Level.INFO, "AES Key Guardada | Ruta: {0} ", new Object[]{directoryPath});
-
         return true;
 
     }
-    
-    public static boolean loadKeyAES(String directoryPath, SecretKeySpec claveAES) {
 
+    /**
+     * Metodo que lee una clave AES desde la ruta de un fichero.
+     * @param directoryPath ruta del archivo a leer.
+     * @return Secret Key si es leida correctamente o null si da error.
+     */
+    public static SecretKey loadKeyAES(String directoryPath) {
         
-        return true;
-
+        try (FileInputStream fis = new FileInputStream(directoryPath); ObjectInputStream ois = new ObjectInputStream(fis)) {
+           
+            SecretKey claveAES = (SecretKey) ois.readObject();
+            
+            Logs.LOGGER_USER.log(Level.INFO, "AES Key Leida \n\tRuta: {0} \n\tClave AES: {1}", new Object[]{directoryPath, claveAES.toString()});
+            return claveAES;
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
+        } 
     }
-    
-    
-    //ALBANO
-    
-    private static SecretKey key;
- 
-    private static Scanner scstring = new Scanner(System.in);
- 
-    public static SecretKey getKey() {
-        return key;
-    }
- 
-    /**
-     * Metodo para generar una clave AES
-     *
-     * @param pwd
-     */
-    public static void generateKey(String pwd) {
- 
-        if (PasswordValidator.validate(pwd)) {
-            try {
-                SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
-                secureRandom.setSeed(pwd.getBytes());
-                KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-                keyGen.init(256, secureRandom);
-                key = keyGen.generateKey();
-                System.out.println("KEY");
-                System.out.println(HashTool.enHexadecimal(key.getEncoded()));
-                System.out.println("You want to save?(Y/N)");
-                if (scstring.nextLine().equalsIgnoreCase("Y")) {
-                    System.out.println("File names:");
-                    saveKey(scstring.nextLine());
-                    System.out.println("Saved");
-                }
-                //LogConfig.LOG_ALL.log(Level.INFO, "one AES key has been generated");
-            } catch (NoSuchAlgorithmException ex) {
-                //Logger.getLogger(SecretKeyManagerAES.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            System.out.println("The password does not meet the security requirements.");
-            //LogConfig.LOG_ERROR.log(Level.WARNING, "Second or third parameter missing <-rsaencryption>");
-        }
- 
-    }
- 
-    /**
-     * Metodo para guardar una clave AES
-     *
-     * @param nameFile nombre para ficheros generados
-     */
-    private static void saveKey(String nameFile) {
-        try (FileOutputStream fos = new FileOutputStream(nameFile + "_aes.agl"); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(key);
-            //LogConfig.LOG_ALL.log(Level.INFO, "one AES key has been saved");
- 
-        } catch (FileNotFoundException ex) {
-            //LogConfig.LOG_ERROR.log(Level.WARNING, "an error occurred while saving the key aes");
-        } catch (IOException ex) {
-            //LogConfig.LOG_ERROR.log(Level.WARNING, "an error occurred while saving the key aes");
-        }
- 
-    }
- 
-    /**
-     * Metodo para cargar desde un fichero la clave
-     * @param pathkey
-     * @return boolean True si ha conseguido hacerlo correctamente
-     */
-    public static boolean loadKey(String pathkey) {
-        try (FileInputStream fis = new FileInputStream(pathkey); ObjectInputStream ois = new ObjectInputStream(fis)) {
-            // Leer el objeto SecretKeySpec del archivo
-            key = (SecretKeySpec) ois.readObject();
-            //LogConfig.LOG_ALL.log(Level.INFO, "one AES key has been load");
-            return true;
-        } catch (Exception e) {
-            //LogConfig.LOG_ERROR.log(Level.WARNING, "Second parameter have a error <-aese>");
-            System.out.println("Second parameter have a error <-aese> " + e.getMessage());
-            return false;
- 
-        }
-    }
-    
-    
 }

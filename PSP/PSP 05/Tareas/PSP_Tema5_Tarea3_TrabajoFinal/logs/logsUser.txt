@@ -708,3 +708,25 @@ feb 26, 2024 7:12:03 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metod
 INFO: Desencriptado de archivo 
 	Informacion: Cipher.RSA, mode: decryption, algorithm from: SunJCE
 	Archivo:d:\Users\DAMT207\Desktop\Keys\DECRIPTED_encriptedPrivateKey_Nuevo Documento de texto.txt
+feb 28, 2024 6:36:43 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asdASD123* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@1703c
+feb 28, 2024 6:36:45 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asdASD123* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17c21
+feb 28, 2024 6:36:47 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asdASD123* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@15a1d
+feb 28, 2024 6:52:18 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asdASD123* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@1703c
+feb 28, 2024 6:52:32 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Generada 
+	Ruta: d:\Users\DAMT207\Desktop\Keys 
+	Clave AES: javax.crypto.spec.SecretKeySpec@1703c
+feb 28, 2024 6:52:32 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Guardada | Ruta: d:\Users\DAMT207\Desktop\Keys 

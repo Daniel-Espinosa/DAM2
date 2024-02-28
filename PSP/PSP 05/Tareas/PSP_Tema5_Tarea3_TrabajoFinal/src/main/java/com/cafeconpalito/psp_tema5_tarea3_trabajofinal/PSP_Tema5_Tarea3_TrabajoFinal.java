@@ -3,13 +3,9 @@
  */
 package com.cafeconpalito.psp_tema5_tarea3_trabajofinal;
 
+import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.HashTool;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.PasswordValidator;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES;
-import com.google.common.io.Files;
-import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  *
@@ -19,9 +15,11 @@ public class PSP_Tema5_Tarea3_TrabajoFinal {
 
     public static void main(String[] args) {
 
-        String pass = "1asnAS23D$";
+        String pass = "1asnasd12easdDADZX1aeAS23D$";
         System.out.println(PasswordValidator.validate(pass));
-        SecretKeyManagerAES.saveKeyAES("." ,SecretKeyManagerAES.generateKeyAES(pass));
+       
+        System.out.println(HashTool.enHexadecimal(SecretKeyManagerAES.generateKeyAES(pass, 256).getEncoded()));
+        
 
 //        File f = new File("pom.xml");
 //        String absolutePath = f.getAbsolutePath();
