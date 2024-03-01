@@ -26,15 +26,13 @@ import java.security.SignatureException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author damt207
  */
-public class originalAbsolutePath {
+public class DigitalSigningTool {
 
     /**
      * Firma de ficheros y verificación.
@@ -77,7 +75,7 @@ public class originalAbsolutePath {
      * @param keyPair
      * @return True si logra guardar correctamente.
      */
-    private static boolean saveKeys(String directoryPath, KeyPair keyPair) {
+    public static boolean saveKeys(String directoryPath, KeyPair keyPair) {
         try (FileOutputStream fos = new FileOutputStream(directoryPath + "DSA_Public.pudsa"); FileOutputStream fos2 = new FileOutputStream(directoryPath + "DSA_Private.prdsa")) {
 
             fos.write(keyPair.getPublic().getEncoded());
@@ -189,6 +187,9 @@ public class originalAbsolutePath {
 
             try (OutputStream os = Files.newOutputStream(p)) {
                 os.write(bufferFirma);
+                
+                Logs.LOGGER_USER.log(Level.INFO, "Fichero firmado con Clave AES \n\tRuta: {0} \n\tClave: {1}", new Object[]{p.toString(),privateKey.toString()});
+                return p.toString();
 
             } catch (FileNotFoundException ex) {
                 Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
@@ -199,19 +200,18 @@ public class originalAbsolutePath {
             }
 
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException | IOException ex) {
-            System.out.println("ERROR: " + ex.getMessage());
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
         }
-        return null;
-
+        
     }
 
     /**
      * Metodo que comprueba mediante la clave publica si el fichero Original y
      * El firmado son correctos
      *
-     * @param originalAbsolutePath
-     * @param firmadoAbsolutePath
+     * @param originalAbsolutePath archivo original (.txt)
+     * @param firmadoAbsolutePath archivo firmado .aes
      * @param publicKey
      * @return True si la verificacion es correcta
      */

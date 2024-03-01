@@ -796,3 +796,93 @@ mar 01, 2024 7:51:22 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metod
 INFO: Desencriptado AES de archivo 
 	Informacion: Cipher.AES, mode: decryption, algorithm from: SunJCE
 	Archivo:C:\Users\produccion\Desktop\Pruebas\DECRIPTED_encriptedlogo-negative.png
+mar 01, 2024 3:19:43 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.DigitalSigningTool makeKeyPair
+INFO: Digital Signing Key Pair Generado | Seed: SecureRandom 
+Private Key: sun.security.provider.DSAPrivateKey@a0f615f5 
+Public Key: Sun DSA Public Key
+    Parameters:
+    p:
+    fca682ce 8e12caba 26efccf7 110e526d b078b05e decbcd1e b4a208f3 ae1617ae
+    01f35b91 a47e6df6 3413c5e1 2ed0899b cd132acd 50d99151 bdc43ee7 37592e17
+    q:
+    962eddcc 369cba8e bb260ee6 b6a126d9 346e38c5
+    g:
+    678471b2 7a9cf44e e91a49c5 147db1a9 aaf244f0 5a434d64 86931d2d 14271b9e
+    35030b71 fd73da17 9069b32e 2935630e 1c206235 4d0da20a 6c416e50 be794ca4
+
+  y:
+    2ffda39b 48c5c373 be02034b aa9e9a14 d27c746e b447ba5e 65c9b9b9 f6b5b614
+    798dc08e a40ef240 78d18f3d 08f2fa05 abf0367a 8c4cd36c d6f68953 7b4253f1
+
+mar 01, 2024 3:21:19 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.DigitalSigningTool makeKeyPair
+INFO: Digital Signing Key Pair Generado | Seed: SecureRandom 
+Private Key: sun.security.provider.DSAPrivateKey@e0addd9 
+Public Key: Sun DSA Public Key
+    Parameters:
+    p:
+    fca682ce 8e12caba 26efccf7 110e526d b078b05e decbcd1e b4a208f3 ae1617ae
+    01f35b91 a47e6df6 3413c5e1 2ed0899b cd132acd 50d99151 bdc43ee7 37592e17
+    q:
+    962eddcc 369cba8e bb260ee6 b6a126d9 346e38c5
+    g:
+    678471b2 7a9cf44e e91a49c5 147db1a9 aaf244f0 5a434d64 86931d2d 14271b9e
+    35030b71 fd73da17 9069b32e 2935630e 1c206235 4d0da20a 6c416e50 be794ca4
+
+  y:
+    7aa9092e 997220d6 20335ad5 1b370d4f 3735c6a0 d130db8f d20ffa5f 8f263d7c
+    ec95a20f 57f38b97 9c43e23c 6af61a62 2db9bebd e528efb2 8116fdfc 23d4c16a
+
+mar 01, 2024 4:53:24 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.DigitalSigningTool makeKeyPair
+INFO: Digital Signing Key Pair Generado | Seed: SecureRandom 
+Private Key: sun.security.provider.DSAPrivateKey@294e6800 
+Public Key: Sun DSA Public Key
+    Parameters:
+    p:
+    fca682ce 8e12caba 26efccf7 110e526d b078b05e decbcd1e b4a208f3 ae1617ae
+    01f35b91 a47e6df6 3413c5e1 2ed0899b cd132acd 50d99151 bdc43ee7 37592e17
+    q:
+    962eddcc 369cba8e bb260ee6 b6a126d9 346e38c5
+    g:
+    678471b2 7a9cf44e e91a49c5 147db1a9 aaf244f0 5a434d64 86931d2d 14271b9e
+    35030b71 fd73da17 9069b32e 2935630e 1c206235 4d0da20a 6c416e50 be794ca4
+
+  y:
+    10ffb102 9de54238 62144a6b d9f6fd9b 76d7650d 690eff2a 25cec0c4 b8de52c2
+    bb30e1c1 ff945e9c f2926057 e7afba7c a3b2c951 60985bb8 42be07f5 3ed5a299
+
+mar 01, 2024 4:53:53 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.DigitalSigningTool makeKeyPair
+INFO: Digital Signing Key Pair Generado | Seed: SecureRandom 
+Private Key: sun.security.provider.DSAPrivateKey@47071dff 
+Public Key: Sun DSA Public Key
+    Parameters:
+    p:
+    fca682ce 8e12caba 26efccf7 110e526d b078b05e decbcd1e b4a208f3 ae1617ae
+    01f35b91 a47e6df6 3413c5e1 2ed0899b cd132acd 50d99151 bdc43ee7 37592e17
+    q:
+    962eddcc 369cba8e bb260ee6 b6a126d9 346e38c5
+    g:
+    678471b2 7a9cf44e e91a49c5 147db1a9 aaf244f0 5a434d64 86931d2d 14271b9e
+    35030b71 fd73da17 9069b32e 2935630e 1c206235 4d0da20a 6c416e50 be794ca4
+
+  y:
+    22a8ef73 6f387705 9ba7bf46 7e441b31 2c695ed2 6c20aa4b b2a96315 50df3e85
+    adef4a5d b2ce097c 7b75588e 7bf6893d 6ffdcf8d 09030147 7c132c12 e0666e0f
+
+mar 01, 2024 4:54:06 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.DigitalSigningTool saveKeys
+INFO: DSA pivateKey y publicKey Guardadas | Ruta: d:\Users\DAMT207\Desktop\Keys 
+Private Key: sun.security.provider.DSAPrivateKey@47071dff 
+Public Key: Sun DSA Public Key
+    Parameters:
+    p:
+    fca682ce 8e12caba 26efccf7 110e526d b078b05e decbcd1e b4a208f3 ae1617ae
+    01f35b91 a47e6df6 3413c5e1 2ed0899b cd132acd 50d99151 bdc43ee7 37592e17
+    q:
+    962eddcc 369cba8e bb260ee6 b6a126d9 346e38c5
+    g:
+    678471b2 7a9cf44e e91a49c5 147db1a9 aaf244f0 5a434d64 86931d2d 14271b9e
+    35030b71 fd73da17 9069b32e 2935630e 1c206235 4d0da20a 6c416e50 be794ca4
+
+  y:
+    22a8ef73 6f387705 9ba7bf46 7e441b31 2c695ed2 6c20aa4b b2a96315 50df3e85
+    adef4a5d b2ce097c 7b75588e 7bf6893d 6ffdcf8d 09030147 7c132c12 e0666e0f
+  
