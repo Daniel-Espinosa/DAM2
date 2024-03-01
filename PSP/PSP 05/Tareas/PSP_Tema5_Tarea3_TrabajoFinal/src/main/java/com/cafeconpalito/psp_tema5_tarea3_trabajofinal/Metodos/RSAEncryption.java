@@ -102,7 +102,7 @@ public class RSAEncryption {
             byte[] bufferFinal = c.doFinal();
             os.write(bufferFinal);
 
-            Logs.LOGGER_USER.log(Level.INFO, "Encriptado de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            Logs.LOGGER_USER.log(Level.INFO, "Encriptado RSA de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
             return encripPath;
 
         } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
@@ -180,7 +180,7 @@ public class RSAEncryption {
             byte[] bufferFinal = c.doFinal();
             os.write(bufferFinal);
 
-            Logs.LOGGER_USER.log(Level.INFO, "Desencriptado de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            Logs.LOGGER_USER.log(Level.INFO, "Desencriptado RSA de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
             return encripPath;
 
         } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {

@@ -10,6 +10,7 @@ import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.Logs;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.PasswordValidator;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.RSAEncryption;
 import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES;
+import com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.AESEncription;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -147,6 +148,8 @@ public class APP extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabelLogs = new javax.swing.JLabel();
         jButtonLogs = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         jLabelCafeConPalito = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
 
@@ -538,7 +541,7 @@ public class APP extends javax.swing.JFrame {
         });
 
         jLabelAESgeneratorPathKey.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelAESgeneratorPathKey.setText("Ruta de la AES Key");
+        jLabelAESgeneratorPathKey.setText("Ruta de la AES Key, Para cifrar o descifrar archivos .png");
 
         jTextFieldAESgeneratorPathKey.setFocusable(false);
 
@@ -648,11 +651,11 @@ public class APP extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldAESgeneratorPathCifrado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAESgeneratorOpenCifrado)
+                        .addComponent(jButtonAESgeneratorOpenCifrado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(153, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("AES Key Generator", jPanel2);
+        jTabbedPane1.addTab("AES Key", jPanel2);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -667,7 +670,7 @@ public class APP extends javax.swing.JFrame {
             .addGap(0, 452, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("AES Cifrado", jPanel7);
+        jTabbedPane1.addTab("Digital Singning", jPanel7);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -680,6 +683,19 @@ public class APP extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("<html>     <p>HASH Cifrado:</p>     <p> Permite cifrar texto plano o un archivo en función del Algoritmo de encriptación. Devuelve el resultado del cifrado en Hexadecimal</p>     <p></p>     <p>RSA Key Generator:</p>     <p> Genera un par de claves pública y privada, utilizando el Algoritmo RSA, pudiendo seleccionar el tamaño de la clave y la semilla. guarda el par de claves en formato .rkey</p>     <p></p>     <p>RSA Key Cifrado:</p>     <p> Utilizando claves RSA pública o privada permite cifrar o descifrar un archivo .txt </p>     <p></p>     <p>AES Key:</p>     <p> Permite generar una clave AES seleccionando un tamaño y validando la contraseña, pudiendo guardarla en formato .akey</p>     <p> Se pueden cifrar o descifrar archivos .png utilizando esta clave</p> </html> ");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 22, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -688,8 +704,12 @@ public class APP extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLogs))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jButtonLogs)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,7 +718,11 @@ public class APP extends javax.swing.JFrame {
                 .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLogs)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Help", jPanel4);
@@ -760,8 +784,8 @@ public class APP extends javax.swing.JFrame {
      *
      * @param titulo titulo del file chooser.
      * @param isFile True si lo que se quiere es un archivo, false para un.
-     * @param fileTipe 1 = .rsa | 2 = .txt | 3 = .rkey | 4 = .akey | 5 = .aes
-     * | 6 = .png
+     * @param fileTipe 1 = .rsa | 2 = .txt | 3 = .rkey | 4 = .akey | 5 = .aes |
+     * 6 = .png
      * @return devuelve la ruta del archivo o null.
      */
     private String selectFile(String titulo, boolean isFile, int fileTipe) {
@@ -804,9 +828,17 @@ public class APP extends javax.swing.JFrame {
             case 5:
                 filtro = new FileNameExtensionFilter("*.aes", "aes");
                 fc.setFileFilter(filtro);
-                break;                
+                break;
             case 6:
                 filtro = new FileNameExtensionFilter("*.png", "png");
+                fc.setFileFilter(filtro);
+                break;
+            case 7:
+                filtro = new FileNameExtensionFilter("*.pudsa", "pudsa");
+                fc.setFileFilter(filtro);
+                break;
+            case 8:
+                filtro = new FileNameExtensionFilter("*.prdsa", "prdsa");
                 fc.setFileFilter(filtro);
                 break;
             default:
@@ -971,7 +1003,7 @@ public class APP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAESgeneratorSaveKeyActionPerformed
 
     /**
-     * Accion Generar AES KEY
+     * Accion Generar AES KEY de la vista AES Generator
      *
      * @param evt
      */
@@ -1005,9 +1037,16 @@ public class APP extends javax.swing.JFrame {
         return true;
     }
 
+    /**
+     * Accion del Boton Limpiar de la vista AES Generator. Limpia los campos y
+     * errores de la vista.
+     *
+     * @param evt
+     */
     private void jButtonAESgeneratorLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAESgeneratorLimpiarActionPerformed
 
         clearFieldsAESgenerator();
+
     }//GEN-LAST:event_jButtonAESgeneratorLimpiarActionPerformed
 
     /**
@@ -1098,6 +1137,7 @@ public class APP extends javax.swing.JFrame {
         } else {
             jLabelRSAcifradoPathKey.setForeground(Color.red);
         }
+
     }//GEN-LAST:event_jButtonRSAcifradoCifrarActionPerformed
 
     /**
@@ -1211,7 +1251,7 @@ public class APP extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonHASHSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHASHSelectFileActionPerformed
-        
+
         String selected = selectFile("Selecciona un archivo", false, 0);
         if (selected != null) {
             jTextFieldHASHRutaArchivo.setText(selected);
@@ -1233,90 +1273,131 @@ public class APP extends javax.swing.JFrame {
             jLabelHASHString.setForeground(Color.red);
         }
     }//GEN-LAST:event_jButtonHASHCifrarTextoActionPerformed
-    
+
     /**
-     * Carga la ruta de un fichero .akey para cifrar o descifara un fichero
-     * @param evt 
+     * Accion del Boton Seleccionar de la vista AES Generator Carga la ruta de
+     * un fichero .akey para cifrar o descifara un fichero.
+     *
+     * @param evt
      */
     private void jButtonAESgeneratorSelectKeyPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAESgeneratorSelectKeyPathActionPerformed
-        
-        String selected = selectFile("Selecciona una KEY AES", true , 4);
+
+        String selected = selectFile("Selecciona una KEY AES", true, 4);
         if (selected != null) {
             jTextFieldAESgeneratorPathKey.setText(selected);
         }
-        
+
     }//GEN-LAST:event_jButtonAESgeneratorSelectKeyPathActionPerformed
 
     /**
-     *  Accion del Boton Cifrar de AES Generator
-     * @param evt 
+     * Accion del Boton Cifrar de AES Generator. Comprueba que los parametros
+     * son correctos y cifra el archivo.
+     *
+     * @param evt
      */
     private void jButtonAESgeneratorCifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAESgeneratorCifrarActionPerformed
-        
-        clearFieldsAESgenerator();
+
+        clearErrorsAESgenerator();
         if (jTextFieldAESgeneratorPathKey.getText().isBlank()) {
             jLabelAESgeneratorPathKey.setForeground(Color.red);
-        } else{
-            
+        } else {
+
             String absolutePath = selectFile("Selecciona archivo PNG para encriptar", true, 6);
-            if (absolutePath == null || absolutePath.isBlank()) {
+            if (absolutePath.isBlank() || absolutePath == null) {
                 jPanelErrorMensaje("Seleccina un archivo a encriptar");
-            }else{
-                
+            } else {
+
                 SecretKey claveAES = SecretKeyManagerAES.loadKeyAES(jTextFieldAESgeneratorPathKey.getText());
-//
-//                if (key == null) {
-                
+
+                //Comprobar la lectura de la clave AES y si es correcta
+                if (claveAES == null) { //Si la clave AES da error al leerla
+                    jPanelErrorMensaje("Clave AES incorrecta");
+                } else { //Si la clave es correcta intenta encriptar
+
+                    // si la encriptacion da error manda un mensaje de error
+                    String encripPath = AESEncription.cifrar(absolutePath, claveAES);
+
+                    if (encripPath == null || encripPath.isBlank()) {
+                        jPanelErrorMensaje("Error al encriptar comprubeba los datos");
+                    } else { // si todo es correcto
+                        jTextFieldAESgeneratorPathCifrado.setText(encripPath);
+                    }
+
+                }
+
             }
-            
+
         }
-       
-        
-//                clearErrorsRSAcifrado();
-//        if (!jTextFieldRSAcifradoPathKey.getText().isBlank()) {
-//
-//            boolean isPrivate = false;
-//
-//            if (jComboBoxRSAcifradoKeyTipe.getSelectedIndex() == 0) {
-//                isPrivate = true;
-//            }
-//
-//            String absolutePath = selectFile("Selecciona archivo TXT para encriptar", true, 2);
-//
-//            if (absolutePath == null || absolutePath.isBlank()) {
-//                jPanelErrorMensaje("Seleccina un archivo a encriptar");
-//            } else {
-//
-//                Object key = KeyPairManagerRSA.loadClave(jTextFieldRSAcifradoPathKey.getText(), isPrivate);
-//
-//                if (key == null) {
-//
-//                    jPanelErrorMensaje("Error al leer la clave selecciona el tipo correcto");
-//
-//                } else {
-//                    // si la encriptacion da error manda un mensaje de error
-//                    String encripPath = RSAEncryption.cifrar(absolutePath, key, isPrivate);
-//                    if (encripPath == null || encripPath.isBlank()) {
-//                        jPanelErrorMensaje("Error al encriptar comprubeba los datos");
-//                    } else {
-//                        jTextFieldRSAcifradoPathCifrado.setText(encripPath);
-//                    }
-//                }
-//            }
-//
-//        } else {
-//            jLabelRSAcifradoPathKey.setForeground(Color.red);
-//        }
-        
-        
+
     }//GEN-LAST:event_jButtonAESgeneratorCifrarActionPerformed
 
+    /**
+     * Accion del Boton Descrifrar vista AES Generator. Comprueba que los
+     * parametros son correctos y si es asi inenta descifrar el archivo.
+     *
+     * @param evt
+     */
     private void jButtonAESgeneratorDescifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAESgeneratorDescifrarActionPerformed
-        // TODO add your handling code here:
+
+        clearErrorsAESgenerator();
+        if (jTextFieldAESgeneratorPathKey.getText().isBlank()) {
+            jPanelErrorMensaje("Selecciona una clave AES");
+            jLabelAESgeneratorPathKey.setForeground(Color.red);
+        } else {
+
+            String absolutePath = selectFile("Selecciona un archivo .aes", true, 5);
+
+            if (absolutePath == null || absolutePath.isBlank()) {
+
+                jPanelErrorMensaje("Selecciona un archivo a desencriptar.");
+
+            } else {
+
+                SecretKey claveAES = SecretKeyManagerAES.loadKeyAES(jTextFieldAESgeneratorPathKey.getText());
+
+                //Comprobar la lectura de la clave AES y si es correcta
+                if (claveAES == null) { //Si la clave AES da error al leerla
+                    jPanelErrorMensaje("Clave AES incorrecta");
+                } else { //Si la clave es correcta intenta encriptar
+
+                    // si la desencriptacion es error el path sera null;
+                    String encripPath = AESEncription.descifrar(absolutePath, claveAES);
+
+                    if (encripPath == null || encripPath.isBlank()) {
+                        jPanelErrorMensaje("Error al encriptar comprubeba los datos");
+                    } else { // si todo es correcto
+                        jTextFieldAESgeneratorPathCifrado.setText(encripPath);
+                    }
+
+                }
+
+            }
+
+        }
+
+
     }//GEN-LAST:event_jButtonAESgeneratorDescifrarActionPerformed
 
+    /**
+     * Accion del boton Abrir de la vista AES Generator. Abre la carpeta de la
+     * ruta del archivo.
+     *
+     * @param evt
+     */
     private void jButtonAESgeneratorOpenCifradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAESgeneratorOpenCifradoActionPerformed
-        // TODO add your handling code here:
+
+        clearErrorsAESgenerator();
+        if (jTextFieldAESgeneratorPathCifrado.getText().isBlank()) {
+            jLabelAESgeneratorPathCifrado.setForeground(Color.red);
+        } else {
+            try {
+                Path p = Paths.get(jTextFieldAESgeneratorPathCifrado.getText());
+                Desktop.getDesktop().open(new File(p.getParent().toString()));
+            } catch (IOException ex) {
+                Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_jButtonAESgeneratorOpenCifradoActionPerformed
 
     /**
@@ -1382,6 +1463,7 @@ public class APP extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxRSAcifradoKeyTipe;
     private javax.swing.JComboBox<String> jComboBoxRSAgeneratorKeySize;
     private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelAESgeneratorKey;
@@ -1407,6 +1489,7 @@ public class APP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

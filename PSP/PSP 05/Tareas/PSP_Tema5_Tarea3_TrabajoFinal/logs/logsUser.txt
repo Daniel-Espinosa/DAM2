@@ -730,3 +730,69 @@ INFO: AES Key Generada
 	Clave AES: javax.crypto.spec.SecretKeySpec@1703c
 feb 28, 2024 6:52:32 P. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
 INFO: AES Key Guardada | Ruta: d:\Users\DAMT207\Desktop\Keys 
+mar 01, 2024 7:13:47 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asd123AS* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@fffe8378
+mar 01, 2024 7:13:50 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asd123AS* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@fffe8ba3
+mar 01, 2024 7:13:56 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Generada 
+	Ruta: C:\Users\produccion\Desktop\Pruebas 
+	Clave AES: javax.crypto.spec.SecretKeySpec@fffe8ba3
+mar 01, 2024 7:13:56 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Guardada | Ruta: C:\Users\produccion\Desktop\Pruebas 
+mar 01, 2024 7:15:01 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: asdaAs121* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@fffe8675
+mar 01, 2024 7:15:11 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Generada 
+	Ruta: C:\Users\produccion\Desktop\Pruebas 
+	Clave AES: javax.crypto.spec.SecretKeySpec@fffe8675
+mar 01, 2024 7:15:11 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Guardada | Ruta: C:\Users\produccion\Desktop\Pruebas 
+mar 01, 2024 7:23:39 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES generateKeyAES
+INFO: AES Key Generada 
+	Password: ASDas1566* 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:23:44 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Generada 
+	Ruta: C:\Users\produccion\Desktop\Pruebas 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:23:44 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES saveKeyAES
+INFO: AES Key Guardada | Ruta: C:\Users\produccion\Desktop\Pruebas 
+mar 01, 2024 7:23:57 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES loadKeyAES
+INFO: AES Key Leida 
+	Ruta: C:\Users\produccion\Desktop\Pruebas\AES_Key.akey 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:23:57 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.AESEncription cifrar
+INFO: Encriptado de archivo 
+	Informacion: Cipher.AES, mode: encryption, algorithm from: SunJCE
+	Archivo:C:\Users\produccion\Desktop\Pruebas\encriptedlogo-negative.aes
+mar 01, 2024 7:26:41 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES loadKeyAES
+INFO: AES Key Leida 
+	Ruta: C:\Users\produccion\Desktop\Pruebas\AES_Key.akey 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:26:41 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.AESEncription cifrar
+INFO: Encriptado de archivo 
+	Informacion: Cipher.AES, mode: encryption, algorithm from: SunJCE
+	Archivo:C:\Users\produccion\Desktop\Pruebas\encriptedlogo-negative.aes
+mar 01, 2024 7:27:18 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES loadKeyAES
+INFO: AES Key Leida 
+	Ruta: C:\Users\produccion\Desktop\Pruebas\AES_Key.akey 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:27:18 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.AESEncription cifrar
+INFO: Encriptado de archivo 
+	Informacion: Cipher.AES, mode: encryption, algorithm from: SunJCE
+	Archivo:C:\Users\produccion\Desktop\Pruebas\encriptedlogo-negative.aes
+mar 01, 2024 7:51:22 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.SecretKeyManagerAES loadKeyAES
+INFO: AES Key Leida 
+	Ruta: C:\Users\produccion\Desktop\Pruebas\AES_Key.akey 
+	Clave AES: javax.crypto.spec.SecretKeySpec@17020
+mar 01, 2024 7:51:22 A. M. com.cafeconpalito.psp_tema5_tarea3_trabajofinal.Metodos.AESEncription descifrar
+INFO: Desencriptado AES de archivo 
+	Informacion: Cipher.AES, mode: decryption, algorithm from: SunJCE
+	Archivo:C:\Users\produccion\Desktop\Pruebas\DECRIPTED_encriptedlogo-negative.png

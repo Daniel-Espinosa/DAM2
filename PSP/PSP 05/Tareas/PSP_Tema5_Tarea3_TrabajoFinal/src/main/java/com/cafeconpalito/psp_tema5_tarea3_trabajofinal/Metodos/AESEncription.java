@@ -14,8 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.util.logging.Level;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -31,21 +29,23 @@ public class AESEncription {
 
     /**
      * Metodo de Cifrado de ficheros utilizando el algoritmo de criptografía
-     * simétrica AES
+     * simétrica AES.
      *
-     * @return
+     * @param absolutePath ruta del fichero a encriptar.
+     * @param claveAES Clave AES para cifrar el archivo.
+     * @return la ruta del archivo encriptado.
      */
     public static String cifrar(String absolutePath, SecretKey claveAES) {
 
         Cipher c;
         Path p = null;
         String encripPath;
-        String encripted = "encripted";
+        String operacion = "ENCRIPTED_";
 
         try {
             p = Paths.get(absolutePath);
             String encripName = p.getFileName().toString().replaceFirst("." + com.google.common.io.Files.getFileExtension(p.getFileName().toString()), ".aes");
-            encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + encripted + encripName;
+            encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + operacion + encripName;
             p = Paths.get(encripPath);
         } catch (Exception ex) {
             Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
@@ -73,7 +73,7 @@ public class AESEncription {
             byte[] bufferFinal = c.doFinal();
             os.write(bufferFinal);
 
-            Logs.LOGGER_USER.log(Level.INFO, "Encriptado de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            Logs.LOGGER_USER.log(Level.INFO, "Encriptado AES de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
             return encripPath;
 
         } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
@@ -86,13 +86,56 @@ public class AESEncription {
     /**
      * Metodo de Descifrado de ficheros utilizando el algoritmo de criptografía
      *
-     * @param absolutePath
-     * @param claveAES
-     * @return
+     * @param absolutePath ruta del archivo a desencriptar.
+     * @param claveAES clave AES para desencriptar.
+     * @return la ruta del archivo desencriptado
      */
-    public static boolean descifrar(String absolutePath, SecretKey claveAES) {
+    public static String descifrar(String absolutePath, SecretKey claveAES) {
 
-        return false;
+        String encripPath = null;
+        Cipher c;
+        Path p = null;
+        String operancion = "DECRIPTED_";
+
+        //Desde la ruta absoluta del archivo original creo un nuevo Path para el nuevo fichero desencriptado
+        try {
+            p = Paths.get(absolutePath);
+            String encripName = p.getFileName().toString().replaceFirst("." + com.google.common.io.Files.getFileExtension(p.getFileName().toString()), ".png");
+            encripPath = p.getParent() + FileSystems.getDefault().getSeparator() + operancion + encripName;
+            p = Paths.get(encripPath);
+        } catch (Exception ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+        try (InputStream is = Files.newInputStream(new File(absolutePath).toPath()); OutputStream os = Files.newOutputStream(p)) {
+
+            //Instancio el desencriptador con la Key
+            c = Cipher.getInstance(claveAES.getAlgorithm());
+            c.init(Cipher.DECRYPT_MODE, claveAES);
+
+            //Lectura y escritura de ficheros por bloques de Bytes de 512
+            byte[] bufferLecura = new byte[512];
+            int bytesLeidos = is.read(bufferLecura);
+
+            //Escritura de los bloques
+            while (bytesLeidos != -1) {
+                byte[] bufferEncriptado = c.update(bufferLecura, 0, bytesLeidos);
+                os.write(bufferEncriptado);
+                bytesLeidos = is.read(bufferLecura);
+
+            }
+            //Bloque final
+            byte[] bufferFinal = c.doFinal();
+            os.write(bufferFinal);
+
+            Logs.LOGGER_USER.log(Level.INFO, "Desencriptado AES de archivo \n\tInformacion: {0}\n\tArchivo:{1}", new Object[]{c.toString(), p});
+            return encripPath;
+
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
+            Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            return null;
+        }
 
     }
 

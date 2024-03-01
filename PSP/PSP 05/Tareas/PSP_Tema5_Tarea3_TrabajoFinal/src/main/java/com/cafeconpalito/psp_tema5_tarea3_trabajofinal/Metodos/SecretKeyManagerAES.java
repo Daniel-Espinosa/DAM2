@@ -16,6 +16,7 @@ import java.security.SecureRandom;
 import java.util.logging.Level;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -60,7 +61,7 @@ public class SecretKeyManagerAES {
 
         try (FileOutputStream fos = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "AES_Key.akey"); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
-            oos.write(claveAES.getEncoded());
+            oos.writeObject(claveAES);
 
             Logs.LOGGER_USER.log(Level.INFO, "AES Key Generada \n\tRuta: {0} \n\tClave AES: {1}", new Object[]{directoryPath, claveAES.toString()});
 
