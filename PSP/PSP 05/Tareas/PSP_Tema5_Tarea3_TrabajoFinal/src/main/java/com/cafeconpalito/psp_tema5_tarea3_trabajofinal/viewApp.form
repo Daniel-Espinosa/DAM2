@@ -974,7 +974,7 @@
                                   <Component id="jLabelDSAprivateKeyPath" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                                   <Component id="jLabelDSApublicKey" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                                   <Component id="jLabelDSAprivateKey" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                                  <Component id="jLabelDSApublicKeyPath1" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="jLabelDSAcifradoPath" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
                                   <Component id="jScrollPane7" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
@@ -1016,7 +1016,7 @@
                               <Component id="jButtonDSAcifrarPrivateKey" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabelDSApublicKeyPath1" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="jLabelDSAcifradoPath" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane11" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1200,7 +1200,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDSAcomprobarFirmaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabelDSApublicKeyPath1">
+                <Component class="javax.swing.JLabel" name="jLabelDSAcifradoPath">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -1253,15 +1253,18 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelLogs" alignment="0" min="-2" pref="742" max="-2" attributes="0"/>
-                              <Component id="jButtonLogs" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" pref="753" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelLogs" alignment="0" min="-2" pref="742" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogs" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1273,10 +1276,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonLogs" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="352" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel1" min="-2" pref="352" max="-2" attributes="0"/>
                           <EmptySpace pref="24" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1298,24 +1298,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;     &lt;p&gt;HASH Cifrado:&lt;/p&gt;     &lt;p&gt; Permite cifrar texto plano o un archivo en funci&#xf3;n del Algoritmo de encriptaci&#xf3;n. Devuelve el resultado del cifrado en Hexadecimal&lt;/p&gt;     &lt;p&gt;&lt;/p&gt;     &lt;p&gt;RSA Key Generator:&lt;/p&gt;     &lt;p&gt; Genera un par de claves p&#xfa;blica y privada, utilizando el Algoritmo RSA, pudiendo seleccionar el tama&#xf1;o de la clave y la semilla. guarda el par de claves en formato .rkey&lt;/p&gt;     &lt;p&gt;&lt;/p&gt;     &lt;p&gt;RSA Key Cifrado:&lt;/p&gt;     &lt;p&gt; Utilizando claves RSA p&#xfa;blica o privada permite cifrar o descifrar un archivo .txt &lt;/p&gt;     &lt;p&gt;&lt;/p&gt;     &lt;p&gt;AES Key:&lt;/p&gt;     &lt;p&gt; Permite generar una clave AES seleccionando un tama&#xf1;o y validando la contrase&#xf1;a, pudiendo guardarla en formato .akey&lt;/p&gt;     &lt;p&gt; Se pueden cifrar o descifrar archivos .png utilizando esta clave&lt;/p&gt; &lt;/html&gt; "/>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;          &lt;p&gt;HASH Cifrado:&lt;/p&gt;      &lt;p&gt; Permite cifrar texto plano o un archivo en funci&#xf3;n del Algoritmo de encriptaci&#xf3;n. Devuelve el resultado del cifrado en Hexadecimal&lt;/p&gt;          &lt;p&gt;&lt;/p&gt;          &lt;p&gt;RSA Key Generator:&lt;/p&gt;          &lt;p&gt; Genera un par de claves p&#xfa;blica y privada, utilizando el Algoritmo RSA, pudiendo seleccionar el tama&#xf1;o de la clave y la semilla. guarda el par de claves en formato .rkey&lt;/p&gt;          &lt;p&gt;&lt;/p&gt;          &lt;p&gt;RSA Key Cifrado:&lt;/p&gt;      &lt;p&gt; Utilizando claves RSA p&#xfa;blica o privada permite cifrar o descifrar un archivo .txt &lt;/p&gt;          &lt;p&gt;&lt;/p&gt;          &lt;p&gt;AES Key:&lt;/p&gt;          &lt;p&gt; Permite generar una clave AES seleccionando un tama&#xf1;o y validando la contrase&#xf1;a, pudiendo guardarla en formato .akey&lt;/p&gt;      &lt;p&gt; Se pueden cifrar o descifrar archivos .png utilizando esta clave&lt;/p&gt;     &lt;p&gt;&lt;/p&gt;          &lt;p&gt;Digital Signing:&lt;/p&gt;          &lt;p&gt; Permite generar una clave DSA para firmar ficheros pudiendo guardarla las claves publica y privada con formato .pudsa y prdsa&lt;/p&gt;      &lt;p&gt; Permite la encriptacion de un fichero .txt y comrpobar si la firma es correcta&lt;/p&gt;  &lt;/html&gt; "/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel8">
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
               </SubComponents>
             </Container>
           </SubComponents>

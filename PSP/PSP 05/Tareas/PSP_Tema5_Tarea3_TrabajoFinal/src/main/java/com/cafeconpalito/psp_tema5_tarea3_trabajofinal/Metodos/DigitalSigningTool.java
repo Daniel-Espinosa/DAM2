@@ -76,7 +76,7 @@ public class DigitalSigningTool {
      * @return True si logra guardar correctamente.
      */
     public static boolean saveKeys(String directoryPath, KeyPair keyPair) {
-        try (FileOutputStream fos = new FileOutputStream(directoryPath + "DSA_Public.pudsa"); FileOutputStream fos2 = new FileOutputStream(directoryPath + "DSA_Private.prdsa")) {
+        try (FileOutputStream fos = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() +"DSA_Public.pudsa"); FileOutputStream fos2 = new FileOutputStream(directoryPath + FileSystems.getDefault().getSeparator() + "DSA_Private.prdsa")) {
 
             fos.write(keyPair.getPublic().getEncoded());
             fos2.write(keyPair.getPrivate().getEncoded());

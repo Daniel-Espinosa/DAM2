@@ -32,7 +32,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author damt207
  */
-public class APP extends javax.swing.JFrame {
+public class viewApp extends javax.swing.JFrame {
 
     private static KeyPair RSAgeneratorKeyPair;
     private static SecretKey claveAES;
@@ -41,7 +41,7 @@ public class APP extends javax.swing.JFrame {
     /**
      * Creates new form Cifrado
      */
-    public APP() {
+    public viewApp() {
         initComponents();
 
         Logs.openLogs();
@@ -175,7 +175,7 @@ public class APP extends javax.swing.JFrame {
         jTextAreaDSApublicKeyPath = new javax.swing.JTextArea();
         jButtonDSAselectPublictKeyPath = new javax.swing.JButton();
         jButtonDSAcomprobarFirma = new javax.swing.JButton();
-        jLabelDSApublicKeyPath1 = new javax.swing.JLabel();
+        jLabelDSAcifradoPath = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         jTextAreaDSAcifradoPath = new javax.swing.JTextArea();
         jButtonDSAselectPublictKeyPath1 = new javax.swing.JButton();
@@ -183,7 +183,6 @@ public class APP extends javax.swing.JFrame {
         jLabelLogs = new javax.swing.JLabel();
         jButtonLogs = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jLabelCafeConPalito = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
 
@@ -773,8 +772,8 @@ public class APP extends javax.swing.JFrame {
             }
         });
 
-        jLabelDSApublicKeyPath1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelDSApublicKeyPath1.setText("Fichero Cifrado / Descifrado");
+        jLabelDSAcifradoPath.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelDSAcifradoPath.setText("Fichero Cifrado / Descifrado");
 
         jTextAreaDSAcifradoPath.setColumns(20);
         jTextAreaDSAcifradoPath.setRows(1);
@@ -817,7 +816,7 @@ public class APP extends javax.swing.JFrame {
                         .addComponent(jLabelDSAprivateKeyPath, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelDSApublicKey, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelDSAprivateKey, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelDSApublicKeyPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelDSAcifradoPath, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane7)
                         .addComponent(jScrollPane8)
                         .addComponent(jScrollPane9)
@@ -851,7 +850,7 @@ public class APP extends javax.swing.JFrame {
                     .addComponent(jButtonDSAselectPrivatetKeyPath)
                     .addComponent(jButtonDSAcifrarPrivateKey))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelDSApublicKeyPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelDSAcifradoPath, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -885,18 +884,7 @@ public class APP extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("<html>     <p>HASH Cifrado:</p>     <p> Permite cifrar texto plano o un archivo en función del Algoritmo de encriptación. Devuelve el resultado del cifrado en Hexadecimal</p>     <p></p>     <p>RSA Key Generator:</p>     <p> Genera un par de claves pública y privada, utilizando el Algoritmo RSA, pudiendo seleccionar el tamaño de la clave y la semilla. guarda el par de claves en formato .rkey</p>     <p></p>     <p>RSA Key Cifrado:</p>     <p> Utilizando claves RSA pública o privada permite cifrar o descifrar un archivo .txt </p>     <p></p>     <p>AES Key:</p>     <p> Permite generar una clave AES seleccionando un tamaño y validando la contraseña, pudiendo guardarla en formato .akey</p>     <p> Se pueden cifrar o descifrar archivos .png utilizando esta clave</p> </html> ");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 22, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jLabel1.setText("<html>          <p>HASH Cifrado:</p>      <p> Permite cifrar texto plano o un archivo en función del Algoritmo de encriptación. Devuelve el resultado del cifrado en Hexadecimal</p>          <p></p>          <p>RSA Key Generator:</p>          <p> Genera un par de claves pública y privada, utilizando el Algoritmo RSA, pudiendo seleccionar el tamaño de la clave y la semilla. guarda el par de claves en formato .rkey</p>          <p></p>          <p>RSA Key Cifrado:</p>      <p> Utilizando claves RSA pública o privada permite cifrar o descifrar un archivo .txt </p>          <p></p>          <p>AES Key:</p>          <p> Permite generar una clave AES seleccionando un tamaño y validando la contraseña, pudiendo guardarla en formato .akey</p>      <p> Se pueden cifrar o descifrar archivos .png utilizando esta clave</p>     <p></p>          <p>Digital Signing:</p>          <p> Permite generar una clave DSA para firmar ficheros pudiendo guardarla las claves publica y privada con formato .pudsa y prdsa</p>      <p> Permite la encriptacion de un fichero .txt y comrpobar si la firma es correcta</p>  </html> ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -905,13 +893,14 @@ public class APP extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLogs)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonLogs))
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,9 +910,7 @@ public class APP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLogs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -986,7 +973,7 @@ public class APP extends javax.swing.JFrame {
      * @param titulo titulo del file chooser.
      * @param isFile True si lo que se quiere es un archivo, false para un.
      * @param fileTipe 1 = .rsa | 2 = .txt | 3 = .rkey | 4 = .akey | 5 = .aes |
-     * 6 = .png | 7 = .pudsa | 8 = .prdsa
+     * 6 = .png | 7 = .pudsa | 8 = .prdsa | 9 = .sdsa
      * @return devuelve la ruta del archivo o null.
      */
     private String selectFile(String titulo, boolean isFile, int fileTipe) {
@@ -1040,6 +1027,10 @@ public class APP extends javax.swing.JFrame {
                 break;
             case 8:
                 filtro = new FileNameExtensionFilter("*.prdsa", "prdsa");
+                fc.setFileFilter(filtro);
+                break;
+            case 9:
+                filtro = new FileNameExtensionFilter("*.sdsa", "sdsa");
                 fc.setFileFilter(filtro);
                 break;
             default:
@@ -1157,19 +1148,19 @@ public class APP extends javax.swing.JFrame {
         jTextAreaAESgeneratorKey.setText("");
     }
 
-    private void clearErrorDSA() {
+    private void clearErrorsDSA() {
 
         jLabelDSAprivateKey.setForeground(Color.black);
         jLabelDSAprivateKeyPath.setForeground(Color.black);
         jLabelDSApublicKey.setForeground(Color.black);
         jLabelDSApublicKeyPath.setForeground(Color.black);
-        jLabelDSApublicKeyPath1.setForeground(Color.black);
+        jLabelDSAcifradoPath.setForeground(Color.black);
 
     }
 
     private void clearFieldsDSA() {
 
-        clearErrorDSA();
+        clearErrorsDSA();
         jTextAreaDSAcifradoPath.setText("");
         jTextAreaDSAprivateKey.setText("");
         jTextAreaDSAprivateKeyPath.setText("");
@@ -1628,7 +1619,7 @@ public class APP extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonDSAGenerarPairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSAGenerarPairActionPerformed
-        clearErrorDSA();
+        clearErrorsDSA();
         clavesDSA = DigitalSigningTool.makeKeyPair();
         if (clavesDSA == null) {
             jPanelErrorMensaje("Error al generar las claves DSA");
@@ -1646,9 +1637,9 @@ public class APP extends javax.swing.JFrame {
      */
     private void jButtonDSAsaveKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSAsaveKeysActionPerformed
 
-        clearErrorDSA();
+        clearErrorsDSA();
         if (!jTextAreaDSAprivateKeyPath.getText().isBlank() || !jTextAreaDSApublicKeyPath.getText().isBlank()) {
-            jPanelErrorMensaje("Genera Claves");
+            jPanelErrorMensaje("Es necesario generar las claves");
         } else {
             String directoryPath = selectFile("Selecciona un directorio para guardar las claves ", false, 0);
 
@@ -1723,7 +1714,7 @@ public class APP extends javax.swing.JFrame {
      */
     private void jButtonDSAselectPublictKeyPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSAselectPublictKeyPathActionPerformed
 
-        clearErrorDSA();
+        clearErrorsDSA();
         String publicKeyPath = selectFile("Selecciona una clave privada DSA", true, 7);
         if (publicKeyPath == null) {
             jPanelErrorMensaje("Selecciona una clave DSA valida");
@@ -1739,7 +1730,7 @@ public class APP extends javax.swing.JFrame {
      */
     private void jButtonDSAcomprobarFirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSAcomprobarFirmaActionPerformed
 
-        clearErrorDSA();
+        clearErrorsDSA();
         if (jTextAreaDSApublicKeyPath.getText().isBlank()) {
             jPanelErrorMensaje("Selecciona una Public Key");
         } else {
@@ -1750,7 +1741,7 @@ public class APP extends javax.swing.JFrame {
                 jPanelErrorMensaje("Error al leer la clave publica");
             } else {
                 String originalAbsolutePath = selectFile("Selecciona el archivo original para comprobar la firna", true, 2);
-                String firmadoAbsolutePath = selectFile("Selecciona el archivo firmado para comprobar", true, 5);
+                String firmadoAbsolutePath = selectFile("Selecciona el archivo firmado para comprobar", true, 9);
                 if (originalAbsolutePath == null || firmadoAbsolutePath == null || originalAbsolutePath.isBlank() || firmadoAbsolutePath.isBlank()) {
                     jPanelErrorMensaje("Comprueba las rutas de los ficheros");
                 } else {
@@ -1758,7 +1749,7 @@ public class APP extends javax.swing.JFrame {
                     //Si la firma es correcta Muestra mensaje OK o ERROR
                     if (DigitalSigningTool.verificarFirma(originalAbsolutePath, firmadoAbsolutePath, publicKey)) {
 
-                        JOptionPane jop = new JOptionPane("Firma del fichero correcta", JOptionPane.OK_OPTION);
+                        JOptionPane jop = new JOptionPane("Firma del fichero correcta", JOptionPane.PLAIN_MESSAGE);
                         JDialog jd = jop.createDialog("FIRMA CORRECTA");
                         jd.setLocationRelativeTo(null);
                         jd.setVisible(true);
@@ -1776,8 +1767,25 @@ public class APP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonDSAcomprobarFirmaActionPerformed
 
+    /**
+     * Accion del Boton Abrir de la vista Digital SigningToll
+     *
+     * @param evt
+     */
     private void jButtonDSAselectPublictKeyPath1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSAselectPublictKeyPath1ActionPerformed
-        // TODO add your handling code here:
+
+        clearErrorsDSA();
+        if (jTextAreaDSAcifradoPath.getText().isBlank()) {
+            jLabelDSAcifradoPath.setForeground(Color.red);
+        } else {
+            try {
+                Path p = Paths.get(jTextAreaDSAcifradoPath.getText());
+                Desktop.getDesktop().open(new File(p.getParent().toString()));
+            } catch (IOException ex) {
+                Logs.LOGGER_ERRORS.log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_jButtonDSAselectPublictKeyPath1ActionPerformed
 
     /**
@@ -1797,21 +1805,23 @@ public class APP extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(APP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(APP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(APP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(APP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new APP().setVisible(true);
+                new viewApp().setVisible(true);
             }
         });
     }
@@ -1860,11 +1870,11 @@ public class APP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAESgeneratorPathCifrado;
     private javax.swing.JLabel jLabelAESgeneratorPathKey;
     private javax.swing.JLabel jLabelCafeConPalito;
+    private javax.swing.JLabel jLabelDSAcifradoPath;
     private javax.swing.JLabel jLabelDSAprivateKey;
     private javax.swing.JLabel jLabelDSAprivateKeyPath;
     private javax.swing.JLabel jLabelDSApublicKey;
     private javax.swing.JLabel jLabelDSApublicKeyPath;
-    private javax.swing.JLabel jLabelDSApublicKeyPath1;
     private javax.swing.JLabel jLabelHASHFilePath;
     private javax.swing.JLabel jLabelHASHString;
     private javax.swing.JLabel jLabelLogs;
@@ -1883,7 +1893,6 @@ public class APP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
